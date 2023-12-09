@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/ProjectGB_Emu/Src"
+                "${workspaceFolder}/ProjectGB_Emu/Src",
+                "${workspaceFolder}/ProjectGB_Emu/Includes"
             ],
             "defines": [
                 "_DEBUG",

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libEmulator.a CMakeFiles/Emulator.dir/Bus.c.o CMakeFiles/Emulator.dir/CPU.c.o CMakeFiles/Emulator.dir/Cartridge.c.o CMakeFiles/Emulator.dir/Emulator.c.o CMakeFiles/Emulator.dir/PPU.c.o CMakeFiles/Emulator.dir/Timer.c.o
+/usr/bin/ranlib libEmulator.a

@@ -7,6 +7,6 @@
         "sdl_ttf.h": "c",
         "emulator.h": "c"
     },
-    "cmake.sourceDirectory": "C:/Users/cortl/OneDrive/Documents/GitHub/ProjectGB",
+    "cmake.sourceDirectory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu",
     "C_Cpp.default.compilerPath": "C:\\mingw64\\bin\\gcc.exe"
 }
