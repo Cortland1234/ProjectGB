@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "common.h": "c",
+        "timer.h": "c",
+        "sdl.h": "c",
+        "sdl_ttf.h": "c",
+        "emulator.h": "c"
+    },
+    "cmake.sourceDirectory": "C:/Users/cortl/OneDrive/Documents/GitHub/ProjectGB",
+    "C_Cpp.default.compilerPath": "C:\\mingw64\\bin\\gcc.exe"
+}
