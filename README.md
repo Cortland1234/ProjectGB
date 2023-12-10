@@ -1,4 +1,4 @@
-# PROJECTGB ----------------------------------  
+# 🎮 PROJECTGB ----------------------------------  
 
 ## A GameBoy Hardware Emulator  
 
