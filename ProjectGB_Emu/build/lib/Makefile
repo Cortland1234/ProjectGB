@@ -186,149 +186,149 @@ emu/fast:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/build
 .PHONY : emu/fast
 
-bus.o: bus.c.o
-.PHONY : bus.o
+Bus.o: Bus.c.o
+.PHONY : Bus.o
 
 # target to build an object file
-bus.c.o:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/bus.c.o
-.PHONY : bus.c.o
+Bus.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Bus.c.o
+.PHONY : Bus.c.o
 
-bus.i: bus.c.i
-.PHONY : bus.i
+Bus.i: Bus.c.i
+.PHONY : Bus.i
 
 # target to preprocess a source file
-bus.c.i:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/bus.c.i
-.PHONY : bus.c.i
+Bus.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Bus.c.i
+.PHONY : Bus.c.i
 
-bus.s: bus.c.s
-.PHONY : bus.s
+Bus.s: Bus.c.s
+.PHONY : Bus.s
 
 # target to generate assembly for a file
-bus.c.s:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/bus.c.s
-.PHONY : bus.c.s
+Bus.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Bus.c.s
+.PHONY : Bus.c.s
 
-cartridge.o: cartridge.c.o
-.PHONY : cartridge.o
+Cartridge.o: Cartridge.c.o
+.PHONY : Cartridge.o
 
 # target to build an object file
-cartridge.c.o:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/cartridge.c.o
-.PHONY : cartridge.c.o
+Cartridge.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cartridge.c.o
+.PHONY : Cartridge.c.o
 
-cartridge.i: cartridge.c.i
-.PHONY : cartridge.i
+Cartridge.i: Cartridge.c.i
+.PHONY : Cartridge.i
 
 # target to preprocess a source file
-cartridge.c.i:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/cartridge.c.i
-.PHONY : cartridge.c.i
+Cartridge.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cartridge.c.i
+.PHONY : Cartridge.c.i
 
-cartridge.s: cartridge.c.s
-.PHONY : cartridge.s
+Cartridge.s: Cartridge.c.s
+.PHONY : Cartridge.s
 
 # target to generate assembly for a file
-cartridge.c.s:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/cartridge.c.s
-.PHONY : cartridge.c.s
+Cartridge.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cartridge.c.s
+.PHONY : Cartridge.c.s
 
-cpu.o: cpu.c.o
-.PHONY : cpu.o
+Cpu.o: Cpu.c.o
+.PHONY : Cpu.o
 
 # target to build an object file
-cpu.c.o:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/cpu.c.o
-.PHONY : cpu.c.o
+Cpu.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cpu.c.o
+.PHONY : Cpu.c.o
 
-cpu.i: cpu.c.i
-.PHONY : cpu.i
+Cpu.i: Cpu.c.i
+.PHONY : Cpu.i
 
 # target to preprocess a source file
-cpu.c.i:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/cpu.c.i
-.PHONY : cpu.c.i
+Cpu.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cpu.c.i
+.PHONY : Cpu.c.i
 
-cpu.s: cpu.c.s
-.PHONY : cpu.s
+Cpu.s: Cpu.c.s
+.PHONY : Cpu.s
 
 # target to generate assembly for a file
-cpu.c.s:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/cpu.c.s
-.PHONY : cpu.c.s
+Cpu.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cpu.c.s
+.PHONY : Cpu.c.s
 
-emu.o: emu.c.o
-.PHONY : emu.o
+Emu.o: Emu.c.o
+.PHONY : Emu.o
 
 # target to build an object file
-emu.c.o:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/emu.c.o
-.PHONY : emu.c.o
+Emu.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Emu.c.o
+.PHONY : Emu.c.o
 
-emu.i: emu.c.i
-.PHONY : emu.i
+Emu.i: Emu.c.i
+.PHONY : Emu.i
 
 # target to preprocess a source file
-emu.c.i:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/emu.c.i
-.PHONY : emu.c.i
+Emu.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Emu.c.i
+.PHONY : Emu.c.i
 
-emu.s: emu.c.s
-.PHONY : emu.s
+Emu.s: Emu.c.s
+.PHONY : Emu.s
 
 # target to generate assembly for a file
-emu.c.s:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/emu.c.s
-.PHONY : emu.c.s
+Emu.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Emu.c.s
+.PHONY : Emu.c.s
 
-ppu.o: ppu.c.o
-.PHONY : ppu.o
+Ppu.o: Ppu.c.o
+.PHONY : Ppu.o
 
 # target to build an object file
-ppu.c.o:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/ppu.c.o
-.PHONY : ppu.c.o
+Ppu.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Ppu.c.o
+.PHONY : Ppu.c.o
 
-ppu.i: ppu.c.i
-.PHONY : ppu.i
+Ppu.i: Ppu.c.i
+.PHONY : Ppu.i
 
 # target to preprocess a source file
-ppu.c.i:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/ppu.c.i
-.PHONY : ppu.c.i
+Ppu.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Ppu.c.i
+.PHONY : Ppu.c.i
 
-ppu.s: ppu.c.s
-.PHONY : ppu.s
+Ppu.s: Ppu.c.s
+.PHONY : Ppu.s
 
 # target to generate assembly for a file
-ppu.c.s:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/ppu.c.s
-.PHONY : ppu.c.s
+Ppu.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Ppu.c.s
+.PHONY : Ppu.c.s
 
-timer.o: timer.c.o
-.PHONY : timer.o
+Timer.o: Timer.c.o
+.PHONY : Timer.o
 
 # target to build an object file
-timer.c.o:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/timer.c.o
-.PHONY : timer.c.o
+Timer.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Timer.c.o
+.PHONY : Timer.c.o
 
-timer.i: timer.c.i
-.PHONY : timer.i
+Timer.i: Timer.c.i
+.PHONY : Timer.i
 
 # target to preprocess a source file
-timer.c.i:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/timer.c.i
-.PHONY : timer.c.i
+Timer.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Timer.c.i
+.PHONY : Timer.c.i
 
-timer.s: timer.c.s
-.PHONY : timer.s
+Timer.s: Timer.c.s
+.PHONY : Timer.s
 
 # target to generate assembly for a file
-timer.c.s:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/timer.c.s
-.PHONY : timer.c.s
+Timer.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Timer.c.s
+.PHONY : Timer.c.s
 
 # Help Target
 help:
@@ -344,24 +344,24 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... emu"
-	@echo "... bus.o"
-	@echo "... bus.i"
-	@echo "... bus.s"
-	@echo "... cartridge.o"
-	@echo "... cartridge.i"
-	@echo "... cartridge.s"
-	@echo "... cpu.o"
-	@echo "... cpu.i"
-	@echo "... cpu.s"
-	@echo "... emu.o"
-	@echo "... emu.i"
-	@echo "... emu.s"
-	@echo "... ppu.o"
-	@echo "... ppu.i"
-	@echo "... ppu.s"
-	@echo "... timer.o"
-	@echo "... timer.i"
-	@echo "... timer.s"
+	@echo "... Bus.o"
+	@echo "... Bus.i"
+	@echo "... Bus.s"
+	@echo "... Cartridge.o"
+	@echo "... Cartridge.i"
+	@echo "... Cartridge.s"
+	@echo "... Cpu.o"
+	@echo "... Cpu.i"
+	@echo "... Cpu.s"
+	@echo "... Emu.o"
+	@echo "... Emu.i"
+	@echo "... Emu.s"
+	@echo "... Ppu.o"
+	@echo "... Ppu.i"
+	@echo "... Ppu.s"
+	@echo "... Timer.o"
+	@echo "... Timer.i"
+	@echo "... Timer.s"
 .PHONY : help
 
 
