@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common.h>
+#include <Common.h>
 
 typedef struct { //emu_context typedef is a struct that contains data about the running emulator
     bool paused; //boolean saying whether emulator is paused or not

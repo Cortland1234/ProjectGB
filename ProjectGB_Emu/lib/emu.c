@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <emu.h>
-#include <cartridge.h>
-#include <cpu.h>
-#include <common.h>
+#include <Emu.h>
+#include <Cartridge.h>
+#include <Cpu.h>
+#include <Common.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common.h>
+#include <Common.h>
 
 //Header for Pixel Processing Unit
 

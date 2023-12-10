@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common.h>
+#include <Common.h>
 
 //cartridge info from "Cartridge Header" on gbdev.io
 

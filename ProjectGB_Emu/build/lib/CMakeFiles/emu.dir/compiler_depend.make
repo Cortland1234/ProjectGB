@@ -6,10 +6,9 @@ lib/CMakeFiles/emu.dir/Bus.c.o: ../lib/Bus.c \
   /usr/include/stdc-predef.h
 
 lib/CMakeFiles/emu.dir/Cartridge.c.o: ../lib/Cartridge.c \
-  ../lib/cartridge.c \
   /usr/include/stdc-predef.h \
-  ../include/cartridge.h \
-  ../include/common.h \
+  ../include/Cartridge.h \
+  ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -69,10 +68,9 @@ lib/CMakeFiles/emu.dir/Cartridge.c.o: ../lib/Cartridge.c \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
 
 lib/CMakeFiles/emu.dir/Cpu.c.o: ../lib/Cpu.c \
-  ../lib/cpu.c \
   /usr/include/stdc-predef.h \
-  ../include/cpu.h \
-  ../include/common.h \
+  ../include/Cpu.h \
+  ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -132,7 +130,6 @@ lib/CMakeFiles/emu.dir/Cpu.c.o: ../lib/Cpu.c \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
 
 lib/CMakeFiles/emu.dir/Emu.c.o: ../lib/Emu.c \
-  ../lib/emu.c \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -158,8 +155,8 @@ lib/CMakeFiles/emu.dir/Emu.c.o: ../lib/Emu.c \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
-  ../include/emu.h \
-  ../include/common.h \
+  ../include/Emu.h \
+  ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
@@ -193,8 +190,8 @@ lib/CMakeFiles/emu.dir/Emu.c.o: ../lib/Emu.c \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  ../include/cartridge.h \
-  ../include/cpu.h \
+  ../include/Cartridge.h \
+  ../include/Cpu.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_main.h \
   /usr/include/SDL2/SDL_stdinc.h \
@@ -352,10 +349,9 @@ lib/CMakeFiles/emu.dir/Emu.c.o: ../lib/Emu.c \
   /usr/include/SDL2/SDL.h
 
 lib/CMakeFiles/emu.dir/Ppu.c.o: ../lib/Ppu.c \
-  ../lib/ppu.c \
   /usr/include/stdc-predef.h \
-  ../include/ppu.h \
-  ../include/common.h \
+  ../include/Ppu.h \
+  ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -415,10 +411,9 @@ lib/CMakeFiles/emu.dir/Ppu.c.o: ../lib/Ppu.c \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
 
 lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
-  ../lib/timer.c \
   /usr/include/stdc-predef.h \
-  ../include/timer.h \
-  ../include/common.h \
+  ../include/Timer.h \
+  ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -478,11 +473,15 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
 
 
+../include/Timer.h:
+
 ../lib/Timer.c:
 
-../lib/ppu.c:
+../include/Ppu.h:
 
 /usr/include/SDL2/SDL_ttf.h:
+
+/usr/include/SDL2/SDL_misc.h:
 
 /usr/include/SDL2/SDL_timer.h:
 
@@ -515,8 +514,6 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h:
 
@@ -602,13 +599,15 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h:
+/usr/include/SDL2/SDL_hidapi.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h:
 
-/usr/include/SDL2/SDL_hints.h:
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h:
+/usr/include/SDL2/SDL_sensor.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
@@ -616,11 +615,19 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h:
+
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
@@ -635,10 +642,6 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 /usr/include/string.h:
 
 /usr/include/endian.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h:
-
-../lib/emu.c:
 
 /usr/include/SDL2/SDL_rect.h:
 
@@ -656,6 +659,14 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
+/usr/include/features-time64.h:
+
+../include/Cartridge.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+../lib/Bus.c:
+
 /usr/include/SDL2/SDL_assert.h:
 
 /usr/include/stdlib.h:
@@ -672,23 +683,7 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h:
 
-/usr/include/features-time64.h:
-
 /usr/include/features.h:
-
-../lib/Bus.c:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h:
-
-/usr/include/SDL2/SDL_misc.h:
-
-../lib/cartridge.c:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
@@ -702,6 +697,12 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
+/usr/include/SDL2/SDL_haptic.h:
+
+/usr/include/SDL2/SDL_quit.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
 ../lib/Ppu.c:
 
 ../lib/Cpu.c:
@@ -712,19 +713,11 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/stdc-predef.h:
 
-../include/cpu.h:
+../include/Common.h:
 
-../include/common.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h:
 
-/usr/include/SDL2/SDL_sensor.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-../include/cartridge.h:
-
-/usr/include/SDL2/SDL_atomic.h:
-
-../lib/timer.c:
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 ../lib/bus.c:
 
@@ -752,12 +745,6 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/inttypes.h:
 
-/usr/include/SDL2/SDL_hidapi.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
-
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
@@ -784,10 +771,6 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h:
@@ -810,15 +793,13 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/wchar.h:
 
-../include/timer.h:
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h:
 
 /usr/include/stdint.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/include/x86_64-linux-gnu/bits/timesize.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
@@ -832,19 +813,13 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/alloca.h:
 
-../lib/cpu.c:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h:
+
+../include/Cpu.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h:
 
 ../lib/Emu.c:
-
-/usr/include/SDL2/SDL_haptic.h:
-
-/usr/include/SDL2/SDL_quit.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-../include/emu.h:
-
-../include/ppu.h:
 
 /usr/include/SDL2/SDL.h:
 
@@ -894,9 +869,17 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/include/SDL2/SDL_mutex.h:
 
+/usr/include/SDL2/SDL_atomic.h:
+
+/usr/include/SDL2/SDL_hints.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h:
 
 /usr/include/SDL2/SDL_audio.h:
+
+../include/Emu.h:
 
 /usr/include/SDL2/SDL_error.h:
 
@@ -930,8 +913,10 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h:

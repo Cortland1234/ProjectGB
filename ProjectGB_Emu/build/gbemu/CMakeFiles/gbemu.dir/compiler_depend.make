@@ -4,7 +4,7 @@
 gbemu/CMakeFiles/gbemu.dir/main.c.o: ../gbemu/main.c \
   /usr/include/stdc-predef.h \
   ../include/emu.h \
-  ../include/common.h \
+  ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -66,16 +66,6 @@ gbemu/CMakeFiles/gbemu.dir/main.c.o: ../gbemu/main.c \
 
 /usr/include/alloca.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
 /usr/include/stdint.h:
@@ -85,6 +75,14 @@ gbemu/CMakeFiles/gbemu.dir/main.c.o: ../gbemu/main.c \
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/stdio.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
@@ -96,10 +94,6 @@ gbemu/CMakeFiles/gbemu.dir/main.c.o: ../gbemu/main.c \
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
-/usr/include/features.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 ../gbemu/main.c:
@@ -110,7 +104,23 @@ gbemu/CMakeFiles/gbemu.dir/main.c.o: ../gbemu/main.c \
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
-../include/common.h:
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+../include/Common.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
@@ -123,16 +133,6 @@ gbemu/CMakeFiles/gbemu.dir/main.c.o: ../gbemu/main.c \
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h:
 

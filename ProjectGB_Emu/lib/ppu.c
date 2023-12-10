@@ -1,4 +1,4 @@
-#include <ppu.h>
+#include <Ppu.h>
 
 void InitializePPU()
 {

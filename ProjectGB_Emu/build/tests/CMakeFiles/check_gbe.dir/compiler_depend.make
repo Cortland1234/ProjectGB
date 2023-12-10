@@ -74,23 +74,23 @@ tests/CMakeFiles/check_gbe.dir/check_gbe.c.o: ../tests/check_gbe.c \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  ../include/emu.h \
-  ../include/common.h \
+  ../include/Emu.h \
+  ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
-  ../include/cpu.h
+  ../include/Cpu.h
 
+
+../include/Cpu.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h:
-
-../include/common.h:
-
-../include/emu.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+../include/Common.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
@@ -123,6 +123,8 @@ tests/CMakeFiles/check_gbe.dir/check_gbe.c.o: ../tests/check_gbe.c \
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
+
+../include/Emu.h:
 
 /usr/include/stdio.h:
 
@@ -207,8 +209,6 @@ tests/CMakeFiles/check_gbe.dir/check_gbe.c.o: ../tests/check_gbe.c \
 /usr/include/string.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
-
-../include/cpu.h:
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
