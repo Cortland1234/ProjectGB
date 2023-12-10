@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/GBEmulator.dir/main.c.o -o GBEmulator  ../Src/libEmulator.a -lSDL2 -Wl,-Bstatic -lSDL2main -Wl,-Bdynamic -lSDL2 -Wl,-Bstatic -lSDL2main -Wl,-Bdynamic 

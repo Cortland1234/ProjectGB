@@ -5,7 +5,10 @@
         "timer.h": "c",
         "sdl.h": "c",
         "sdl_ttf.h": "c",
-        "emulator.h": "c"
+        "emulator.h": "c",
+        "cpu.h": "c",
+        "cartridge.h": "c",
+        "ppu.h": "c"
     },
     "cmake.sourceDirectory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu",
     "C_Cpp.default.compilerPath": "C:\\mingw64\\bin\\gcc.exe"

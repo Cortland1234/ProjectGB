@@ -1,4 +1,4 @@
-#include <Cartridge.h>
+#include <cart.h>
 
 typedef struct { //typedef for cartridge context, contains file name, size of the rom, the byte data for the rom, and the rom header
     char fileName[1024];

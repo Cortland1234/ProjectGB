@@ -1,4 +1,4 @@
-#include <CPU.h>
+#include <cpu.h>
 
 void InitializeCPU()
 {
