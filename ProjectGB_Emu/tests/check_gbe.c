@@ -1,9 +1,9 @@
 #include <check.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <Emulator.h>
+#include <emu.h>
 
-#include <CPU.h>
+#include <cpu.h>
 
 START_TEST(test_nothing) {
     bool b = CPUStep();

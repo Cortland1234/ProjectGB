@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Common.h>
+#include <common.h>
 
 //Bus had a read and write data function
 

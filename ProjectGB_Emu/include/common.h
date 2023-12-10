@@ -16,4 +16,4 @@ typedef uint64_t u64; //64 bit data type
 
 #define BETWEEN(a, b, c) ((a >= b) && (a <= c)) //checks if a number is in between two values
 
-void delay(u32 ms);
+void Delay(u32 ms);

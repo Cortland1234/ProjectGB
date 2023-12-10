@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <emu.h>
-#include <cart.h>
+#include <cartridge.h>
 #include <cpu.h>
+#include <common.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
@@ -25,7 +26,7 @@ int runEmu(int argc, char **argv) //function for running the emulator with error
         return -1;
     }
 
-    if (!CartridgeLoad(argv[1])) //CartridgeLoad loads the rom file; if it fails, then an error is printed and program stops
+    if (!LoadCartridge(argv[1])) //CartridgeLoad loads the rom file; if it fails, then an error is printed and program stops
     {
         printf("Failed to load ROM file: %s\n", argv[1]);
         return -2;
@@ -33,9 +34,9 @@ int runEmu(int argc, char **argv) //function for running the emulator with error
 
     printf("Cartridge Accepted. Loading...\n");
 
-    InitializeSDL(SDL_INIT_VIDEO); //initialize SDL graphics/video
+    SDL_Init(SDL_INIT_VIDEO); //initialize SDL graphics/video
     printf("SDL Initialized.\n");
-    InitializeTTF(); //initializes fonts
+    TTF_Init(); //initializes fonts
     printf("TTF Initialized.\n");
 
     InitializeCPU(); //self explanatory
@@ -48,7 +49,7 @@ int runEmu(int argc, char **argv) //function for running the emulator with error
     {
         if (context.paused)
         {
-            delay(10);
+            Delay(10);
             continue;
         }
 

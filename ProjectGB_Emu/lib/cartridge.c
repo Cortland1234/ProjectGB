@@ -1,4 +1,4 @@
-#include <cart.h>
+#include <cartridge.h>
 
 typedef struct { //typedef for cartridge context, contains file name, size of the rom, the byte data for the rom, and the rom header
     char fileName[1024];
@@ -142,7 +142,7 @@ bool LoadCartridge(char *cartridge)
         return false;
     }
 
-    printf("Successfully Opened $s\n", context.fileName);
+    printf("Successfully Opened %s\n", context.fileName);
 
     fseek(fp, 0, SEEK_END); //seek EOF
     context.romSize = ftell(fp); //use ftell to get position of EOF, and set that to romSize
