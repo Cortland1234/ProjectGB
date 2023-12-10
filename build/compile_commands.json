@@ -1,0 +1,42 @@
+[
+{
+  "directory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build/lib",
+  "command": "/usr/bin/gcc -DHAVE_CONFIG_H -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include -I/usr/include/SDL2 -g -o CMakeFiles/emu.dir/bus.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/bus.c",
+  "file": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/bus.c"
+},
+{
+  "directory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build/lib",
+  "command": "/usr/bin/gcc -DHAVE_CONFIG_H -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include -I/usr/include/SDL2 -g -o CMakeFiles/emu.dir/cartridge.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/cartridge.c",
+  "file": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/cartridge.c"
+},
+{
+  "directory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build/lib",
+  "command": "/usr/bin/gcc -DHAVE_CONFIG_H -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include -I/usr/include/SDL2 -g -o CMakeFiles/emu.dir/cpu.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/cpu.c",
+  "file": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/cpu.c"
+},
+{
+  "directory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build/lib",
+  "command": "/usr/bin/gcc -DHAVE_CONFIG_H -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include -I/usr/include/SDL2 -g -o CMakeFiles/emu.dir/emu.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/emu.c",
+  "file": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/emu.c"
+},
+{
+  "directory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build/lib",
+  "command": "/usr/bin/gcc -DHAVE_CONFIG_H -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include -I/usr/include/SDL2 -g -o CMakeFiles/emu.dir/ppu.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/ppu.c",
+  "file": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/ppu.c"
+},
+{
+  "directory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build/lib",
+  "command": "/usr/bin/gcc -DHAVE_CONFIG_H -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include -I/usr/include/SDL2 -g -o CMakeFiles/emu.dir/timer.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/timer.c",
+  "file": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/timer.c"
+},
+{
+  "directory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build/gbemu",
+  "command": "/usr/bin/gcc -DHAVE_CONFIG_H -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include -I/usr/include/SDL2 -g -o CMakeFiles/gbemu.dir/main.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/gbemu/main.c",
+  "file": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/gbemu/main.c"
+},
+{
+  "directory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build/tests",
+  "command": "/usr/bin/gcc -DHAVE_CONFIG_H -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/build -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/tests/include -I/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include -I/usr/include/SDL2 -g -o CMakeFiles/check_gbe.dir/check_gbe.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/tests/check_gbe.c",
+  "file": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/tests/check_gbe.c"
+}
+]
