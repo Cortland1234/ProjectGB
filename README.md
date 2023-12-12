@@ -10,5 +10,5 @@
 ## Main Documentation Used:  
 
 ### [GBDev.io](https://gbdev.io/)  
-### GameBoy CPU Instructions(https://meganesu.github.io/generate-gb-opcodes/)
+### GBCPUInstructions(https://meganesu.github.io/generate-gb-opcodes/)
 
