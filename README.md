@@ -10,5 +10,5 @@
 ## Main Documentation Used:  
 
 ### [GBDev.io](https://gbdev.io/)  
-### GBCPUInstructions(https://meganesu.github.io/generate-gb-opcodes/)
+### [GB CPU OpCodes/Instructions](https://meganesu.github.io/generate-gb-opcodes/)
 
