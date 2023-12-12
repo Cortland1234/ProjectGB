@@ -11,3 +11,5 @@ typedef struct { //emu_context typedef is a struct that contains data about the 
 int runEmu(int argc, char **argv);
 
 emu_context *emu_get_context(); //get current emulator context
+
+void EMUCycles(int cycles);

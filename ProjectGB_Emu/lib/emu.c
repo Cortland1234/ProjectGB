@@ -63,3 +63,8 @@ int runEmu(int argc, char **argv) //function for running the emulator with error
     }
     return 0;
 }
+
+void EMUCycles(int cycles)
+{
+    
+}

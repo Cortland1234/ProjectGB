@@ -175,3 +175,14 @@ bool LoadCartridge(char *cartridge)
 
     return true; 
 }
+
+u8 ReadCartridge(u16 address)
+{
+    //Because all rom data is loaded into memory, we can access those memory arrays easily
+    return context.romData[address];
+}
+
+void WriteCartridge(u16 address, u8 value)
+{
+    NO_IMPL
+}

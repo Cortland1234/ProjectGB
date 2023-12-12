@@ -77,8 +77,11 @@ tests/CMakeFiles/check_gbe.dir/check_gbe.c.o: ../tests/check_gbe.c \
   ../include/Emu.h \
   ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
-  ../include/Cpu.h
+  ../include/Cpu.h \
+  ../include/Instructions.h
 
+
+../include/Instructions.h:
 
 ../include/Cpu.h:
 
