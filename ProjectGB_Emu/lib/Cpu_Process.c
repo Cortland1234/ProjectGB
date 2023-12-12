@@ -5,7 +5,7 @@
 
 static void ProcNone(CPUContext *context)
 {
-    printf("INVALID INSTRUCTION\n");
+    printf("INVALID INSTRUCTIONs\n");
     exit(-7);
 }
 
