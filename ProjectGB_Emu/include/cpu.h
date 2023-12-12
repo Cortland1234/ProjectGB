@@ -23,13 +23,24 @@ typedef struct {
     u16 memDestination; 
     bool destinationIsMem;
     u8 currentOpCode; //OpCode: a machine language instruction that specifies the operation to be performed by the CPU
-    instruction *curInstance;
+    instruction *curInstruction;
 
     bool halted; //is CPU halted? boolean
     bool stepping; //is CPU stepping? boolean
+
+    bool masterInterruptEnabled;
 
 } CPUContext;
 
 void InitializeCPU();
 
 bool CPUStep();
+
+typedef void (*IN_PROC)(CPUContext *); //takes in a function pointer and a CPU Context pointer
+
+IN_PROC InstGetProcessor(instrucType type); //getting function processor by the CPU instruction type
+
+u16 CPUReadReg(registerType rt);
+
+#define CPU_FLAG_Z BIT(context->regs.f, 7)
+#define CPU_FLAG_C BIT(context->regs.f, 4)

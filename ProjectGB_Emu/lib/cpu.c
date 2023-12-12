@@ -7,31 +7,32 @@ CPUContext context = {0};
 void InitializeCPU()
 {
     context.regs.progCounter = 0x100; //sets program counter to the entry point
+    context.regs.a = 0x01; //sets a register to 0x01
 }
 
-static void fetchInstruction()
+static void FetchInstruction()
 {
     context.currentOpCode = ReadBus(context.regs.progCounter++); //read the current opcode for the CPU context from the Bus from the context's register program counter. Increment the program counter in the process 
-    context.curInstance = instructionByOpcode(context.currentOpCode); //current instance for context from instructionByOpcode
+    context.curInstruction = InstructionByOpcode(context.currentOpCode); //current instance for context from instructionByOpcode
 
-    if (context.curInstance == NULL)
-    {
-        printf("Unknown Instruction! %02X\n", context.currentOpCode);
-        exit(-7);
-    }
 }
 
-static void fetchData()
+static void FetchData()
 {
     context.memDestination = 0; //setting mem destination at 0
     context.destinationIsMem = false; 
+
+    if (context.curInstruction == NULL)
+    {
+        return;
+    }
     
-    switch(context.curInstance->mode)
+    switch(context.curInstruction->mode)
     {
         case AM_IMP: return; //address is implied, nothing needs to be returned
 
         case AM_R: 
-            context.fetchData = CPUReadReg(context.curInstance->reg1); //if simple register, then read the CPU's current instance register #1
+            context.fetchData = CPUReadReg(context.curInstruction->reg1); //if simple register, then read the CPU's current instance register #1
             return;
 
         case AM_R_D8: //take 8 bit value and transfer it into a register
@@ -55,7 +56,7 @@ static void fetchData()
         }
 
         default:
-            printf("Unknown Addressing Mode! %d\n", context.curInstance->mode);
+            printf("Unknown Addressing Mode! %d (%02X)\n", context.curInstruction->mode, context.currentOpCode);
             exit(-7);
             return;
     }
@@ -63,7 +64,14 @@ static void fetchData()
 
 static void executeInstruc()
 {
-    printf("Not Executing yet\n");
+    IN_PROC proc = InstGetProcessor(context.curInstruction->type); //getting either a function pointer or 0
+
+    if (!proc) //if proc if null, then exits the application
+    {
+        NO_IMPL
+    }
+
+    proc(&context); //otherwise if function is found, then pass the pointer into the current context to execute that function
 }
 
 bool CPUStep() 
@@ -71,11 +79,13 @@ bool CPUStep()
     if (!context.halted) // if CPU context is not halted
     {
         u16 pc = context.regs.progCounter;
-        
-        fetchInstruction(); //fetch instructions
-        fetchData(); //fetch the data for that instruction
 
-        printf("Executing Instruction %02X     Program Counter: %04X\n", context.currentOpCode, context.regs.progCounter);
+        FetchInstruction(); //fetch instructions
+        FetchData(); //fetch the data for that instruction
+
+        printf("%04X: %-7s (%02X %02X %02X) A: %02X B: %02X C: %02X\n", 
+        pc, InstrucName(context.curInstruction->type), context.currentOpCode,
+        ReadBus(pc + 1), ReadBus(pc + 2), context.regs.a, context.regs.b, context.regs.c);
 
         executeInstruc(); //execute that instruction
     }

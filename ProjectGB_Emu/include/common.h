@@ -12,7 +12,7 @@ typedef uint64_t u64; //64 bit data type
 
 #define BIT(a, n) ((a & (1 << n)) ? 1 : 0) //getting a bit
 
-#define BIT_SET(a, n ,on) (on ? a |= (1 << n) : a &= ~(1 << n)) //setting a bit
+#define BIT_SET(a, n, on) { if (on) a |= (1 << n); else a &= ~(1 << n); } // setting a bit
 
 #define BETWEEN(a, b, c) ((a >= b) && (a <= c)) //checks if a number is in between two values
 

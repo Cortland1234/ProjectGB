@@ -258,6 +258,30 @@ Cpu.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cpu.c.s
 .PHONY : Cpu.c.s
 
+Cpu_Process.o: Cpu_Process.c.o
+.PHONY : Cpu_Process.o
+
+# target to build an object file
+Cpu_Process.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cpu_Process.c.o
+.PHONY : Cpu_Process.c.o
+
+Cpu_Process.i: Cpu_Process.c.i
+.PHONY : Cpu_Process.i
+
+# target to preprocess a source file
+Cpu_Process.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cpu_Process.c.i
+.PHONY : Cpu_Process.c.i
+
+Cpu_Process.s: Cpu_Process.c.s
+.PHONY : Cpu_Process.s
+
+# target to generate assembly for a file
+Cpu_Process.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cpu_Process.c.s
+.PHONY : Cpu_Process.c.s
+
 Cpu_utilities.o: Cpu_utilities.c.o
 .PHONY : Cpu_utilities.o
 
@@ -401,6 +425,9 @@ help:
 	@echo "... Cpu.o"
 	@echo "... Cpu.i"
 	@echo "... Cpu.s"
+	@echo "... Cpu_Process.o"
+	@echo "... Cpu_Process.i"
+	@echo "... Cpu_Process.s"
 	@echo "... Cpu_utilities.o"
 	@echo "... Cpu_utilities.i"
 	@echo "... Cpu_utilities.s"

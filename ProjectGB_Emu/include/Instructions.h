@@ -101,7 +101,7 @@ typedef enum { //instruction types for the CPU in Assembly. For example, if inst
 } instrucType;
 
 typedef enum { //In most cases there will be no conditions in instructions, but some require it.
-    CT_NONE, CT_NZ, CT_NC, CT_C //for example, NZ means if there is no Z Flag, NC means if there is no Carry flag, etc
+    CT_NONE, CT_NZ, CT_Z, CT_NC, CT_C //for example, NZ means if there is no Z Flag, NC means if there is no Carry flag, etc
 } conditionType;
 
 typedef struct {
@@ -113,4 +113,6 @@ typedef struct {
     u8 param; //Parameters
 } instruction;
 
-instruction *instructionByOpcode(u8 opcode);
+instruction *InstructionByOpcode(u8 opcode);
+
+char *InstrucName(instrucType t);

@@ -1,4 +1,5 @@
 #include <Bus.h>
+#include <Cartridge.h>
 
 //Pasted below are the Memory Maps
 //For each section of the memory that you want to access, it will go to different peripherals listed below
