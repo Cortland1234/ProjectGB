@@ -48,67 +48,81 @@ static void FetchData()
         }
 
         case AM_MR_R: // loading a register into a memory region
+        
+            context.fetchData = CPUReadReg(context.curInstruction->reg2); // getting data from reg 2
+            context.memDestination = CPUReadReg(context.curInstruction->reg2); // destination is a memory location
+            context.destinationIsMem = true; // setting the destination to memory location
+
+            if (context.curInstruction->reg1 == RT_C) //if reg1 is RT_C
             {
-                context.fetchData = CPUReadReg(context.curInstruction->reg2); // getting data from reg 2
-                context.memDestination = CPUReadReg(context.curInstruction->reg2); // destination is a memory location
-                context.destinationIsMem = true; // setting the destination to memory location
-
-                if (context.curInstruction->reg1 == RT_C) //if reg1 is RT_C
-                {
-                    context.memDestination |= 0xFF00; //then we need to OR the destination with 0xFF00 (this is a special case. Look to "LDH (C) A" in "Game Boy: Complete Technical Reference")
-                }
-
-                return;
+                context.memDestination |= 0xFF00; //then we need to OR the destination with 0xFF00 (this is a special case. Look to "LDH (C) A" in "Game Boy: Complete Technical Reference")
             }
+
+            return;
+        
 
         case AM_R_MR: //reading from a memory register to a register. essentially the opposite of AM_MR_R
+            
+            u16 address = CPUReadReg(context.curInstruction->reg2);
+
+            if (context.curInstruction->reg1 == RT_C) 
             {
-                u16 address = CPUReadReg(context.curInstruction->reg2);
-
-                if (context.curInstruction->reg1 == RT_C) 
-                {
-                    address |= 0xFF00; 
-                }
-
-                context.fetchData = ReadBus(address); //reading the address bus and setting that to fetchData
-                EMUCycles(1); //syncing 
-
-                return;
+                address |= 0xFF00; 
             }
+
+            context.fetchData = ReadBus(address); //reading the address bus and setting that to fetchData
+            EMUCycles(1); //syncing 
+
+            return;
+            
 
         case AM_R_HLI: //moving HL address to register and incrementing 
-            {
-                context.fetchData = ReadBus(CPUReadReg(context.curInstruction->reg2));
-                EMUCycles(1);
-                CPUSetReg(RT_HL, CPUReadReg(RT_HL) + 1);
-                return;      
-            }
+            
+            context.fetchData = ReadBus(CPUReadReg(context.curInstruction->reg2));
+            EMUCycles(1);
+            CPUSetReg(RT_HL, CPUReadReg(RT_HL) + 1);\
+            return;      
+            
 
         case AM_R_HLD: //moving HL address to register and decrementing
-            {
-                context.fetchData = ReadBus(CPUReadReg(context.curInstruction->reg2));
-                EMUCycles(1);
-                CPUSetReg(RT_HL, CPUReadReg(RT_HL) - 1);
-                return;      
-            }
+
+            context.fetchData = ReadBus(CPUReadReg(context.curInstruction->reg2));
+            EMUCycles(1);
+            CPUSetReg(RT_HL, CPUReadReg(RT_HL) - 1);
+            return;      
 
         case AM_HLI_R: //moving value from the register into the HL address and incrementing
-            {
-                context.fetchData = CPUReadReg(context.curInstruction->reg2);
-                context.memDestination = CPUReadReg(context.curInstruction->reg1);
-                context.destinationIsMem = true;
-                CPUSetReg(RT_HL, CPUReadReg(RT_HL) + 1);
-                return;
-            }
+            
+            context.fetchData = CPUReadReg(context.curInstruction->reg2);
+            context.memDestination = CPUReadReg(context.curInstruction->reg1);
+            context.destinationIsMem = true;
+            CPUSetReg(RT_HL, CPUReadReg(RT_HL) + 1);
+            return;
+            
 
         case AM_HLD_R: //moving value from the register into the HL address and decrementing 
-            {
-                context.fetchData = CPUReadReg(context.curInstruction->reg2);
-                context.memDestination = CPUReadReg(context.curInstruction->reg1);
-                context.destinationIsMem = true;
-                CPUSetReg(RT_HL, CPUReadReg(RT_HL) + 1);
-                return;
-            }
+
+            context.fetchData = CPUReadReg(context.curInstruction->reg2);
+            context.memDestination = CPUReadReg(context.curInstruction->reg1);
+            context.destinationIsMem = true;
+            CPUSetReg(RT_HL, CPUReadReg(RT_HL) + 1);
+            return;
+            
+
+        case AM_R_A8: //A8 value into a register
+            context.fetchData = ReadBus(context.regs.progCounter);
+            EMUCycles(1);
+            context.regs.progCounter++;
+            return;
+
+        case AM_A8_R: //REgister value to A8 address
+            context.memDestination = bus_read(context.regs.progCounter) | 0xFF00;
+            context.destinationIsMem = true; //setting to memory
+            emu_cycles(1);
+            context.regs.progCounter++;
+            return;        
+            
+        
 
         default:
             printf("Unknown Addressing Mode! %d (%02X)\n", context.curInstruction->mode, context.currentOpCode);
