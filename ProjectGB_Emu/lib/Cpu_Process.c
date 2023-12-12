@@ -16,7 +16,37 @@ static void ProcNoOp(CPUContext *context)
 
 static void ProcLd(CPUContext *context)
 {
+    if (context->destinationIsMem) // if the context is in memory
+    {
+        if (context->curInstruction->reg2 >= RT_AF) // if it is a 16 bit register
+        {
+            EMUCycles(1);
+            WriteBus16Bit(context->memDestination, context->fetchData);
+        }
+        else
+        {
+            WriteBus(context->memDestination, context->fetchData);
+        }
 
+        return;
+    }
+
+    if (context->curInstruction->mode == AM_HL_SPR) //special case
+    {
+        u8 hFlag = (CPUReadReg(context->curInstruction->reg2) & 0xF) + 
+            (context->fetchData & 0xF) >= 0x10;
+
+        u8 cFlag = (CPUReadReg(context->curInstruction->reg2) & 0xFF) + 
+            (context->fetchData & 0xFF) >= 0x100;
+
+        SetCPUFlags(context, 0, 0, hFlag, cFlag);
+        CPUSetReg(context->curInstruction->reg1, 
+            CPUReadReg(context->curInstruction->reg2) + (char)context->fetchData);
+
+        return;
+    }
+
+    CPUSetReg(context->curInstruction->reg1, context->fetchData);
 }
 
 static void ProcDi(CPUContext *context)

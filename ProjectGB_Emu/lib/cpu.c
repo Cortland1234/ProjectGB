@@ -17,7 +17,10 @@ static void FetchInstruction()
 
 }
 
-void FetchData();
+void FetchData()
+{
+    
+}
 
 static void executeInstruc()
 {

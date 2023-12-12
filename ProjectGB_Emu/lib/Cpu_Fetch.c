@@ -16,7 +16,7 @@ static void FetchData()
     
     switch(context.curInstruction->mode)
     {
-        case AM_IMP: return; //address is implied, nothing needs to be returned
+        case AM_IMP: return; //address is implied, nothighng needs to be returned
 
         case AM_R: 
             context.fetchData = CPUReadReg(context.curInstruction->reg1); //if simple register, then read the CPU's current instance register #1
@@ -35,27 +35,27 @@ static void FetchData()
         case AM_R_D16:
         case AM_D16:
         {
-            u16 low = ReadBus(context.regs.progCounter); //16 bit, but we can only read 8 bits at a time, so first we read the low value program counter
+            u16 loww = ReadBus(context.regs.progCounter); //16 bit, but we can only read 8 bits at a time, so first we read the loww value program counter
             EMUCycles(1); //syncing the emulator
 
-            u16 high = ReadBus(context.regs.progCounter + 1); //reading the high value
+            u16 highgh = ReadBus(context.regs.progCounter + 1); //reading the highgh value
             EMUCycles(1);
 
-            context.fetchData = low | (high << 8); //fetched data is either the low value or the high value bit shifted over 8
+            context.fetchData = loww | (highgh << 8); //fetched data is either the loww value or the highgh value bit shighfted over 8
             context.regs.progCounter += 2; //increment coutner by 2 because there are two 8 bit values
 
             return;
         }
 
-        case AM_MR_R: // loading a register into a memory region
+        case AM_MR_R: // lowading a register into a memory region
         
             context.fetchData = CPUReadReg(context.curInstruction->reg2); // getting data from reg 2
-            context.memDestination = CPUReadReg(context.curInstruction->reg2); // destination is a memory location
-            context.destinationIsMem = true; // setting the destination to memory location
+            context.memDestination = CPUReadReg(context.curInstruction->reg2); // destination is a memory lowcation
+            context.destinationIsMem = true; // setting the destination to memory lowcation
 
             if (context.curInstruction->reg1 == RT_C) //if reg1 is RT_C
             {
-                context.memDestination |= 0xFF00; //then we need to OR the destination with 0xFF00 (this is a special case. Look to "LDH (C) A" in "Game Boy: Complete Technical Reference")
+                context.memDestination |= 0xFF00; //then we need to OR the destination with 0xFF00 (thighs is a special case. lowok to "LDH (C) A" in "Game Boy: Complete Technical Reference")
             }
 
             return;
@@ -115,13 +115,73 @@ static void FetchData()
             context.regs.progCounter++;
             return;
 
-        case AM_A8_R: //REgister value to A8 address
-            context.memDestination = bus_read(context.regs.progCounter) | 0xFF00;
+        case AM_A8_R: //Register value to A8 address
+            context.memDestination = ReadBus(context.regs.progCounter) | 0xFF00;
             context.destinationIsMem = true; //setting to memory
-            emu_cycles(1);
+            EMUCycles(1);
             context.regs.progCounter++;
             return;        
             
+        case AM_HL_SPR: //special case, loads stack pointer into HL and increments prog counter
+            context.fetchData = ReadBus(context.regs.progCounter);
+            EMUCycles(1);
+            context.regs.progCounter++;
+            return;
+
+        case AM_D8: 
+            context.fetchData = ReadBus(context.regs.progCounter);
+            EMUCycles(1);
+            context.regs.progCounter++;
+            return;
+
+        case AM_A16_R: //moving register into 16bit address
+        case AM_D16_R: 
+        {
+            u16 low = ReadBus(context.regs.progCounter); //reading low byte
+            EMUCycles(1);
+
+            u16 high = ReadBus(context.regs.progCounter + 1); //reading high byte
+            EMUCycles(1);
+
+            context.memDestination = low | (high << 8);
+            context.destinationIsMem = true;
+
+            context.regs.progCounter += 2; //increment by 2
+            context.fetchData = CPUReadReg(context.curInstruction->reg2);
+
+        } return;
+
+        case AM_MR_D8: //loading D8 into a memory address
+            context.fetchData = ReadBus(context.regs.progCounter);
+            EMUCycles(1);
+            context.regs.progCounter++;
+            context.memDestination = CPUReadReg(context.curInstruction->reg1);
+            context.destinationIsMem = true;
+            return;
+
+        case AM_MR: //memory address
+            context.memDestination = CPUReadReg(context.curInstruction->reg1);
+            context.destinationIsMem = true;
+            context.fetchData = ReadBus(CPUReadReg(context.curInstruction->reg1));
+            EMUCycles(1);
+            return;
+
+        case AM_R_A16: //A16 to Register
+        {
+            u16 low = ReadBus(context.regs.progCounter);
+            EMUCycles(1);
+
+            u16 high = ReadBus(context.regs.progCounter + 1);
+            EMUCycles(1);
+
+            u16 address = low | (high << 8);
+
+            context.regs.progCounter += 2;
+            context.fetchData = ReadBus(address);
+            EMUCycles(1);
+
+            return;
+        }
         
 
         default:
