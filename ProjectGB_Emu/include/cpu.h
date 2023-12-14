@@ -29,6 +29,7 @@ typedef struct {
     bool stepping; //is CPU stepping? boolean
 
     bool masterInterruptEnabled;
+    u8 interruptEnableReg;
 
 } CPUContext;
 
@@ -46,4 +47,7 @@ IN_PROC InstGetProcessor(instrucType type); //getting function processor by the 
 u16 CPUReadReg(registerType rt); //reads register from CPU
 
 void CPUSetReg(registerType rt, u16 value); //sets a register from the CPU
+
+u8 GetCPUIERegister();
+void SetCPUIERegister(u8 n);
 

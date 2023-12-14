@@ -40,12 +40,22 @@ bool CPUStep()
         FetchInstruction(); //fetch instructions
         FetchData(); //fetch the data for that instruction
 
-        printf("%04X: %-7s (%02X %02X %02X) A: %02X B: %02X C: %02X\n", 
-        pc, InstrucName(context.curInstruction->type), context.currentOpCode,
-        ReadBus(pc + 1), ReadBus(pc + 2), context.regs.a, context.regs.b, context.regs.c);
+        printf("%04X: %-7s (%02X %02X %02X) A: %02X BC: %02X%02X DE: %02X%02X HL: %02X%02X\n", 
+            pc, InstrucName(context.curInstruction->type), context.currentOpCode,
+            ReadBus(pc + 1), ReadBus(pc + 2), context.regs.a, context.regs.b, context.regs.c,
+            context.regs.d, context.regs.e, context.regs.h, context.regs.l);
 
         executeInstruc(); //execute that instruction
     }
 
     return true;
+}
+
+u8 GetCPUIERegister() //getting the Interrupt Enable Register from CPU
+{
+    return context.interruptEnableReg;
+}
+void SetCPUIERegister(u8 n) //setting the IE Register
+{
+    context.interruptEnableReg = n;
 }

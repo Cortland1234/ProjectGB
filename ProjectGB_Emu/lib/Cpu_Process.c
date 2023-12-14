@@ -83,6 +83,20 @@ static void ProcLd(CPUContext *context)
     CPUSetReg(context->curInstruction->reg1, context->fetchData);
 }
 
+static void ProcLDH(CPUContext *context)
+{
+    if (context->curInstruction->reg1 == RT_A) //if the current register is A
+    {
+        CPUSetReg(context->curInstruction->reg1, ReadBus(0xFF00 | context->fetchData)); //we will set the register to the register from ReadBus
+    }
+    else
+    {
+        WriteBus(0xFF00 | context->fetchData, context->regs.a); //otherwise, we will write to HRAM by grabbing the data from regs.a
+    }
+
+    EMUCycles(1); //syncing
+}
+
 static void ProcXor(CPUContext *context)
 {
     // ^= is XOR and =
@@ -120,9 +134,10 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_NONE] = ProcNone,
     [IN_NOP] = ProcNoOp,
     [IN_LD] = ProcLd,
+    [IN_LDH] = ProcLDH,
     [IN_JP] = ProcJp,
     [IN_DI] = ProcDi,
-    [IN_XOR] = ProcXor
+    [IN_XOR] = ProcXor,
 
 };
 
