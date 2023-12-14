@@ -24,11 +24,52 @@ u8 ReadBus(u16 address)
     {
         return ReadCartridge(address);
     }
-    else
+    else if (address < 0xA000) //if address is less than 0xA000 (which is the Char/Map data),  
     {
         printf("UNSUPPORTED ReadBus(%04X)\n", address);
-        //NO_IMPL
+        NO_IMPL
     }
+
+    else if (address < 0xC000) // if the address is less than 0xC000 (which is the Cartridge RAM), then it will return ReadCartridge at that address
+    {
+        return ReadCartridge(address);
+    }
+
+    else if (address < 0xE000) // < 0xE000 is the working RAM, or switchable ram banks. Returns ReadWRAM at that address
+    {
+        return ReadWRAM(address);
+    }
+
+    else if (address < 0xFE00) // < 0xFE00 is the reserved/echo RAM. we will not need it so return 0.
+    {
+        return 0;
+    }
+
+    else if (address < 0xFEA0) // Object Attribute Memory
+    {
+        printf("UNSUPPORTED ReadBus(%04X)\n", address);
+        NO_IMPL
+    }
+
+    else if (address < 0xFF00) // Another unusable reserved RAM section, returns 0.
+    {
+        return 0;
+    } 
+
+    else if (address < 0xFF80) // I/O Registers
+    {
+        printf("UNSUPPORTED ReadBus(%04X)\n", address);
+        NO_IMPL
+    }
+
+    else if (address < 0xFFFF) //CPU Enable Register
+    {
+        printf("UNSUPPORTED ReadBus(%04X)\n", address);
+        NO_IMPL
+    }
+    
+    return ReadHRAM(address);
+    
 }
 
 void WriteBus(u16 address, u8 value)
@@ -37,11 +78,57 @@ void WriteBus(u16 address, u8 value)
     {
         WriteCartridge(address, value);
     }
-    else
+
+    else if (address < 0xA000) // Char/Map Data
+    {
+        printf("UNSUPPORTED ReadBus(%04X)\n", address);
+        NO_IMPL 
+    }
+
+    else if (address < 0xC000) // Cartridge RAM (AKA EXT RAM)
+    {
+        WriteCartridge(address, value);
+    }
+
+    else if (address < 0xE000) //WRAM
+    {
+        ReadWRAM(address, value);
+    }
+
+    else if (address < 0xFE00) //Echo RAM / reserved RAM
     {
         printf("UNSUPPORTED WriteBus(%04X)\n", address);
-        //NO_IMPL
+        NO_IMPL
     }
+
+    else if (address < 0xFEA0) //Object Attribute Memory
+    {
+        printf("UNSUPPORTED WriteBus(%04X)\n", address);
+        NO_IMPL
+    }
+
+    else if (address < 0xFF00) // Unusable/reserved RAM section
+    {
+        printf("UNSUPPORTED WriteBus(%04X)\n", address);
+        NO_IMPL
+    }
+
+    else if (address < 0xFF80) // I/O Registers
+    {
+        printf("UNSUPPORTED WriteBus(%04X)\n", address);
+        NO_IMPL
+    }
+
+    else if (address < 0xFFFF) //CPU Enable Register
+    {
+        printf("UNSUPPORTED WriteBus(%04X)\n", address);
+        NO_IMPL  
+    }
+    else
+    {
+        WriteHRAM(address, value);
+    }
+    
 }
 
 u16 ReadBus16Bit(u16 address)
