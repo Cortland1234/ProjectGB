@@ -318,7 +318,8 @@ lib/CMakeFiles/emu.dir/Cpu_Process.c.o: ../lib/Cpu_Process.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../include/Instructions.h \
-  ../include/Emu.h
+  ../include/Emu.h \
+  ../include/Bus.h
 
 lib/CMakeFiles/emu.dir/Cpu_utilities.c.o: ../lib/Cpu_utilities.c \
   /usr/include/stdc-predef.h \

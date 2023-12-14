@@ -26,7 +26,8 @@ u8 ReadBus(u16 address)
     }
     else
     {
-        NO_IMPL
+        printf("UNSUPPORTED ReadBus(%04X)\n", address);
+        //NO_IMPL
     }
 }
 
@@ -38,7 +39,22 @@ void WriteBus(u16 address, u8 value)
     }
     else
     {
-        NO_IMPL
+        printf("UNSUPPORTED WriteBus(%04X)\n", address);
+        //NO_IMPL
     }
+}
+
+u16 ReadBus16Bit(u16 address)
+{
+    u16 low = ReadBus(address); //reads low byte of 16bit
+    u16 high = ReadBus(address + 1); //reads the high bit of 16bit
+
+    return low | (high << 8); //returns the low byte OR the high byte shifted 8 to the left
+}
+
+void WriteBus16Bit(u16 address, u16 value)
+{
+    WriteBus(address + 1, (value >> 8) & 0xFF); //writes the high byte by going to the high byte, shifting the value 8 to the right
+    WriteBus(address, value & 0xFF); //writes the low byte
 }
 

@@ -4,7 +4,7 @@
 
 extern CPUContext context;
 
-static void FetchData()
+void FetchData()
 {
     context.memDestination = 0; //setting mem destination at 0
     context.destinationIsMem = false; 
@@ -35,13 +35,13 @@ static void FetchData()
         case AM_R_D16:
         case AM_D16:
         {
-            u16 loww = ReadBus(context.regs.progCounter); //16 bit, but we can only read 8 bits at a time, so first we read the loww value program counter
+            u16 low = ReadBus(context.regs.progCounter); //16 bit, but we can only read 8 bits at a time, so first we read the loww value program counter
             EMUCycles(1); //syncing the emulator
 
-            u16 highgh = ReadBus(context.regs.progCounter + 1); //reading the highgh value
+            u16 high = ReadBus(context.regs.progCounter + 1); //reading the highgh value
             EMUCycles(1);
 
-            context.fetchData = loww | (highgh << 8); //fetched data is either the loww value or the highgh value bit shighfted over 8
+            context.fetchData = low | (high << 8); //fetched data is either the loww value or the highgh value bit shighfted over 8
             context.regs.progCounter += 2; //increment coutner by 2 because there are two 8 bit values
 
             return;

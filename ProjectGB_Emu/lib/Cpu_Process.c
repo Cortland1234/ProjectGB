@@ -1,17 +1,51 @@
 #include <Cpu.h>
 #include <Emu.h>
+#include <Bus.h>
 
 //Processing instructions from  CPU
 
+void SetCPUFlags(CPUContext *context, char z, char n, char h, char c)
+{
+    if (z != -1) //if modifying a flag is not needed, then we pass in -1. So if -1 is NOT set we call BIT_SET 
+    {
+        BIT_SET(context->regs.f, 7, z); //setting the value "7" to z
+
+    }
+
+    if (n != -1) 
+    {
+        BIT_SET(context->regs.f, 6, n); //setting the value "6" to n
+        
+    }
+
+    if (h != -1)  
+    {
+        BIT_SET(context->regs.f, 5, h); //setting the value "5" to h
+        
+    }
+
+    if (c != -1) 
+    {
+        BIT_SET(context->regs.f, 4, c); //setting the value "4" to c
+        
+    }
+}
+
+
 static void ProcNone(CPUContext *context)
 {
-    printf("INVALID INSTRUCTIONs\n");
+    printf("INVALID INSTRUCTIONS\n");
     exit(-7);
 }
 
 static void ProcNoOp(CPUContext *context)
 {
 
+}
+
+static void ProcDi(CPUContext *context)
+{
+    context->masterInterruptEnabled = false; //disabling interrupts 
 }
 
 static void ProcLd(CPUContext *context)
@@ -47,38 +81,6 @@ static void ProcLd(CPUContext *context)
     }
 
     CPUSetReg(context->curInstruction->reg1, context->fetchData);
-}
-
-static void ProcDi(CPUContext *context)
-{
-    context->masterInterruptEnabled = false; //disabling interrupts 
-}
-
-SetCPUFlags(CPUContext *context, char z, char n, char h, char c)
-{
-    if (z != -1) //if modifying a flag is not needed, then we pass in -1. So if -1 is NOT set we call BIT_SET 
-    {
-        BIT_SET(context->regs.f, 7, z); //setting the value "7" to z
-
-    }
-
-    if (n != -1) 
-    {
-        BIT_SET(context->regs.f, 6, n); //setting the value "6" to n
-        
-    }
-
-    if (h != -1)  
-    {
-        BIT_SET(context->regs.f, 5, h); //setting the value "5" to h
-        
-    }
-
-    if (c != -1) 
-    {
-        BIT_SET(context->regs.f, 4, c); //setting the value "4" to c
-        
-    }
 }
 
 static void ProcXor(CPUContext *context)
