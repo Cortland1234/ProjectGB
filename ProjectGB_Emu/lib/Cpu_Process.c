@@ -132,7 +132,7 @@ static void GoToAddress(CPUContext *context, u16 address, bool PushPc) //generic
             PushStack16Bit(context->regs.progCounter); //pushes program counter
         }
 
-        context->regs.progCounter = context->fetchData; //if check passes, then we will jump. We do this by setting the context prog counter to the context's fetch data
+        context->regs.progCounter = address; //if check passes, then we will jump. We do this by setting the context prog counter to the context's fetch data
         EMUCycles(1);//syncing PPU and Timer
     }    
 }
@@ -185,6 +185,33 @@ static void ProcPush(CPUContext *context) // stack push process
 
 }
 
+static void ProcRet(CPUContext *context) //Return function
+{
+    if (context->curInstruction->cond != CT_NONE) //if check type if not NONE
+    {
+        EMUCycles(1);
+
+    }
+
+    if (CheckCond(context)) //if Cond is met
+    {
+       u16 low = PopStack();
+       EMUCycles(1); 
+       u16 high = PopStack();
+       EMUCycles(1); 
+
+       u16 n = (high << 8) | low;
+       context->regs.progCounter = n;
+       EMUCycles(1);
+    }
+}
+
+static void ProcRetI(CPUContext *context) //Return function, but this returns from an Interrupt
+{
+    context->masterInterruptEnabled = true;
+    ProcRet(context);
+}
+
 static IN_PROC processors[] = { //mapping opCodes to processor functionality methods
     [IN_NONE] = ProcNone,
     [IN_NOP] = ProcNoOp,
@@ -196,6 +223,8 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_PUSH] = ProcPush,
     [IN_JR] = ProcJR,
     [IN_CALL] = ProcCall,
+    [IN_RET] = ProcRet,
+    [IN_RETI] = ProcRetI,
     [IN_XOR] = ProcXor,
 
 };

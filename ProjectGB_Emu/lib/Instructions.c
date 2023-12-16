@@ -119,19 +119,25 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
 
     [0xAF] = {IN_XOR, AM_R, RT_A}, //XOR code, simple register, register type A
 
+    [0xC0] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_NZ}, //Return code, implied addressing mode, nonetype reg, check type non zero
     [0xC1] = {IN_POP, AM_IMP, RT_BC}, //Pop code, addressing mode is Implied, register is BC
     [0xC2] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_NZ},
     [0xC3] = {IN_JP, AM_D16}, //Jump code, D16 to register addressing mode
     [0xC4] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_NZ}, //call code, D16 addressing mode, Register type None, and check type is Not Zero
     [0xC5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
+    [0xC8] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_Z},
+    [0xC9] = {IN_RET},
     [0xCA] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_Z},
     [0xCC] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_Z},
     [0xCD] = {IN_CALL, AM_D16},
 
+    [0xD0] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_NC},
     [0xD1] = {IN_POP, AM_R, RT_DE}, //Pop code, simple register, register DE
     [0xD2] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_NC},
     [0xD4] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_NC},
     [0xD5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
+    [0xD8] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_C},
+    [0xD9] = {IN_RETI},
     [0xDA] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_C},
     [0xDC] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_Z},
 
