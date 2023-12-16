@@ -245,7 +245,7 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xD2] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_NC},
     [0xD4] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_NC},
     [0xD5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
-    [0xD6] = {IN_SUB, AM_D8},
+    [0xD6] = {IN_SUB, AM_R_D8, RT_A},
     [0xD7] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x10},
     [0xD8] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_C},
     [0xD9] = {IN_RETI},
@@ -259,12 +259,12 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xE1] = {IN_POP, AM_R, RT_HL}, //Pop code, simple register, register is HL
     [0xE2] = {IN_LD, AM_MR_R, RT_C, RT_A},
     [0xE5] = {IN_PUSH, AM_R, RT_HL}, //push code, simple reg, reg is HL
-    [0xE6] = {IN_AND, AM_D8},
+    [0xE6] = {IN_AND, AM_R_D8, RT_A},
     [0xE7] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x20},
     [0xE8] = {IN_ADD, AM_R_D8, RT_SP},
     [0xE9] = {IN_JP, AM_MR, RT_HL},
     [0xEA] = {IN_LD, AM_A16_R, RT_NONE, RT_A},
-    [0xEE] = {IN_XOR, AM_D8},
+    [0xEE] = {IN_XOR, AM_R_D8, RT_A},
     [0xEF] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x28},
 
     //0xFX
@@ -273,13 +273,13 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xF2] = {IN_LD, AM_R_MR, RT_A, RT_C},
     [0xF3] = {IN_DI}, //Disables Interrupts
     [0xF5] = {IN_PUSH, AM_R, RT_AF}, //push code, simple reg, reg is AF
-    [0xF6] = {IN_OR, AM_D8},
+    [0xF6] = {IN_OR, AM_R_D8, RT_A},
     [0xF7] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x30},
     [0xF8] = {IN_LD, AM_HL_SPR, RT_HL, RT_SP},
     [0xF9] = {IN_LD, AM_R_R, RT_SP, RT_HL},
     [0xFA] = {IN_LD, AM_R_A16, RT_A},
     [0xFB] = {IN_EI},
-    [0xFE] = {IN_CP, AM_D8},
+    [0xFE] = {IN_CP, AM_R_D8, RT_A},
     [0xFF] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x38},
 };
 

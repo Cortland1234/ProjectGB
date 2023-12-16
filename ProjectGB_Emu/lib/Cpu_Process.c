@@ -5,7 +5,7 @@
 
 //Processing instructions from  CPU
 
-void SetCPUFlags(CPUContext *context, char z, char n, char h, char c)
+void SetCPUFlags(CPUContext *context, int8_t z, int8_t n, int8_t h, int8_t c)
 {
     if (z != -1) //if modifying a flag is not needed, then we pass in -1. So if -1 is NOT set we call BIT_SET 
     {
@@ -71,7 +71,7 @@ static void ProcCb(CPUContext *context)
     u8 op = context->fetchData;
     registerType reg = DecodeRegister(op & 0b111); //register decoded from op, AKA the fetchData
     u8 bit = (op >> 3) & 0b111; 
-    u8 bitOp = (op >> 6) & 0b111;
+    u8 bitOp = (op >> 6) & 0b11;
     u8 regValue = CPUReadReg8(reg);
 
     EMUCycles(1);
@@ -223,15 +223,10 @@ static void ProcRLA(CPUContext *context)
     SetCPUFlags(context, 0, 0, 0, c);
 }
 
-static void ProcRRA(CPUContext *context)
+static void ProcStop(CPUContext *context) 
 {
-    u8 carry = CPU_FLAG_C;
-    u8 newCarry = context->regs.a & 1;
-
-    context->regs.a >>= 1;
-    context->regs.a |= (carry << 7);
-
-    SetCPUFlags(context, 0, 0, 0, newCarry);
+    fprintf(stderr, "STOPPING!\n");
+    NO_IMPL  
 }
 
 static void ProcDAA(CPUContext *context)
@@ -273,13 +268,18 @@ static void ProcCCF(CPUContext *context)
 
 static void ProcHalt(CPUContext *context) 
 {
-    fprintf(stderr, "STOPPING!\n");
-    NO_IMPL
+    context->halted = true;
 }
 
-static void ProcStop(CPUContext *context) 
+static void ProcRRA(CPUContext *context)
 {
-    context->halted = true;
+    u8 carry = CPU_FLAG_C;
+    u8 newCarry = context->regs.a & 1;
+
+    context->regs.a >>= 1;
+    context->regs.a |= (carry << 7);
+
+    SetCPUFlags(context, 0, 0, 0, newCarry);
 }
 
 static void ProcAnd(CPUContext *context)
@@ -311,6 +311,11 @@ static void ProcCp(CPUContext *context)
 static void ProcDi(CPUContext *context)
 {
     context->masterInterruptEnabled = false; //disabling interrupts 
+}
+
+static void ProcEi(CPUContext *context) //enabling interrupts
+{
+    context->enablingIme = true;
 }
 
 static bool Is16Bit(registerType rt) //checks if register is 16 bit 
@@ -345,7 +350,7 @@ static void ProcLd(CPUContext *context)
 
         SetCPUFlags(context, 0, 0, hFlag, cFlag);
         CPUSetReg(context->curInstruction->reg1, 
-            CPUReadReg(context->curInstruction->reg2) + (char)context->fetchData);
+            CPUReadReg(context->curInstruction->reg2) + (int8_t)context->fetchData);
 
         return;
     }
@@ -361,7 +366,7 @@ static void ProcLDH(CPUContext *context)
     }
     else
     {
-        WriteBus(0xFF00 | context->fetchData, context->regs.a); //otherwise, we will write to HRAM by grabbing the data from regs.a
+        WriteBus(0xFF00 | context->memDestination, context->regs.a); //otherwise, we will write to HRAM by grabbing the data from regs.a
     }
 
     EMUCycles(1); //syncing
@@ -406,7 +411,7 @@ static void ProcJp(CPUContext *context) //jump process
 
 static void ProcJR(CPUContext *context) //jump relative process
 {
-    char relative = (char)(context->fetchData & 0xFF); //since the first byte in the u16 data may be negative
+    int8_t relative = (int8_t)(context->fetchData & 0xFF); //since the first byte in the u16 data may be negative
     u16 address = context->regs.progCounter + relative; //we set teh address to the progCounter + relative. RElative could be negative or positive
     GoToAddress(context, address, false);
 }
@@ -584,7 +589,7 @@ static void ProcAdd(CPUContext *context) //Addition function
 
     if (context->curInstruction->reg1 == RT_SP) // if reg1 is stack pointer
     {
-        value = CPUReadReg(context->curInstruction->reg1) + (char)context->fetchData; //set value to reg1 + fetchData
+        value = CPUReadReg(context->curInstruction->reg1) + (int8_t)context->fetchData; //set value to reg1 + fetchData
     }
 
     //handling 8 bit isntructions
@@ -634,13 +639,13 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_SUB] = ProcSub,
     [IN_SBC] = ProcSbc,
     [IN_AND] = ProcAnd,
+    [IN_XOR] = ProcXor,
     [IN_OR] = ProcOr,
     [IN_CP] = ProcCp,
     [IN_CB] = ProcCb,
-    [IN_RETI] = ProcRetI,
     [IN_RRCA] = ProcRRCA,
-    [IN_RRA] = ProcRRA,
     [IN_RLCA] = ProcRLCA,
+    [IN_RRA] = ProcRRA,
     [IN_RLA] = ProcRLA,
     [IN_STOP] = ProcStop,
     [IN_HALT] = ProcHalt,
@@ -648,7 +653,8 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_CPL] = ProcCPL,
     [IN_SCF] = ProcSCF,
     [IN_CCF] = ProcCCF,
-    [IN_XOR] = ProcXor,
+    [IN_EI] = ProcEi,
+    [IN_RETI] = ProcRetI,
 
 };
 

@@ -29,6 +29,7 @@ typedef struct {
     bool stepping; //is CPU stepping? boolean
 
     bool masterInterruptEnabled;
+    bool enablingIme;
     u8 interruptEnableReg;
 
 } CPUContext;
