@@ -124,16 +124,34 @@ static bool CheckCond(CPUContext *context) //checking condition
 
 static void GoToAddress(CPUContext *context, u16 address, bool PushPc) //generic jump code function. takes a context, an address, and a boolean checking whether the progCounter needs to be pushed
 {
-
-}
-
-static void ProcJp(CPUContext *context)
-{
     if (CheckCond(context))
     {
+        if (PushPc) //if pushpc is met
+        {
+            EMUCycles(2);
+            PushStack16Bit(context->regs.progCounter); //pushes program counter
+        }
+
         context->regs.progCounter = context->fetchData; //if check passes, then we will jump. We do this by setting the context prog counter to the context's fetch data
-        EMUCycles(1); //syncing PPU and Timer
-    }
+        EMUCycles(1);//syncing PPU and Timer
+    }    
+}
+
+static void ProcJp(CPUContext *context) //jump process
+{
+    GoToAddress(context, context->fetchData, false);
+}
+
+static void ProcJR(CPUContext *context) //jump relative process
+{
+    char relative = (char)(context->fetchData & 0xFF); //since the first byte in the u16 data may be negative
+    u16 address = context->regs.progCounter + relative; //we set teh address to the progCounter + relative. RElative could be negative or positive
+    GoToAddress(context, address, false);
+}
+
+static void ProcCall(CPUContext *context) // call process
+{
+    GoToAddress(context, context->fetchData, true);
 }
 
 static void ProcPop(CPUContext *context) //stack pop process
@@ -176,6 +194,8 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_DI] = ProcDi,
     [IN_POP] = ProcPop,
     [IN_PUSH] = ProcPush,
+    [IN_JR] = ProcJR,
+    [IN_CALL] = ProcCall,
     [IN_XOR] = ProcXor,
 
 };

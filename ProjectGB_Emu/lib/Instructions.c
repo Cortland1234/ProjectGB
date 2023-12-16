@@ -21,22 +21,27 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0x12] = {IN_LD, AM_MR_R, RT_DE, RT_A},
     [0x15] = {IN_DEC, AM_R, RT_D},
     [0x16] = {IN_LD, AM_R_D8, RT_D},
+    [0x18] = {IN_JR, AM_D8},
     [0x1A] = {IN_LD, AM_R_MR, RT_A, RT_DE},
     [0x1E] = {IN_LD, AM_R_D8, RT_E},
 
     //0x2X
+    [0x20] = {IN_JR, AM_D8, RT_NONE, RT_NONE, CT_NZ},
     [0x21] = {IN_LD, AM_R_D16, RT_HL},
     [0x22] = {IN_LD, AM_HLI_R, RT_HL, RT_A},
     [0x25] = {IN_DEC, AM_R, RT_H},
     [0x26] = {IN_LD, AM_R_D8, RT_H},
+    [0x28] = {IN_JR, AM_D8, RT_NONE, RT_NONE, CT_Z},
     [0x2A] = {IN_LD, AM_R_HLI, RT_A, RT_HL},
     [0x2E] = {IN_LD, AM_R_D8, RT_L},
 
     //0x3X
+    [0x30] = {IN_JR, AM_D8, RT_NONE, RT_NONE, CT_NC},
     [0x31] = {IN_LD, AM_R_D16, RT_SP},
     [0x32] = {IN_LD, AM_HLD_R, RT_HL, RT_A},
     [0x35] = {IN_DEC, AM_R, RT_HL},
     [0x36] = {IN_LD, AM_MR_D8, RT_HL},
+    [0x38] = {IN_JR, AM_D8, RT_NONE, RT_NONE, CT_C},
     [0x3A] = {IN_LD, AM_R_HLD, RT_A, RT_HL},
     [0x3E] = {IN_LD, AM_R_D8, RT_A},
 
@@ -115,17 +120,27 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xAF] = {IN_XOR, AM_R, RT_A}, //XOR code, simple register, register type A
 
     [0xC1] = {IN_POP, AM_IMP, RT_BC}, //Pop code, addressing mode is Implied, register is BC
+    [0xC2] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_NZ},
     [0xC3] = {IN_JP, AM_D16}, //Jump code, D16 to register addressing mode
+    [0xC4] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_NZ}, //call code, D16 addressing mode, Register type None, and check type is Not Zero
     [0xC5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
+    [0xCA] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_Z},
+    [0xCC] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_Z},
+    [0xCD] = {IN_CALL, AM_D16},
 
     [0xD1] = {IN_POP, AM_R, RT_DE}, //Pop code, simple register, register DE
+    [0xD2] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_NC},
+    [0xD4] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_NC},
     [0xD5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
+    [0xDA] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_C},
+    [0xDC] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_Z},
 
     //0xEX
     [0xE0] = {IN_LDH, AM_A8_R, RT_NONE, RT_A},
     [0xE1] = {IN_POP, AM_R, RT_HL}, //Pop code, simple register, register is HL
     [0xE2] = {IN_LD, AM_MR_R, RT_C, RT_A},
     [0xE5] = {IN_PUSH, AM_R, RT_HL}, //push code, simple reg, reg is HL
+    [0xE9] = {IN_JP, AM_MR, RT_HL},
     [0xEA] = {IN_LD, AM_A16_R, RT_NONE, RT_A},
 
     //0xFX
