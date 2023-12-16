@@ -154,6 +154,11 @@ static void ProcCall(CPUContext *context) // call process
     GoToAddress(context, context->fetchData, true);
 }
 
+static void ProcRST(CPUContext *context) // RST process
+{
+    GoToAddress(context, context->curInstruction->param, true);
+}
+
 static void ProcPop(CPUContext *context) //stack pop process
 {
     u16 low = PopStack(); //popping low value
@@ -224,6 +229,7 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_JR] = ProcJR,
     [IN_CALL] = ProcCall,
     [IN_RET] = ProcRet,
+    [IN_RST] = ProcRST,
     [IN_RETI] = ProcRetI,
     [IN_XOR] = ProcXor,
 
