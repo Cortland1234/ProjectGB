@@ -426,6 +426,30 @@ Ram.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Ram.c.s
 .PHONY : Ram.c.s
 
+Stack.o: Stack.c.o
+.PHONY : Stack.o
+
+# target to build an object file
+Stack.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Stack.c.o
+.PHONY : Stack.c.o
+
+Stack.i: Stack.c.i
+.PHONY : Stack.i
+
+# target to preprocess a source file
+Stack.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Stack.c.i
+.PHONY : Stack.c.i
+
+Stack.s: Stack.c.s
+.PHONY : Stack.s
+
+# target to generate assembly for a file
+Stack.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Stack.c.s
+.PHONY : Stack.c.s
+
 Timer.o: Timer.c.o
 .PHONY : Timer.o
 
@@ -494,6 +518,9 @@ help:
 	@echo "... Ram.o"
 	@echo "... Ram.i"
 	@echo "... Ram.s"
+	@echo "... Stack.o"
+	@echo "... Stack.i"
+	@echo "... Stack.s"
 	@echo "... Timer.o"
 	@echo "... Timer.i"
 	@echo "... Timer.s"

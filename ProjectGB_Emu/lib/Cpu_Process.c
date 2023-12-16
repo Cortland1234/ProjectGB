@@ -1,6 +1,7 @@
 #include <Cpu.h>
 #include <Emu.h>
 #include <Bus.h>
+#include <Stack.h>
 
 //Processing instructions from  CPU
 
@@ -121,6 +122,11 @@ static bool CheckCond(CPUContext *context) //checking condition
     return false;
 }
 
+static void GoToAddress(CPUContext *context, u16 address, bool PushPc) //generic jump code function. takes a context, an address, and a boolean checking whether the progCounter needs to be pushed
+{
+
+}
+
 static void ProcJp(CPUContext *context)
 {
     if (CheckCond(context))
@@ -130,6 +136,37 @@ static void ProcJp(CPUContext *context)
     }
 }
 
+static void ProcPop(CPUContext *context) //stack pop process
+{
+    u16 low = PopStack(); //popping low value
+    EMUCycles(1); //syncing
+    u16 high = PopStack(); //popping high value
+    EMUCycles(1);
+
+    u16 n = (high << 8) | low;
+
+    CPUSetReg(context->curInstruction->reg1, n); //setting the n value to the context's register #1
+
+    if (context->curInstruction->reg1 == RT_AF) //if reg1 is AF
+    {
+        CPUSetReg(context->curInstruction->reg1, n & 0xFFF0); //only setting the reg1 to the bottom 1 1/2 bytes
+    }
+}
+
+static void ProcPush(CPUContext *context) // stack push process
+{
+    u16 high = (CPUReadReg(context->curInstruction->reg1) >> 8) & 0xFF; //read reg1, shift to the right by 8, and grab the first byte
+    EMUCycles(1);
+    PushStack(high); //push value grabbed above
+
+    u16 low = (CPUReadReg(context->curInstruction->reg2)) & 0xFF; //read reg1, grab low byte
+    EMUCycles(1);
+    PushStack(low); //push value grabbed above   
+
+    EMUCycles(1); 
+
+}
+
 static IN_PROC processors[] = { //mapping opCodes to processor functionality methods
     [IN_NONE] = ProcNone,
     [IN_NOP] = ProcNoOp,
@@ -137,6 +174,8 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_LDH] = ProcLDH,
     [IN_JP] = ProcJp,
     [IN_DI] = ProcDi,
+    [IN_POP] = ProcPop,
+    [IN_PUSH] = ProcPush,
     [IN_XOR] = ProcXor,
 
 };

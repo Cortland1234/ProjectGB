@@ -33,6 +33,8 @@ typedef struct {
 
 } CPUContext;
 
+CPURegisters *GetCPURegs(); //returns the registers for the CPU
+
 void InitializeCPU();
 
 bool CPUStep();

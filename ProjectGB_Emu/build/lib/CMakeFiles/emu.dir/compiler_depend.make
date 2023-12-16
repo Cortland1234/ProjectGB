@@ -63,7 +63,9 @@ lib/CMakeFiles/emu.dir/Bus.c.o: ../lib/Bus.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../include/Cartridge.h \
-  ../include/Ram.h
+  ../include/Ram.h \
+  ../include/Cpu.h \
+  ../include/Instructions.h
 
 lib/CMakeFiles/emu.dir/Cartridge.c.o: ../lib/Cartridge.c \
   /usr/include/stdc-predef.h \

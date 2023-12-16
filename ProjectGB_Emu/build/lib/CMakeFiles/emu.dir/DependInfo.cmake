@@ -18,6 +18,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Instructions.c" "lib/CMakeFiles/emu.dir/Instructions.c.o" "gcc" "lib/CMakeFiles/emu.dir/Instructions.c.o.d"
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Ppu.c" "lib/CMakeFiles/emu.dir/Ppu.c.o" "gcc" "lib/CMakeFiles/emu.dir/Ppu.c.o.d"
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Ram.c" "lib/CMakeFiles/emu.dir/Ram.c.o" "gcc" "lib/CMakeFiles/emu.dir/Ram.c.o.d"
+  "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Stack.c" "lib/CMakeFiles/emu.dir/Stack.c.o" "gcc" "lib/CMakeFiles/emu.dir/Stack.c.o.d"
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Timer.c" "lib/CMakeFiles/emu.dir/Timer.c.o" "gcc" "lib/CMakeFiles/emu.dir/Timer.c.o.d"
   )
 

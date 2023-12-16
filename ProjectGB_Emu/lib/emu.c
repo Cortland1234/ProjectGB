@@ -6,9 +6,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
-static emu_context context; 
+static EMUContext context; 
 
-emu_context *emu_get_context() //returns current emulator context object
+EMUContext *emu_get_context() //returns current emulator context object
 {
     return &context;
 }

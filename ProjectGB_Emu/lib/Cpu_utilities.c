@@ -57,3 +57,8 @@ void CPUSetReg(registerType rt, u16 value) //sets a CPU register
         case RT_NONE: break;
     }
 }
+
+CPURegisters *GetCPURegs()
+{
+    return &context.regs;
+}

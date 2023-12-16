@@ -114,17 +114,26 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
 
     [0xAF] = {IN_XOR, AM_R, RT_A}, //XOR code, simple register, register type A
 
+    [0xC1] = {IN_POP, AM_IMP, RT_BC}, //Pop code, addressing mode is Implied, register is BC
     [0xC3] = {IN_JP, AM_D16}, //Jump code, D16 to register addressing mode
+    [0xC5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
+
+    [0xD1] = {IN_POP, AM_R, RT_DE}, //Pop code, simple register, register DE
+    [0xD5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
 
     //0xEX
     [0xE0] = {IN_LDH, AM_A8_R, RT_NONE, RT_A},
+    [0xE1] = {IN_POP, AM_R, RT_HL}, //Pop code, simple register, register is HL
     [0xE2] = {IN_LD, AM_MR_R, RT_C, RT_A},
+    [0xE5] = {IN_PUSH, AM_R, RT_HL}, //push code, simple reg, reg is HL
     [0xEA] = {IN_LD, AM_A16_R, RT_NONE, RT_A},
 
     //0xFX
     [0xF0] = {IN_LDH, AM_R_A8, RT_A},
+    [0xF1] = {IN_POP, AM_R, RT_AF}, //Pop code, simple register, register is AF
     [0xF2] = {IN_LD, AM_R_MR, RT_A, RT_C},
     [0xF3] = {IN_DI}, //Disables Interrupts
+    [0xF5] = {IN_PUSH, AM_R, RT_AF}, //push code, simple reg, reg is AF
     [0xFA] = {IN_LD, AM_R_A16, RT_A},
 };
 
