@@ -193,6 +193,95 @@ static void ProcCb(CPUContext *context)
     NO_IMPL
 }
 
+static void ProcRLCA(CPUContext *context)
+{
+    u8 u = context->regs.a;
+    bool c = (u >> 7) & 1; //returns true if u is shifted over 7 AND 1
+    u = (u << 1) | c;
+    context->regs.a = u;  //sets reg A to new u value
+
+    SetCPUFlags(context, 0, 0, 0, c);
+
+}
+
+static void ProcRRCA(CPUContext *context)
+{
+    u8 b = context->regs.a & 1;
+    context->regs.a >>= 1;
+    context->regs.a |= (b << 7);
+
+    SetCPUFlags(context, 0, 0, 0, b);
+}
+
+static void ProcRLA(CPUContext *context)
+{
+    u8 u = context->regs.a;
+    u8 cFlag = CPU_FLAG_C;
+    u8 c = (u >> 7) & 1;
+
+    context->regs.a = (u << 1) | cFlag;
+    SetCPUFlags(context, 0, 0, 0, c);
+}
+
+static void ProcRRA(CPUContext *context)
+{
+    u8 carry = CPU_FLAG_C;
+    u8 newCarry = context->regs.a & 1;
+
+    context->regs.a >>= 1;
+    context->regs.a |= (carry << 7);
+
+    SetCPUFlags(context, 0, 0, 0, newCarry);
+}
+
+static void ProcDAA(CPUContext *context)
+{
+    u8 u = 0;
+    int fc = 0;
+
+    if (CPU_FLAG_H || (!CPU_FLAG_N && (context->regs.a & 0xF) > 9)) // H Flag is set and NOT N flag AND the (A register AND the last bit of reg A) is greater than 9 
+    {
+        u = 6;
+    }
+
+    if (CPU_FLAG_C || (!CPU_FLAG_N && context->regs.a > 0x99)) 
+    {
+        u |= 0x60;
+        fc = 1;
+    }
+
+    context->regs.a += CPU_FLAG_N ? -u : u;
+
+    SetCPUFlags(context, context->regs.a == 0, -1, 0, fc);
+}
+
+static void ProcCPL(CPUContext *context)
+{
+    context->regs.a = ~context->regs.a;
+    SetCPUFlags(context, -1, 1, 1, -1);
+}
+
+static void ProcSCF(CPUContext *context)
+{
+    SetCPUFlags(context, -1, 0, 0, -1);
+}
+
+static void ProcCCF(CPUContext *context)
+{
+    SetCPUFlags(context, -1, 0, 0, CPU_FLAG_C ^ 1);
+}
+
+static void ProcHalt(CPUContext *context) 
+{
+    fprintf(stderr, "STOPPING!\n");
+    NO_IMPL
+}
+
+static void ProcStop(CPUContext *context) 
+{
+    context->halted = true;
+}
+
 static void ProcAnd(CPUContext *context)
 {
     context->regs.a &= context->fetchData; 
@@ -549,6 +638,16 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_CP] = ProcCp,
     [IN_CB] = ProcCb,
     [IN_RETI] = ProcRetI,
+    [IN_RRCA] = ProcRRCA,
+    [IN_RRA] = ProcRRA,
+    [IN_RLCA] = ProcRLCA,
+    [IN_RLA] = ProcRLA,
+    [IN_STOP] = ProcStop,
+    [IN_HALT] = ProcHalt,
+    [IN_DAA] = ProcDAA,
+    [IN_CPL] = ProcCPL,
+    [IN_SCF] = ProcSCF,
+    [IN_CCF] = ProcCCF,
     [IN_XOR] = ProcXor,
 
 };

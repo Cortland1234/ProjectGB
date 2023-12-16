@@ -44,6 +44,8 @@ typedef void (*IN_PROC)(CPUContext *); //takes in a function pointer and a CPU C
 IN_PROC InstGetProcessor(instrucType type); //getting function processor by the CPU instruction type
 
 #define CPU_FLAG_Z BIT(context->regs.f, 7)
+#define CPU_FLAG_N BIT(context->regs.f, 6)
+#define CPU_FLAG_H BIT(context->regs.f, 5)
 #define CPU_FLAG_C BIT(context->regs.f, 4)
 
 u16 CPUReadReg(registerType rt); //reads register from CPU
