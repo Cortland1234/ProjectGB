@@ -386,7 +386,8 @@ lib/CMakeFiles/emu.dir/Cpu_utilities.c.o: ../lib/Cpu_utilities.c \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  ../include/Instructions.h
+  ../include/Instructions.h \
+  ../include/Bus.h
 
 lib/CMakeFiles/emu.dir/Emu.c.o: ../lib/Emu.c \
   /usr/include/stdc-predef.h \

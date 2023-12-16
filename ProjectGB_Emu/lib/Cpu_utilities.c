@@ -1,4 +1,5 @@
 #include <Cpu.h>
+#include <Bus.h>
 
 extern CPUContext context;
 
@@ -55,6 +56,44 @@ void CPUSetReg(registerType rt, u16 value) //sets a CPU register
         case RT_PC: context.regs.progCounter = value; break;
         case RT_SP: context.regs.stackPtr = value; break;
         case RT_NONE: break;
+    }
+}
+
+u8 CPUReadReg8(registerType rt) //CPUReadReg8 and CPUSetReg8 function the register operations for the bitwise functions
+{
+    switch(rt) {
+        case RT_A: return context.regs.a;
+        case RT_F: return context.regs.f;
+        case RT_B: return context.regs.b;
+        case RT_C: return context.regs.c;
+        case RT_D: return context.regs.d;
+        case RT_E: return context.regs.e;
+        case RT_H: return context.regs.h;
+        case RT_L: return context.regs.l;
+        case RT_HL: {
+            return ReadBus(CPUReadReg(RT_HL));
+        }
+        default:
+            printf("**ERR INVALID REG8: %d\n", rt);
+            NO_IMPL
+    }
+}
+
+void CPUSetReg8(registerType rt, u8 value) 
+{
+    switch(rt) {
+        case RT_A: context.regs.a = value & 0xFF; break;
+        case RT_F: context.regs.f = value & 0xFF; break;
+        case RT_B: context.regs.b = value & 0xFF; break;
+        case RT_C: context.regs.c = value & 0xFF; break;
+        case RT_D: context.regs.d = value & 0xFF; break;
+        case RT_E: context.regs.e = value & 0xFF; break;
+        case RT_H: context.regs.h = value & 0xFF; break;
+        case RT_L: context.regs.l = value & 0xFF; break;
+        case RT_HL: WriteBus(CPUReadReg(RT_HL), value); break;
+        default:
+            printf("**ERR INVALID REG8: %d\n", rt);
+            NO_IMPL
     }
 }
 

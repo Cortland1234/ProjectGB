@@ -53,3 +53,5 @@ void CPUSetReg(registerType rt, u16 value); //sets a register from the CPU
 u8 GetCPUIERegister();
 void SetCPUIERegister(u8 n);
 
+u8 CPUReadReg8(registerType rt);
+void CPUSetReg8(registerType rt, u8 value); 

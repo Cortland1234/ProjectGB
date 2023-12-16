@@ -44,6 +44,181 @@ static void ProcNoOp(CPUContext *context)
 
 }
 
+registerType regLookup[] =
+{
+    RT_B,
+    RT_C,
+    RT_D,
+    RT_E,
+    RT_H,
+    RT_L,
+    RT_HL,
+    RT_A
+};
+
+registerType DecodeRegister(u8 reg)
+{
+    if (reg > 0b111)
+    {
+        return RT_NONE;
+    }
+
+    return regLookup[reg];
+}
+
+static void ProcCb(CPUContext *context)
+{
+    u8 op = context->fetchData;
+    registerType reg = DecodeRegister(op & 0b111); //register decoded from op, AKA the fetchData
+    u8 bit = (op >> 3) & 0b111; 
+    u8 bitOp = (op >> 6) & 0b111;
+    u8 regValue = CPUReadReg8(reg);
+
+    EMUCycles(1);
+
+    if (reg == RT_HL) //if HL, then we need 2 emu cycles to compensate/sync
+    {
+        EMUCycles(2);
+    }
+
+    switch(bitOp) //switch statement for all bit operations 
+    {
+        case 1:
+            //BIT
+            SetCPUFlags(context, !(regValue & (1 << bit)), 0, 1, -1);
+            return;
+
+        case 2:
+            //RST
+            regValue &= ~(1 << bit);
+            CPUSetReg8(reg, regValue);
+            return;
+
+        case 3:
+            //SET
+            regValue |= (1 << bit);
+            CPUSetReg8(reg, regValue);
+            return;
+    }
+
+    bool flagC = CPU_FLAG_C;
+
+    switch(bit) //switch statement for operating/moving a bit
+    {
+        case 0: 
+        {
+            //RLC
+            bool setC = false;
+            u8 result = (regValue << 1) & 0xFF;
+
+            if ((regValue & (1 << 7)) != 0) {
+                result |= 1;
+                setC = true;
+            }
+
+            CPUSetReg8(reg, result);
+            SetCPUFlags(context, result == 0, false, false, setC);
+        } return;
+
+        case 1: 
+        {
+            //RRC
+            u8 old = regValue;
+            regValue >>= 1;
+            regValue |= (old << 7);
+
+            CPUSetReg8(reg, regValue);
+            SetCPUFlags(context, !regValue, false, false, old & 1);
+        } return;
+
+        case 2: 
+        {
+            //RL
+            u8 old = regValue;
+            regValue <<= 1;
+            regValue |= flagC;
+
+            CPUSetReg8(reg, regValue);
+            SetCPUFlags(context, !regValue, false, false, !!(old & 0x80));
+        } return;
+
+        case 3:
+         {
+            //RR
+            u8 old = regValue;
+            regValue >>= 1;
+
+            regValue |= (flagC << 7);
+
+            CPUSetReg8(reg, regValue);
+            SetCPUFlags(context, !regValue, false, false, old & 1);
+        } return;
+
+        case 4: 
+        {
+            //SLA
+            u8 old = regValue;
+            regValue <<= 1;
+
+            CPUSetReg8(reg, regValue);
+            SetCPUFlags(context, !regValue, false, false, !!(old & 0x80));
+        } return;
+
+        case 5: 
+        {
+            //SRA
+            u8 u = (int8_t)regValue >> 1;
+            CPUSetReg8(reg, u);
+            SetCPUFlags(context, !u, 0, 0, regValue & 1);
+        } return;
+
+        case 6: 
+        {
+            //SWAP
+            regValue = ((regValue & 0xF0) >> 4) | ((regValue & 0xF) << 4);
+            CPUSetReg8(reg, regValue);
+            SetCPUFlags(context, regValue == 0, false, false, false);
+        } return;
+
+        case 7: 
+        {
+            //SRL
+            u8 u = regValue >> 1;
+            CPUSetReg8(reg, u);
+            SetCPUFlags(context, !u, 0, 0, regValue & 1);
+        } return;
+    }
+
+    fprintf(stderr, "ERROR: INVALID CB: %02X", op);
+    NO_IMPL
+}
+
+static void ProcAnd(CPUContext *context)
+{
+    context->regs.a &= context->fetchData; 
+    SetCPUFlags(context, context->regs.a == 0, 0, 1, 0);
+}
+
+static void ProcXor(CPUContext *context)
+{
+    // ^= is XOR and =
+    context->regs.a ^= context->fetchData & 0xFF; //0xFF because we only need the last byte of fetchData
+    SetCPUFlags(context, context->regs.a == 0, 0, 0, 0);
+}
+
+static void ProcOr(CPUContext *context)
+{
+    context->regs.a |= context->fetchData & 0xFF; 
+    SetCPUFlags(context, context->regs.a == 0, 0, 0, 0);
+}
+
+static void ProcCp(CPUContext *context)
+{
+    int n = (int)context->regs.a - (int)context->fetchData;
+
+    SetCPUFlags(context, n == 0, 1, ((int)context->regs.a & 0x0F) - ((int)context->fetchData & 0x0F) < 0, n < 0);
+}
+
 static void ProcDi(CPUContext *context)
 {
     context->masterInterruptEnabled = false; //disabling interrupts 
@@ -101,13 +276,6 @@ static void ProcLDH(CPUContext *context)
     }
 
     EMUCycles(1); //syncing
-}
-
-static void ProcXor(CPUContext *context)
-{
-    // ^= is XOR and =
-    context->regs.a ^= context->fetchData & 0xFF; //0xFF because we only need the last byte of fetchData
-    SetCPUFlags(context, context->regs.a == 0, 0, 0, 0);
 }
 
 static bool CheckCond(CPUContext *context) //checking condition
@@ -376,6 +544,10 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_ADC] = ProcAdc,
     [IN_SUB] = ProcSub,
     [IN_SBC] = ProcSbc,
+    [IN_AND] = ProcAnd,
+    [IN_OR] = ProcOr,
+    [IN_CP] = ProcCp,
+    [IN_CB] = ProcCb,
     [IN_RETI] = ProcRetI,
     [IN_XOR] = ProcXor,
 
