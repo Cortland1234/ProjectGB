@@ -8,7 +8,7 @@
 
 static EMUContext context; 
 
-EMUContext *emu_get_context() //returns current emulator context object
+EMUContext *GetEMUContext() //returns current emulator context object
 {
     return &context;
 }

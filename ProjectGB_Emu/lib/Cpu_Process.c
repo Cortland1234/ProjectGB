@@ -49,11 +49,16 @@ static void ProcDi(CPUContext *context)
     context->masterInterruptEnabled = false; //disabling interrupts 
 }
 
+static bool Is16Bit(registerType rt) //checks if register is 16 bit 
+{
+    return rt >= RT_AF;
+}
+
 static void ProcLd(CPUContext *context)
 {
     if (context->destinationIsMem) // if the context is in memory
     {
-        if (context->curInstruction->reg2 >= RT_AF) // if it is a 16 bit register
+        if (Is16Bit(context->curInstruction->reg2)) // if it is a 16 bit register
         {
             EMUCycles(1);
             WriteBus16Bit(context->memDestination, context->fetchData);
@@ -159,6 +164,33 @@ static void ProcRST(CPUContext *context) // RST process
     GoToAddress(context, context->curInstruction->param, true);
 }
 
+static void ProcRet(CPUContext *context) //Return function
+{
+    if (context->curInstruction->cond != CT_NONE) //if check type if not NONE
+    {
+        EMUCycles(1);
+
+    }
+
+    if (CheckCond(context)) //if Cond is met
+    {
+       u16 low = PopStack();
+       EMUCycles(1); 
+       u16 high = PopStack();
+       EMUCycles(1); 
+
+       u16 n = (high << 8) | low;
+       context->regs.progCounter = n;
+       EMUCycles(1);
+    }
+}
+
+static void ProcRetI(CPUContext *context) //Return function, but this returns from an Interrupt
+{
+    context->masterInterruptEnabled = true;
+    ProcRet(context);
+}
+
 static void ProcPop(CPUContext *context) //stack pop process
 {
     u16 low = PopStack(); //popping low value
@@ -190,32 +222,140 @@ static void ProcPush(CPUContext *context) // stack push process
 
 }
 
-static void ProcRet(CPUContext *context) //Return function
+static void ProcInc(CPUContext *context) //increment function
 {
-    if (context->curInstruction->cond != CT_NONE) //if check type if not NONE
+    u16 value = CPUReadReg(context->curInstruction->reg1) + 1; //increment current reg by 1
+
+    if (Is16Bit(context->curInstruction->reg1)) //if reg1 is 16 bit
     {
         EMUCycles(1);
-
     }
 
-    if (CheckCond(context)) //if Cond is met
+    if (context->curInstruction->reg1 == RT_HL && context->curInstruction->mode == AM_MR)
     {
-       u16 low = PopStack();
-       EMUCycles(1); 
-       u16 high = PopStack();
-       EMUCycles(1); 
-
-       u16 n = (high << 8) | low;
-       context->regs.progCounter = n;
-       EMUCycles(1);
+        value = ReadBus(CPUReadReg(RT_HL)) + 1; //set value to the RT_HL reg + 1
+        value &= 0xFF;
+        WriteBus(CPUReadReg(RT_HL), value); //write bus to the value
     }
+    else
+    {
+        CPUSetReg(context->curInstruction->reg1, value);
+        value = CPUReadReg(context->curInstruction->reg1);
+    }
+
+    if ((context->currentOpCode & 0x03) == 0x03)
+    {
+        return;
+    }
+
+    SetCPUFlags(context, value == 0, 0, (value & 0x0F) == 0, -1);
 }
 
-static void ProcRetI(CPUContext *context) //Return function, but this returns from an Interrupt
+static void ProcDec(CPUContext *context) //decrement function
 {
-    context->masterInterruptEnabled = true;
-    ProcRet(context);
+    u16 value = CPUReadReg(context->curInstruction->reg1) - 1; //decrement current reg by 1
+
+    if (Is16Bit(context->curInstruction->reg1)) //if reg1 is 16 bit
+    {
+        EMUCycles(1);
+    }
+
+    if (context->curInstruction->reg1 == RT_HL && context->curInstruction->mode == AM_MR)
+    {
+        value = ReadBus(CPUReadReg(RT_HL)) - 1; //set value to the RT_HL reg + 1
+        WriteBus(CPUReadReg(RT_HL), value); //write bus to the value
+    }
+    else
+    {
+        CPUSetReg(context->curInstruction->reg1, value);
+        value = CPUReadReg(context->curInstruction->reg1);
+    }
+
+    if ((context->currentOpCode & 0x0B) == 0x0B)
+    {
+        return;
+    }
+
+    SetCPUFlags(context, value == 0, 1, (value & 0x0F) == 0x0F, -1);
 }
+
+static void ProcSub(CPUContext *context) //subtraction function
+{
+    u16 value = CPUReadReg(context->curInstruction->reg1) - context->fetchData;
+
+    int z = value == 0;
+    int h = ((int)CPUReadReg(context->curInstruction->reg1) & 0xF) - (context->fetchData & 0xF) < 0;
+    int c = ((int)CPUReadReg(context->curInstruction->reg1)) - (context->fetchData & 0xF) < 0;
+
+    CPUSetReg(context->curInstruction->reg1, value);
+    SetCPUFlags(context, z, 1, h, c);
+}
+
+static void ProcSbc(CPUContext *context)
+{
+    u8 value = context->fetchData + CPU_FLAG_C;
+
+    int z = CPUReadReg(context->curInstruction->reg1) - value == 0;
+    int h = ((int)CPUReadReg(context->curInstruction->reg1) & 0xF) - (context->fetchData & 0xF) - ((int)CPU_FLAG_C) < 0;
+    int c = ((int)CPUReadReg(context->curInstruction->reg1)) - (context->fetchData & 0xF) - ((int)CPU_FLAG_C) < 0;
+
+    CPUSetReg(context->curInstruction->reg1, CPUReadReg(context->curInstruction->reg1) - value);
+    SetCPUFlags(context, z, 1, h, c);
+}
+
+static void ProcAdc(CPUContext *context)
+{
+    u16 u = context->fetchData;
+    u16 a = context->regs.a;
+    u16 c = CPU_FLAG_C;
+
+    context->regs.a = (a + u + c);
+
+    SetCPUFlags(context, context->regs.a == 0, 0, (a & 0xF) + (u & 0xF) + c > 0xF, a + u + c > 0xFF);
+}
+
+static void ProcAdd(CPUContext *context) //Addition function
+{
+    u32 value = CPUReadReg(context->curInstruction->reg1) + context->fetchData; //Read the value of reg 1 and add the value of fetchData
+
+    bool is16Bit = Is16Bit(context->curInstruction->reg1);
+
+    if (is16Bit)
+    {
+        EMUCycles(1);
+    }
+
+    if (context->curInstruction->reg1 == RT_SP) // if reg1 is stack pointer
+    {
+        value = CPUReadReg(context->curInstruction->reg1) + (char)context->fetchData; //set value to reg1 + fetchData
+    }
+
+    //handling 8 bit isntructions
+    int z = (value & 0x0FF) == 0;  
+    int h = (CPUReadReg(context->curInstruction->reg1) & 0xF) + (context->fetchData & 0xF) >= 0x10;
+    int c = (int)(CPUReadReg(context->curInstruction->reg1) & 0xFF) + (int)(context->fetchData & 0xFF) >= 0x100;
+
+    if (is16Bit) //handling 16 bit instructions
+    {
+        z = -1; 
+        h = (CPUReadReg(context->curInstruction->reg1) & 0xFFF) + (context->fetchData & 0xFFF) >= 0x1000; 
+        u32 n = ((u32)CPUReadReg(context->curInstruction->reg1)) + ((u32)context->fetchData);
+        c = n >= 0x10000;
+    }
+
+    if (context->curInstruction->reg1 == RT_SP) //if reg1 is stack pointer
+    {
+        z = 0;
+        h = (CPUReadReg(context->curInstruction->reg1) & 0xF) + (int)(context->fetchData & 0xF) >= 0x10;
+        c = (int)(CPUReadReg(context->curInstruction->reg1) & 0xFF) + (int)(context->fetchData & 0xFF) >= 0x100;
+    }
+
+    CPUSetReg(context->curInstruction->reg1, value & 0xFFFF);
+    SetCPUFlags(context, z, 0, h, c);
+}
+
+
+
 
 static IN_PROC processors[] = { //mapping opCodes to processor functionality methods
     [IN_NONE] = ProcNone,
@@ -230,6 +370,12 @@ static IN_PROC processors[] = { //mapping opCodes to processor functionality met
     [IN_CALL] = ProcCall,
     [IN_RET] = ProcRet,
     [IN_RST] = ProcRST,
+    [IN_DEC] = ProcDec,
+    [IN_INC] = ProcInc,
+    [IN_ADD] = ProcAdd,
+    [IN_ADC] = ProcAdc,
+    [IN_SUB] = ProcSub,
+    [IN_SBC] = ProcSbc,
     [IN_RETI] = ProcRetI,
     [IN_XOR] = ProcXor,
 

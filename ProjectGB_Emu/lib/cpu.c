@@ -40,9 +40,17 @@ bool CPUStep()
         FetchInstruction(); //fetch instructions
         FetchData(); //fetch the data for that instruction
 
-        printf("%04X: %-7s (%02X %02X %02X) A: %02X BC: %02X%02X DE: %02X%02X HL: %02X%02X\n", 
+        char flags[16];
+        sprintf(flags, "%c%c%c%c", //getting flags set for debugging
+            context.regs.f & (1 << 7) ? 'Z' : '-',
+            context.regs.f & (1 << 6) ? 'N' : '-',
+            context.regs.f & (1 << 5) ? 'H' : '-',
+            context.regs.f & (1 << 4) ? 'C' : '-'
+        );
+
+        printf("%08lX - %04X: %-7s (%02X %02X %02X) A: %02X F: %s BC: %02X%02X DE: %02X%02X HL: %02X%02X\n", GetEMUContext()->ticks, //debugging output
             pc, InstrucName(context.curInstruction->type), context.currentOpCode,
-            ReadBus(pc + 1), ReadBus(pc + 2), context.regs.a, context.regs.b, context.regs.c,
+            ReadBus(pc + 1), ReadBus(pc + 2), context.regs.a, flags, context.regs.b, context.regs.c,
             context.regs.d, context.regs.e, context.regs.h, context.regs.l);
 
         executeInstruc(); //execute that instruction
