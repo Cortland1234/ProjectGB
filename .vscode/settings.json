@@ -11,7 +11,8 @@
         "ppu.h": "c",
         "emu.h": "c",
         "instructions.h": "c",
-        "cpu_process": "cpp"
+        "cpu_process": "cpp",
+        "pthread.h": "c"
     },
     "cmake.sourceDirectory": "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu",
     "C_Cpp.default.compilerPath": "C:\\mingw64\\bin\\gcc.exe"

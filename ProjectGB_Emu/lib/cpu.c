@@ -1,6 +1,7 @@
 #include <Cpu.h>
 #include <Bus.h>
 #include <Emu.h>
+#include <Interrupts.h>
 
 CPUContext context = {0};
 
@@ -54,6 +55,27 @@ bool CPUStep()
             context.regs.d, context.regs.e, context.regs.h, context.regs.l);
 
         executeInstruc(); //execute that instruction
+    }
+
+    else //if it is halted
+    {
+        EMUCycles(1);
+
+        if (context.interFlags)
+        {
+            context.halted = false;
+        }
+    }
+
+    if (context.masterInterruptEnabled)
+    {
+        HandleCPUInterrupts(&context);
+        context.enablingIme = false;
+    }
+
+    if (context.enablingIme)
+    {
+        context.masterInterruptEnabled = true;
     }
 
     return true;

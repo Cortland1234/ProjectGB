@@ -378,6 +378,30 @@ Instructions.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Instructions.c.s
 .PHONY : Instructions.c.s
 
+Interrupts.o: Interrupts.c.o
+.PHONY : Interrupts.o
+
+# target to build an object file
+Interrupts.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Interrupts.c.o
+.PHONY : Interrupts.c.o
+
+Interrupts.i: Interrupts.c.i
+.PHONY : Interrupts.i
+
+# target to preprocess a source file
+Interrupts.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Interrupts.c.i
+.PHONY : Interrupts.c.i
+
+Interrupts.s: Interrupts.c.s
+.PHONY : Interrupts.s
+
+# target to generate assembly for a file
+Interrupts.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Interrupts.c.s
+.PHONY : Interrupts.c.s
+
 Ppu.o: Ppu.c.o
 .PHONY : Ppu.o
 
@@ -474,6 +498,30 @@ Timer.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Timer.c.s
 .PHONY : Timer.c.s
 
+UI.o: UI.c.o
+.PHONY : UI.o
+
+# target to build an object file
+UI.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/UI.c.o
+.PHONY : UI.c.o
+
+UI.i: UI.c.i
+.PHONY : UI.i
+
+# target to preprocess a source file
+UI.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/UI.c.i
+.PHONY : UI.c.i
+
+UI.s: UI.c.s
+.PHONY : UI.s
+
+# target to generate assembly for a file
+UI.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/UI.c.s
+.PHONY : UI.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -512,6 +560,9 @@ help:
 	@echo "... Instructions.o"
 	@echo "... Instructions.i"
 	@echo "... Instructions.s"
+	@echo "... Interrupts.o"
+	@echo "... Interrupts.i"
+	@echo "... Interrupts.s"
 	@echo "... Ppu.o"
 	@echo "... Ppu.i"
 	@echo "... Ppu.s"
@@ -524,6 +575,9 @@ help:
 	@echo "... Timer.o"
 	@echo "... Timer.i"
 	@echo "... Timer.s"
+	@echo "... UI.o"
+	@echo "... UI.i"
+	@echo "... UI.s"
 .PHONY : help
 
 

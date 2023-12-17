@@ -1,5 +1,5 @@
-lib/CMakeFiles/emu.dir/Cpu.c.o: \
- /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Cpu.c \
+lib/CMakeFiles/emu.dir/Interrupts.c.o: \
+ /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Interrupts.c \
  /usr/include/stdc-predef.h \
  /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include/Cpu.h \
  /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include/Common.h \
@@ -55,6 +55,5 @@ lib/CMakeFiles/emu.dir/Cpu.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include/Instructions.h \
- /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include/Bus.h \
- /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include/Emu.h \
- /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include/Interrupts.h
+ /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include/Interrupts.h \
+ /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/include/Stack.h

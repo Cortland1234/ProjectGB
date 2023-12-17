@@ -3,8 +3,9 @@
 #include <Cartridge.h>
 #include <Cpu.h>
 #include <Common.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include <UI.h>
+#include <pthread.h>
+#include <unistd.h>
 
 static EMUContext context; 
 
@@ -13,9 +14,30 @@ EMUContext *GetEMUContext() //returns current emulator context object
     return &context;
 }
 
-void Delay(u32 ms) 
+void *RunCPU(void *p) //this will be the main thread running for the CPU
 {
-    SDL_Delay(ms);
+    InitializeCPU(); //initializing CPU
+    context.running = true; //setting context variables
+    context.paused = false;
+    context.ticks = 0;
+
+    while(context.running) //infinite game loop
+    {
+        if (context.paused)
+        {
+            Delay(10);
+            continue;
+        }
+
+        if (!CPUStep()) //if CPU fails, then program terminates
+        {
+            printf("ERROR: CPU Stopped. Program Stopping.\n");
+            return 0;
+        }
+
+        context.ticks++;
+    }
+    return 0;
 }
 
 int runEmu(int argc, char **argv) //function for running the emulator with error checks
@@ -34,33 +56,22 @@ int runEmu(int argc, char **argv) //function for running the emulator with error
 
     printf("Cartridge Accepted. Loading...\n");
 
-    SDL_Init(SDL_INIT_VIDEO); //initialize SDL graphics/video
-    printf("SDL Initialized.\n");
-    TTF_Init(); //initializes fonts
-    printf("TTF Initialized.\n");
+    InitializeUI(); //self explanatory
 
-    InitializeCPU(); //self explanatory
+    pthread_t thread1;
 
-    context.running = true; //setting context variables
-    context.paused = false;
-    context.ticks = 0;
-
-    while(context.running) //infinite game loop
+    if (pthread_create(&thread1, NULL, RunCPU, NULL)) //if cpu thread cannot be started, return -1
     {
-        if (context.paused)
-        {
-            Delay(10);
-            continue;
-        }
-
-        if (!CPUStep()) //if CPU fails, then program terminates
-        {
-            printf("ERROR: CPU Stopped. Program Stopping.\n");
-            return -3;
-        }
-
-        context.ticks++;
+        fprintf(stderr, "FAILED TO START MAIN CPU THREAD.\n");
+        return -1;
     }
+
+    while (!context.die) //while emu window is not dead (closed)
+    {
+        usleep(1000); //sleep for 1000 ms
+        HandleUIEvents(); //call event handler for UI
+    }
+
     return 0;
 }
 

@@ -101,3 +101,13 @@ CPURegisters *GetCPURegs()
 {
     return &context.regs;
 }
+
+u8 GetCPUIntFlags() //getting CPU interrupt flags
+{
+    return context.interFlags;
+}
+
+void SetCPUIntFlags(u8 value) //setting CPU interrupt flags
+{
+    context.interFlags = value;
+}

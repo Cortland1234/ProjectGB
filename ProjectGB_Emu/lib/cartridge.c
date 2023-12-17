@@ -184,6 +184,5 @@ u8 ReadCartridge(u16 address)
 
 void WriteCartridge(u16 address, u8 value)
 {
-    printf("WriteCartridge(%04X)\n", address);
-    NO_IMPL
+    //Nothing for now
 }

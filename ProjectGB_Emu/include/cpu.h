@@ -31,6 +31,7 @@ typedef struct {
     bool masterInterruptEnabled;
     bool enablingIme;
     u8 interruptEnableReg;
+    u8 interFlags;
 
 } CPUContext;
 
@@ -58,3 +59,6 @@ void SetCPUIERegister(u8 n);
 
 u8 CPUReadReg8(registerType rt);
 void CPUSetReg8(registerType rt, u8 value); 
+
+u8 GetCPUIntFlags();
+void SetCPUIntFlags(u8 value);

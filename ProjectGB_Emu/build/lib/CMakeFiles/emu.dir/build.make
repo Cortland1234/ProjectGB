@@ -181,10 +181,24 @@ lib/CMakeFiles/emu.dir/Instructions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/emu.dir/Instructions.c.s"
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Instructions.c -o CMakeFiles/emu.dir/Instructions.c.s
 
+lib/CMakeFiles/emu.dir/Interrupts.c.o: lib/CMakeFiles/emu.dir/flags.make
+lib/CMakeFiles/emu.dir/Interrupts.c.o: ../lib/Interrupts.c
+lib/CMakeFiles/emu.dir/Interrupts.c.o: lib/CMakeFiles/emu.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object lib/CMakeFiles/emu.dir/Interrupts.c.o"
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT lib/CMakeFiles/emu.dir/Interrupts.c.o -MF CMakeFiles/emu.dir/Interrupts.c.o.d -o CMakeFiles/emu.dir/Interrupts.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Interrupts.c
+
+lib/CMakeFiles/emu.dir/Interrupts.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/emu.dir/Interrupts.c.i"
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Interrupts.c > CMakeFiles/emu.dir/Interrupts.c.i
+
+lib/CMakeFiles/emu.dir/Interrupts.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/emu.dir/Interrupts.c.s"
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Interrupts.c -o CMakeFiles/emu.dir/Interrupts.c.s
+
 lib/CMakeFiles/emu.dir/Ppu.c.o: lib/CMakeFiles/emu.dir/flags.make
 lib/CMakeFiles/emu.dir/Ppu.c.o: ../lib/Ppu.c
 lib/CMakeFiles/emu.dir/Ppu.c.o: lib/CMakeFiles/emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object lib/CMakeFiles/emu.dir/Ppu.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object lib/CMakeFiles/emu.dir/Ppu.c.o"
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT lib/CMakeFiles/emu.dir/Ppu.c.o -MF CMakeFiles/emu.dir/Ppu.c.o.d -o CMakeFiles/emu.dir/Ppu.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Ppu.c
 
 lib/CMakeFiles/emu.dir/Ppu.c.i: cmake_force
@@ -198,7 +212,7 @@ lib/CMakeFiles/emu.dir/Ppu.c.s: cmake_force
 lib/CMakeFiles/emu.dir/Ram.c.o: lib/CMakeFiles/emu.dir/flags.make
 lib/CMakeFiles/emu.dir/Ram.c.o: ../lib/Ram.c
 lib/CMakeFiles/emu.dir/Ram.c.o: lib/CMakeFiles/emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object lib/CMakeFiles/emu.dir/Ram.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object lib/CMakeFiles/emu.dir/Ram.c.o"
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT lib/CMakeFiles/emu.dir/Ram.c.o -MF CMakeFiles/emu.dir/Ram.c.o.d -o CMakeFiles/emu.dir/Ram.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Ram.c
 
 lib/CMakeFiles/emu.dir/Ram.c.i: cmake_force
@@ -212,7 +226,7 @@ lib/CMakeFiles/emu.dir/Ram.c.s: cmake_force
 lib/CMakeFiles/emu.dir/Stack.c.o: lib/CMakeFiles/emu.dir/flags.make
 lib/CMakeFiles/emu.dir/Stack.c.o: ../lib/Stack.c
 lib/CMakeFiles/emu.dir/Stack.c.o: lib/CMakeFiles/emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object lib/CMakeFiles/emu.dir/Stack.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object lib/CMakeFiles/emu.dir/Stack.c.o"
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT lib/CMakeFiles/emu.dir/Stack.c.o -MF CMakeFiles/emu.dir/Stack.c.o.d -o CMakeFiles/emu.dir/Stack.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Stack.c
 
 lib/CMakeFiles/emu.dir/Stack.c.i: cmake_force
@@ -226,7 +240,7 @@ lib/CMakeFiles/emu.dir/Stack.c.s: cmake_force
 lib/CMakeFiles/emu.dir/Timer.c.o: lib/CMakeFiles/emu.dir/flags.make
 lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c
 lib/CMakeFiles/emu.dir/Timer.c.o: lib/CMakeFiles/emu.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object lib/CMakeFiles/emu.dir/Timer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object lib/CMakeFiles/emu.dir/Timer.c.o"
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT lib/CMakeFiles/emu.dir/Timer.c.o -MF CMakeFiles/emu.dir/Timer.c.o.d -o CMakeFiles/emu.dir/Timer.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Timer.c
 
 lib/CMakeFiles/emu.dir/Timer.c.i: cmake_force
@@ -236,6 +250,20 @@ lib/CMakeFiles/emu.dir/Timer.c.i: cmake_force
 lib/CMakeFiles/emu.dir/Timer.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/emu.dir/Timer.c.s"
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Timer.c -o CMakeFiles/emu.dir/Timer.c.s
+
+lib/CMakeFiles/emu.dir/UI.c.o: lib/CMakeFiles/emu.dir/flags.make
+lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c
+lib/CMakeFiles/emu.dir/UI.c.o: lib/CMakeFiles/emu.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object lib/CMakeFiles/emu.dir/UI.c.o"
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT lib/CMakeFiles/emu.dir/UI.c.o -MF CMakeFiles/emu.dir/UI.c.o.d -o CMakeFiles/emu.dir/UI.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/UI.c
+
+lib/CMakeFiles/emu.dir/UI.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/emu.dir/UI.c.i"
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/UI.c > CMakeFiles/emu.dir/UI.c.i
+
+lib/CMakeFiles/emu.dir/UI.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/emu.dir/UI.c.s"
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/UI.c -o CMakeFiles/emu.dir/UI.c.s
 
 # Object files for target emu
 emu_OBJECTS = \
@@ -247,10 +275,12 @@ emu_OBJECTS = \
 "CMakeFiles/emu.dir/Cpu_utilities.c.o" \
 "CMakeFiles/emu.dir/Emu.c.o" \
 "CMakeFiles/emu.dir/Instructions.c.o" \
+"CMakeFiles/emu.dir/Interrupts.c.o" \
 "CMakeFiles/emu.dir/Ppu.c.o" \
 "CMakeFiles/emu.dir/Ram.c.o" \
 "CMakeFiles/emu.dir/Stack.c.o" \
-"CMakeFiles/emu.dir/Timer.c.o"
+"CMakeFiles/emu.dir/Timer.c.o" \
+"CMakeFiles/emu.dir/UI.c.o"
 
 # External object files for target emu
 emu_EXTERNAL_OBJECTS =
@@ -263,13 +293,15 @@ lib/libemu.a: lib/CMakeFiles/emu.dir/Cpu_Process.c.o
 lib/libemu.a: lib/CMakeFiles/emu.dir/Cpu_utilities.c.o
 lib/libemu.a: lib/CMakeFiles/emu.dir/Emu.c.o
 lib/libemu.a: lib/CMakeFiles/emu.dir/Instructions.c.o
+lib/libemu.a: lib/CMakeFiles/emu.dir/Interrupts.c.o
 lib/libemu.a: lib/CMakeFiles/emu.dir/Ppu.c.o
 lib/libemu.a: lib/CMakeFiles/emu.dir/Ram.c.o
 lib/libemu.a: lib/CMakeFiles/emu.dir/Stack.c.o
 lib/libemu.a: lib/CMakeFiles/emu.dir/Timer.c.o
+lib/libemu.a: lib/CMakeFiles/emu.dir/UI.c.o
 lib/libemu.a: lib/CMakeFiles/emu.dir/build.make
 lib/libemu.a: lib/CMakeFiles/emu.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C static library libemu.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C static library libemu.a"
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && $(CMAKE_COMMAND) -P CMakeFiles/emu.dir/cmake_clean_target.cmake
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/emu.dir/link.txt --verbose=$(VERBOSE)
 
