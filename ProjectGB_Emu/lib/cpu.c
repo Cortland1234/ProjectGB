@@ -3,13 +3,24 @@
 #include <Emu.h>
 #include <Interrupts.h>
 #include <Debug.h>
+#include <Timer.h>
 
 CPUContext context = {0};
 
 void InitializeCPU()
 {
-    context.regs.progCounter = 0x100; //sets program counter to the entry point
-    context.regs.a = 0x01; //sets a register to 0x01
+    context.regs.progCounter = 0x100;
+    context.regs.stackPtr = 0xFFFE;
+    *((short *)&context.regs.a) = 0xB001;
+    *((short *)&context.regs.b) = 0x1300;
+    *((short *)&context.regs.d) = 0xD800;
+    *((short *)&context.regs.h) = 0x4D01;
+    context.interruptEnableReg = 0;
+    context.interFlags = 0;
+    context.masterInterruptEnabled = false;
+    context.enablingIme = false;
+
+    GetTimerContext()->div = 0xABCC;
 }
 
 static void FetchInstruction()
@@ -102,4 +113,9 @@ u8 GetCPUIERegister() //getting the Interrupt Enable Register from CPU
 void SetCPUIERegister(u8 n) //setting the IE Register
 {
     context.interruptEnableReg = n;
+}
+
+void RequestCPUInterrupts(InterType type)
+{
+    context.interFlags |= type;
 }

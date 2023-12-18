@@ -195,7 +195,8 @@ lib/CMakeFiles/emu.dir/Cpu.c.o: ../lib/Cpu.c \
   ../include/Bus.h \
   ../include/Emu.h \
   ../include/Interrupts.h \
-  ../include/Debug.h
+  ../include/Debug.h \
+  ../include/Timer.h
 
 lib/CMakeFiles/emu.dir/Cpu_Fetch.c.o: ../lib/Cpu_Fetch.c \
   /usr/include/stdc-predef.h \
@@ -543,7 +544,8 @@ lib/CMakeFiles/emu.dir/Emu.c.o: ../lib/Emu.c \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  ../include/Timer.h
 
 lib/CMakeFiles/emu.dir/IO.c.o: ../lib/IO.c \
   /usr/include/stdc-predef.h \
@@ -605,7 +607,10 @@ lib/CMakeFiles/emu.dir/IO.c.o: ../lib/IO.c \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  ../include/Timer.h \
+  ../include/Cpu.h \
+  ../include/Instructions.h
 
 lib/CMakeFiles/emu.dir/Instructions.c.o: ../lib/Instructions.c \
   /usr/include/stdc-predef.h \
@@ -985,7 +990,10 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  ../include/Interrupts.h \
+  ../include/Cpu.h \
+  ../include/Instructions.h
 
 lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
   /usr/include/stdc-predef.h \

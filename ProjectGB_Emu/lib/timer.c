@@ -3,6 +3,11 @@
 
 static TimerContext context = {0};
 
+TimerContext *GetTimerContext()
+{
+    return &context;
+}
+
 void InitializeTimer()
 {
     context.div = 0xAC00;
