@@ -62,3 +62,5 @@ void CPUSetReg8(registerType rt, u8 value);
 
 u8 GetCPUIntFlags();
 void SetCPUIntFlags(u8 value);
+
+void InstructionToString(CPUContext *context, char *str);

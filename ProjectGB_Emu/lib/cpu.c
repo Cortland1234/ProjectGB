@@ -2,6 +2,7 @@
 #include <Bus.h>
 #include <Emu.h>
 #include <Interrupts.h>
+#include <Debug.h>
 
 CPUContext context = {0};
 
@@ -39,6 +40,7 @@ bool CPUStep()
         u16 pc = context.regs.progCounter;
 
         FetchInstruction(); //fetch instructions
+        EMUCycles(1);
         FetchData(); //fetch the data for that instruction
 
         char flags[16];
@@ -49,11 +51,23 @@ bool CPUStep()
             context.regs.f & (1 << 4) ? 'C' : '-'
         );
 
-        printf("%08lX - %04X: %-7s (%02X %02X %02X) A: %02X F: %s BC: %02X%02X DE: %02X%02X HL: %02X%02X\n", GetEMUContext()->ticks, //debugging output
-            pc, InstrucName(context.curInstruction->type), context.currentOpCode,
+        char inst[16]; //debugging for instructions
+        InstructionToString(&context, inst);
+
+        printf("%08lX - %04X: %-12s (%02X %02X %02X) A: %02X F: %s BC: %02X%02X DE: %02X%02X HL: %02X%02X\n", GetEMUContext()->ticks, //debugging output
+            pc, inst, context.currentOpCode,
             ReadBus(pc + 1), ReadBus(pc + 2), context.regs.a, flags, context.regs.b, context.regs.c,
             context.regs.d, context.regs.e, context.regs.h, context.regs.l);
 
+        if (context.curInstruction == NULL) 
+        {
+            printf("Unknown Instruction! %02X\n", context.currentOpCode);
+            exit(-7);
+        }
+
+        DebugUpdate();
+        DebugPrint();
+        
         executeInstruc(); //execute that instruction
     }
 

@@ -6,6 +6,7 @@
 #include <UI.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <Timer.h>
 
 static EMUContext context; 
 
@@ -16,6 +17,7 @@ EMUContext *GetEMUContext() //returns current emulator context object
 
 void *RunCPU(void *p) //this will be the main thread running for the CPU
 {
+    InitializeTimer();
     InitializeCPU(); //initializing CPU
     context.running = true; //setting context variables
     context.paused = false;
@@ -35,7 +37,6 @@ void *RunCPU(void *p) //this will be the main thread running for the CPU
             return 0;
         }
 
-        context.ticks++;
     }
     return 0;
 }
@@ -75,7 +76,13 @@ int runEmu(int argc, char **argv) //function for running the emulator with error
     return 0;
 }
 
-void EMUCycles(int cycles)
+void EMUCycles(int cpuCycles)
 {
-    
+    int n = cpuCycles * 4;
+
+    for (int i = 0; i < n; i++)
+    {
+        context.ticks++;
+        TimerTick();
+    }
 }

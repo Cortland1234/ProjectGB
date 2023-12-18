@@ -1,5 +1,6 @@
 #include <Instructions.h>
 #include <CPU.h>
+#include <Bus.h>
 
 
 instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at meganesu.github.io/generate-gb-opcodes
@@ -262,7 +263,7 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xE6] = {IN_AND, AM_R_D8, RT_A},
     [0xE7] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x20},
     [0xE8] = {IN_ADD, AM_R_D8, RT_SP},
-    [0xE9] = {IN_JP, AM_MR, RT_HL},
+    [0xE9] = {IN_JP, AM_R, RT_HL},
     [0xEA] = {IN_LD, AM_A16_R, RT_NONE, RT_A},
     [0xEE] = {IN_XOR, AM_R_D8, RT_A},
     [0xEF] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x28},
@@ -342,4 +343,124 @@ char *instrucLookup[] = { //table of instruction types
 
 char *InstrucName(instrucType t) { //returns the instruction type as a string
     return instrucLookup[t];
+}
+
+static char *regTypeLookup[] = { //array of register types
+    "<NONE>",
+    "A",
+    "F",
+    "B",
+    "C",
+    "D",
+    "E",
+    "H",
+    "L",
+    "AF",
+    "BC",
+    "DE",
+    "HL",
+    "SP",
+    "PC"
+};
+
+void InstructionToString(CPUContext *context, char *str) { //converts intruction to a string and prints it out
+    instruction *inst = context->curInstruction;
+    sprintf(str, "%s ", InstrucName(inst->type));
+
+    switch(inst->mode) {
+        case AM_IMP:
+            return;
+
+        case AM_R_D16:
+        case AM_R_A16:
+            sprintf(str, "%s %s,$%04X", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], context->fetchData);
+            return;
+
+        case AM_R:
+            sprintf(str, "%s %s", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1]);
+            return;
+
+        case AM_R_R: 
+            sprintf(str, "%s %s,%s", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+            return;
+
+        case AM_MR_R:
+            sprintf(str, "%s (%s),%s", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+            return;
+
+        case AM_MR:
+            sprintf(str, "%s (%s)", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1]);
+            return;
+
+        case AM_R_MR:
+            sprintf(str, "%s %s,(%s)", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+            return;
+
+        case AM_R_D8:
+        case AM_R_A8:
+            sprintf(str, "%s %s,$%02X", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], context->fetchData & 0xFF);
+            return;
+
+        case AM_R_HLI:
+            sprintf(str, "%s %s,(%s+)", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+            return;
+
+        case AM_R_HLD:
+            sprintf(str, "%s %s,(%s-)", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+            return;
+
+        case AM_HLI_R:
+            sprintf(str, "%s (%s+),%s", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+            return;
+
+        case AM_HLD_R:
+            sprintf(str, "%s (%s-),%s", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+            return;
+
+        case AM_A8_R:
+            sprintf(str, "%s $%02X,%s", InstrucName(inst->type), 
+                ReadBus(context->regs.progCounter - 1), regTypeLookup[inst->reg2]);
+
+            return;
+
+        case AM_HL_SPR:
+            sprintf(str, "%s (%s),SP+%d", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], context->fetchData & 0xFF);
+            return;
+
+        case AM_D8:
+            sprintf(str, "%s $%02X", InstrucName(inst->type), 
+                context->fetchData & 0xFF);
+            return;
+
+        case AM_D16:
+            sprintf(str, "%s $%04X", InstrucName(inst->type), 
+                context->fetchData);
+            return;
+
+        case AM_MR_D8:
+            sprintf(str, "%s (%s),$%02X", InstrucName(inst->type), 
+                regTypeLookup[inst->reg1], context->fetchData & 0xFF);
+            return;
+
+        case AM_A16_R:
+            sprintf(str, "%s ($%04X),%s", InstrucName(inst->type), 
+                context->fetchData, regTypeLookup[inst->reg2]);
+            return;
+
+        default:
+            fprintf(stderr, "INVALID AM: %d\n", inst->mode);
+            NO_IMPL
+    }
 }

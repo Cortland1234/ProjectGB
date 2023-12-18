@@ -330,6 +330,30 @@ Cpu_utilities.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Cpu_utilities.c.s
 .PHONY : Cpu_utilities.c.s
 
+Debug.o: Debug.c.o
+.PHONY : Debug.o
+
+# target to build an object file
+Debug.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Debug.c.o
+.PHONY : Debug.c.o
+
+Debug.i: Debug.c.i
+.PHONY : Debug.i
+
+# target to preprocess a source file
+Debug.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Debug.c.i
+.PHONY : Debug.c.i
+
+Debug.s: Debug.c.s
+.PHONY : Debug.s
+
+# target to generate assembly for a file
+Debug.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Debug.c.s
+.PHONY : Debug.c.s
+
 Emu.o: Emu.c.o
 .PHONY : Emu.o
 
@@ -353,6 +377,30 @@ Emu.s: Emu.c.s
 Emu.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Emu.c.s
 .PHONY : Emu.c.s
+
+IO.o: IO.c.o
+.PHONY : IO.o
+
+# target to build an object file
+IO.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/IO.c.o
+.PHONY : IO.c.o
+
+IO.i: IO.c.i
+.PHONY : IO.i
+
+# target to preprocess a source file
+IO.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/IO.c.i
+.PHONY : IO.c.i
+
+IO.s: IO.c.s
+.PHONY : IO.s
+
+# target to generate assembly for a file
+IO.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/IO.c.s
+.PHONY : IO.c.s
 
 Instructions.o: Instructions.c.o
 .PHONY : Instructions.o
@@ -554,9 +602,15 @@ help:
 	@echo "... Cpu_utilities.o"
 	@echo "... Cpu_utilities.i"
 	@echo "... Cpu_utilities.s"
+	@echo "... Debug.o"
+	@echo "... Debug.i"
+	@echo "... Debug.s"
 	@echo "... Emu.o"
 	@echo "... Emu.i"
 	@echo "... Emu.s"
+	@echo "... IO.o"
+	@echo "... IO.i"
+	@echo "... IO.s"
 	@echo "... Instructions.o"
 	@echo "... Instructions.i"
 	@echo "... Instructions.s"

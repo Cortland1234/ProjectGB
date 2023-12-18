@@ -2,6 +2,7 @@
 #include <Cartridge.h>
 #include <Ram.h>
 #include <Cpu.h>
+#include <IO.h>
 
 //Pasted below are the Memory Maps
 //For each section of the memory that you want to access, it will go to different peripherals listed below
@@ -60,8 +61,8 @@ u8 ReadBus(u16 address)
 
     else if (address < 0xFF80) // I/O Registers
     {
-        printf("UNSUPPORTED ReadBus(%04X)\n", address);
-        return 0x0;
+        
+        return ReadIO(address);
     }
 
     else if (address == 0xFFFF) //CPU Enable Register
@@ -114,7 +115,7 @@ void WriteBus(u16 address, u8 value)
 
     else if (address < 0xFF80) // I/O Registers
     {
-        printf("UNSUPPORTED WriteBus(%04X)\n", address);
+        return WriteIO(address, value);
     }
 
     else if (address == 0xFFFF) //CPU Enable Register
