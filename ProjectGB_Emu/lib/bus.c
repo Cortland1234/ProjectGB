@@ -3,6 +3,7 @@
 #include <Ram.h>
 #include <Cpu.h>
 #include <IO.h>
+#include <Ppu.h>
 
 //Pasted below are the Memory Maps
 //For each section of the memory that you want to access, it will go to different peripherals listed below
@@ -29,8 +30,7 @@ u8 ReadBus(u16 address)
     }
     else if (address < 0xA000) //if address is less than 0xA000 (which is the Char/Map data),  
     {
-        printf("UNSUPPORTED ReadBus(%04X)\n", address);
-        NO_IMPL
+        return ReadPpuVram(address);
     }
 
     else if (address < 0xC000) // if the address is less than 0xC000 (which is the Cartridge RAM), then it will return ReadCartridge at that address
@@ -50,8 +50,7 @@ u8 ReadBus(u16 address)
 
     else if (address < 0xFEA0) // Object Attribute Memory
     {
-        printf("UNSUPPORTED ReadBus(%04X)\n", address);
-        return 0x0;
+        return ReadPpuOam(address);
     }
 
     else if (address < 0xFF00) // Another unusable reserved RAM section, returns 0.
@@ -83,8 +82,7 @@ void WriteBus(u16 address, u8 value)
 
     else if (address < 0xA000) // Char/Map Data
     {
-        printf("UNSUPPORTED WriteBus(%04X)\n", address);
-        //NO_IMPL 
+        WritePpuVram(address, value);
     }
 
     else if (address < 0xC000) // Cartridge RAM (AKA EXT RAM)
@@ -104,8 +102,7 @@ void WriteBus(u16 address, u8 value)
 
     else if (address < 0xFEA0) //Object Attribute Memory
     {
-        printf("Hello UNSUPPORTED WriteBus(%04X)\n", address);
-        //NO_IMPL
+        WritePpuOam(address, value);
     }
 
     else if (address < 0xFF00) // Unusable/reserved RAM section

@@ -26,7 +26,7 @@ void InitializePPU();
 void PPUTick();
 
 void WritePpuOam(u16 address, u8 value);
-void ReadPpuOam(u16 address);
+u8 ReadPpuOam(u16 address);
 
 void WritePpuVram(u16 address, u8 value);
-void ReadPpuVram(u16 address);
+u8 ReadPpuVram(u16 address);
