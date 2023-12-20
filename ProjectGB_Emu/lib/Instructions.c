@@ -202,7 +202,7 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xAC] = {IN_XOR, AM_R_R, RT_A, RT_H},
     [0xAD] = {IN_XOR, AM_R_R, RT_A, RT_L},
     [0xAE] = {IN_XOR, AM_R_MR, RT_A, RT_HL},
-    [0xAF] = {IN_XOR, AM_R, RT_A}, //XOR code, simple register, register type A
+    [0xAF] = {IN_XOR, AM_R_R, RT_A, RT_A}, //XOR code, simple register, register type A
 
     //0xBX
     [0xB0] = {IN_OR, AM_R_R, RT_A, RT_B},

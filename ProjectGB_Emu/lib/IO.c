@@ -4,6 +4,8 @@
 
 static char serialData[2];
 
+u8 ly = 0;
+
 u8 ReadIO(u16 address)
 {
     if (address == 0xFF01)
@@ -24,6 +26,11 @@ u8 ReadIO(u16 address)
     if (address == 0xFF0F) 
     {
         return GetCPUIntFlags();
+    }
+
+    if (address = 0xFF44)
+    {
+        return ly++;
     }
 
     printf("UNSUPPORTED ReadBus(%04X)\n", address);

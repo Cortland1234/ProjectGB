@@ -71,6 +71,8 @@ int runEmu(int argc, char **argv) //function for running the emulator with error
     {
         usleep(1000); //sleep for 1000 ms
         HandleUIEvents(); //call event handler for UI
+
+        UpdateUI();
     }
 
     return 0;

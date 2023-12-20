@@ -22,6 +22,6 @@ void DebugPrint() //printing debug info if needed
 {
     if (debugMsg[0])
     {
-        printf("DEBUG: %s\n", debugMsg);
+        printf("DBG: %s\n", debugMsg);
     }
 }

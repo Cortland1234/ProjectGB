@@ -64,8 +64,6 @@ void WriteTimer(u16 address, u8 value)
     case 0xFF07:
         context.tima = value; 
         break;   
-    default:
-        break;
     }
 }
 

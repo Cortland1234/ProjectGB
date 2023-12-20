@@ -66,7 +66,8 @@ lib/CMakeFiles/emu.dir/Bus.c.o: ../lib/Bus.c \
   ../include/Ram.h \
   ../include/Cpu.h \
   ../include/Instructions.h \
-  ../include/IO.h
+  ../include/IO.h \
+  ../include/Ppu.h
 
 lib/CMakeFiles/emu.dir/Cartridge.c.o: ../lib/Cartridge.c \
   /usr/include/stdc-predef.h \
@@ -1057,6 +1058,7 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../include/Emu.h \
+  ../include/Bus.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_main.h \
   /usr/include/SDL2/SDL_stdinc.h \
