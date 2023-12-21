@@ -27,10 +27,10 @@ typedef struct
 } LCDContext;
 
 typedef enum {
-   MODE_HBLANK;
-   MODE_VBLAN;
-   MODE_OAM;
-   MODE_XFER;
+   MODE_HBLANK,
+   MODE_VBLAN,
+   MODE_OAM,
+   MODE_XFER
 } LCDMode;
 
 LCDContext *GetLCDContext();
@@ -50,7 +50,7 @@ LCDContext *GetLCDContext();
 #define LCDS_LYC (BIT(GetLCDContext()->lcds, 2)) //LYC flag, set if ly and lyCompare are equal
 #define LCDS_LYC_SET(b) (BIT_SET(GetLCDContext()->lcds, 2, b)) 
 
-typdedef enum {
+typedef enum {
    SS_HBLANK = (1 << 3),
    SS_VBLANK = (1 << 4),
    SS_OAM = (1 << 5),

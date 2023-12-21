@@ -474,6 +474,30 @@ Interrupts.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Interrupts.c.s
 .PHONY : Interrupts.c.s
 
+LCD.o: LCD.c.o
+.PHONY : LCD.o
+
+# target to build an object file
+LCD.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/LCD.c.o
+.PHONY : LCD.c.o
+
+LCD.i: LCD.c.i
+.PHONY : LCD.i
+
+# target to preprocess a source file
+LCD.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/LCD.c.i
+.PHONY : LCD.c.i
+
+LCD.s: LCD.c.s
+.PHONY : LCD.s
+
+# target to generate assembly for a file
+LCD.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/LCD.c.s
+.PHONY : LCD.c.s
+
 PPU.o: PPU.c.o
 .PHONY : PPU.o
 
@@ -644,6 +668,9 @@ help:
 	@echo "... Interrupts.o"
 	@echo "... Interrupts.i"
 	@echo "... Interrupts.s"
+	@echo "... LCD.o"
+	@echo "... LCD.i"
+	@echo "... LCD.s"
 	@echo "... PPU.o"
 	@echo "... PPU.i"
 	@echo "... PPU.s"

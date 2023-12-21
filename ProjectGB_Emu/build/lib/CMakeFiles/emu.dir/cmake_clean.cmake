@@ -23,6 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/emu.dir/Instructions.c.o.d"
   "CMakeFiles/emu.dir/Interrupts.c.o"
   "CMakeFiles/emu.dir/Interrupts.c.o.d"
+  "CMakeFiles/emu.dir/LCD.c.o"
+  "CMakeFiles/emu.dir/LCD.c.o.d"
   "CMakeFiles/emu.dir/PPU.c.o"
   "CMakeFiles/emu.dir/PPU.c.o.d"
   "CMakeFiles/emu.dir/RAM.c.o"
