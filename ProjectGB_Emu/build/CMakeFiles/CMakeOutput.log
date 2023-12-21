@@ -15,10 +15,10 @@ The C compiler identification is GNU, found in "/mnt/c/Users/cortl/OneDrive/Docu
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7db27/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7db27.dir/build.make CMakeFiles/cmTC_7db27.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_fdadb/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_fdadb.dir/build.make CMakeFiles/cmTC_fdadb.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc   -v -o CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
+Building C object CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc   -v -o CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -28,8 +28,8 @@ Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~2
 Thread model: posix
 Supported LTO compression algorithms: zlib zstd
 gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7db27.dir/'
- /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_7db27.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccFypcRt.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fdadb.dir/'
+ /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_fdadb.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cct613cw.s
 GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
 	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
@@ -49,15 +49,15 @@ GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 50eaa2331df977b8016186198deb2d18
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7db27.dir/'
- as -v --64 -o CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o /tmp/ccFypcRt.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fdadb.dir/'
+ as -v --64 -o CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o /tmp/cct613cw.s
 GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.'
-Linking C executable cmTC_7db27
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7db27.dir/link.txt --verbose=1
-/usr/bin/cc  -v -rdynamic CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o -o cmTC_7db27 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.'
+Linking C executable cmTC_fdadb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fdadb.dir/link.txt --verbose=1
+/usr/bin/cc  -v -rdynamic CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o -o cmTC_fdadb 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
@@ -70,9 +70,9 @@ Supported LTO compression algorithms: zlib zstd
 gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7db27' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7db27.'
- /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8DeXEb.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_7db27 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7db27' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7db27.'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_fdadb' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fdadb.'
+ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3vnBhg.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_fdadb /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_fdadb' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fdadb.'
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -96,10 +96,10 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7db27/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7db27.dir/build.make CMakeFiles/cmTC_7db27.dir/build]
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_fdadb/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_fdadb.dir/build.make CMakeFiles/cmTC_fdadb.dir/build]
   ignore line: [gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
+  ignore line: [Building C object CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -109,8 +109,8 @@ Parsed C implicit link information from above output:
   ignore line: [Thread model: posix]
   ignore line: [Supported LTO compression algorithms: zlib zstd]
   ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7db27.dir/']
-  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_7db27.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccFypcRt.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fdadb.dir/']
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_fdadb.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cct613cw.s]
   ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)]
   ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
@@ -130,15 +130,15 @@ Parsed C implicit link information from above output:
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 50eaa2331df977b8016186198deb2d18]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7db27.dir/']
-  ignore line: [ as -v --64 -o CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o /tmp/ccFypcRt.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fdadb.dir/']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o /tmp/cct613cw.s]
   ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.']
-  ignore line: [Linking C executable cmTC_7db27]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7db27.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc  -v -rdynamic CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o -o cmTC_7db27 ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_fdadb]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fdadb.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc  -v -rdynamic CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o -o cmTC_fdadb ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper]
@@ -151,13 +151,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7db27' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7db27.']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8DeXEb.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_7db27 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_fdadb' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_fdadb.']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3vnBhg.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_fdadb /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/11/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc8DeXEb.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc3vnBhg.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -176,7 +176,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_7db27] ==> ignore
+    arg [cmTC_fdadb] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
@@ -188,7 +188,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..]
-    arg [CMakeFiles/cmTC_7db27.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_fdadb.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -222,13 +222,13 @@ Parsed C implicit link information from above output:
 Determining if files ;stdlib.h exist passed with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9fed3/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9fed3.dir/build.make CMakeFiles/cmTC_9fed3.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_45a4c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_45a4c.dir/build.make CMakeFiles/cmTC_45a4c.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_9fed3.dir/HAVE_STDLIB_H.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_9fed3.dir/HAVE_STDLIB_H.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CheckIncludeFiles/HAVE_STDLIB_H.c
-Linking C executable cmTC_9fed3
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9fed3.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_9fed3.dir/HAVE_STDLIB_H.c.o -o cmTC_9fed3 
+Building C object CMakeFiles/cmTC_45a4c.dir/HAVE_STDLIB_H.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_45a4c.dir/HAVE_STDLIB_H.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CheckIncludeFiles/HAVE_STDLIB_H.c
+Linking C executable cmTC_45a4c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45a4c.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_45a4c.dir/HAVE_STDLIB_H.c.o -o cmTC_45a4c 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -236,13 +236,13 @@ gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/Projec
 Determining if the include file sys/types.h exists passed with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_cd670/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_cd670.dir/build.make CMakeFiles/cmTC_cd670.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_abb64/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_abb64.dir/build.make CMakeFiles/cmTC_abb64.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_cd670.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_cd670.dir/CheckIncludeFile.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_cd670
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd670.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_cd670.dir/CheckIncludeFile.c.o -o cmTC_cd670 
+Building C object CMakeFiles/cmTC_abb64.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_abb64.dir/CheckIncludeFile.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_abb64
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_abb64.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_abb64.dir/CheckIncludeFile.c.o -o cmTC_abb64 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -250,13 +250,13 @@ gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/Projec
 Determining if the include file stdint.h exists passed with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_43259/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_43259.dir/build.make CMakeFiles/cmTC_43259.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f1721/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f1721.dir/build.make CMakeFiles/cmTC_f1721.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_43259.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_43259.dir/CheckIncludeFile.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_43259
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_43259.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_43259.dir/CheckIncludeFile.c.o -o cmTC_43259 
+Building C object CMakeFiles/cmTC_f1721.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_f1721.dir/CheckIncludeFile.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_f1721
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f1721.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_f1721.dir/CheckIncludeFile.c.o -o cmTC_f1721 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -264,13 +264,13 @@ gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/Projec
 Determining if the include file stddef.h exists passed with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8452f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8452f.dir/build.make CMakeFiles/cmTC_8452f.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1a717/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1a717.dir/build.make CMakeFiles/cmTC_1a717.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8452f.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_8452f.dir/CheckIncludeFile.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_8452f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8452f.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_8452f.dir/CheckIncludeFile.c.o -o cmTC_8452f 
+Building C object CMakeFiles/cmTC_1a717.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_1a717.dir/CheckIncludeFile.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_1a717
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a717.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_1a717.dir/CheckIncludeFile.c.o -o cmTC_1a717 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -278,13 +278,13 @@ gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/Projec
 Determining size of intmax_t passed with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_10a90/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_10a90.dir/build.make CMakeFiles/cmTC_10a90.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a5d0a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a5d0a.dir/build.make CMakeFiles/cmTC_a5d0a.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_10a90.dir/INTMAX_T.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_10a90.dir/INTMAX_T.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CheckTypeSize/INTMAX_T.c
-Linking C executable cmTC_10a90
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_10a90.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_10a90.dir/INTMAX_T.c.o -o cmTC_10a90 
+Building C object CMakeFiles/cmTC_a5d0a.dir/INTMAX_T.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a5d0a.dir/INTMAX_T.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CheckTypeSize/INTMAX_T.c
+Linking C executable cmTC_a5d0a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a5d0a.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_a5d0a.dir/INTMAX_T.c.o -o cmTC_a5d0a 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -292,13 +292,13 @@ gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/Projec
 Determining size of uintmax_t passed with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_587e2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_587e2.dir/build.make CMakeFiles/cmTC_587e2.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e72c5/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e72c5.dir/build.make CMakeFiles/cmTC_e72c5.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_587e2.dir/UINTMAX_T.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_587e2.dir/UINTMAX_T.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CheckTypeSize/UINTMAX_T.c
-Linking C executable cmTC_587e2
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_587e2.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_587e2.dir/UINTMAX_T.c.o -o cmTC_587e2 
+Building C object CMakeFiles/cmTC_e72c5.dir/UINTMAX_T.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_e72c5.dir/UINTMAX_T.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CheckTypeSize/UINTMAX_T.c
+Linking C executable cmTC_e72c5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e72c5.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_e72c5.dir/UINTMAX_T.c.o -o cmTC_e72c5 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -306,13 +306,13 @@ gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/Projec
 Determining size of pid_t passed with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_34b77/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_34b77.dir/build.make CMakeFiles/cmTC_34b77.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b3d95/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b3d95.dir/build.make CMakeFiles/cmTC_b3d95.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_34b77.dir/PID_T.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_34b77.dir/PID_T.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CheckTypeSize/PID_T.c
-Linking C executable cmTC_34b77
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_34b77.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_34b77.dir/PID_T.c.o -o cmTC_34b77 
+Building C object CMakeFiles/cmTC_b3d95.dir/PID_T.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_b3d95.dir/PID_T.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CheckTypeSize/PID_T.c
+Linking C executable cmTC_b3d95
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b3d95.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_b3d95.dir/PID_T.c.o -o cmTC_b3d95 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -320,13 +320,13 @@ gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/Projec
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_694da/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_694da.dir/build.make CMakeFiles/cmTC_694da.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_2398a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_2398a.dir/build.make CMakeFiles/cmTC_2398a.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_694da.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_694da.dir/CheckIncludeFile.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_694da
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_694da.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_694da.dir/CheckIncludeFile.c.o -o cmTC_694da 
+Building C object CMakeFiles/cmTC_2398a.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_2398a.dir/CheckIncludeFile.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2398a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2398a.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_2398a.dir/CheckIncludeFile.c.o -o cmTC_2398a 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 
@@ -334,13 +334,13 @@ gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/Projec
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
 Change Dir: /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1207a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1207a.dir/build.make CMakeFiles/cmTC_1207a.dir/build
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_4af42/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_4af42.dir/build.make CMakeFiles/cmTC_4af42.dir/build
 gmake[1]: Entering directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_1207a.dir/src.c.o
-/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_1207a.dir/src.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_1207a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1207a.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_1207a.dir/src.c.o -o cmTC_1207a 
+Building C object CMakeFiles/cmTC_4af42.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_4af42.dir/src.c.o -c /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_4af42
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4af42.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_4af42.dir/src.c.o -o cmTC_4af42 
 gmake[1]: Leaving directory '/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build/CMakeFiles/CMakeTmp'
 
 

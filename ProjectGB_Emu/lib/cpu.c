@@ -1,4 +1,4 @@
-#include <Cpu.h>
+#include <CPU.h>
 #include <Bus.h>
 #include <Emu.h>
 #include <Interrupts.h>
@@ -7,10 +7,10 @@
 
 CPUContext context = {0};
 
-void InitializeCPU()
+void InitializeCPU() 
 {
-    context.regs.progCounter = 0x100;
-    context.regs.stackPtr = 0xFFFE;
+    context.regs.pc = 0x100;
+    context.regs.sp = 0xFFFE;
     *((short *)&context.regs.a) = 0xB001;
     *((short *)&context.regs.b) = 0x1300;
     *((short *)&context.regs.d) = 0xD800;
@@ -23,16 +23,15 @@ void InitializeCPU()
     GetTimerContext()->div = 0xABCC;
 }
 
-static void FetchInstruction()
+static void FetchInstruction() 
 {
-    context.currentOpCode = ReadBus(context.regs.progCounter++); //read the current opcode for the CPU context from the Bus from the context's register program counter. Increment the program counter in the process 
+    context.currentOpCode = ReadBus(context.regs.pc++); //read the current opcode for the CPU context from the Bus from the context's register program counter. Increment the program counter in the process 
     context.curInstruction = InstructionByOpcode(context.currentOpCode); //current instance for context from instructionByOpcode
-
 }
 
 void FetchData();
 
-static void executeInstruc()
+static void executeInstruc() 
 {
     IN_PROC proc = InstGetProcessor(context.curInstruction->type); //getting either a function pointer or 0
 
@@ -48,7 +47,7 @@ bool CPUStep()
 {
     if (!context.halted) // if CPU context is not halted
     {
-        u16 pc = context.regs.progCounter;
+        u16 pc = context.regs.pc;
 
         FetchInstruction(); //fetch instructions
         EMUCycles(1);
@@ -70,7 +69,7 @@ bool CPUStep()
             ReadBus(pc + 1), ReadBus(pc + 2), context.regs.a, flags, context.regs.b, context.regs.c,
             context.regs.d, context.regs.e, context.regs.h, context.regs.l);
 
-        if (context.curInstruction == NULL) 
+        if (context.curInstruction == NULL)
         {
             printf("Unknown Instruction! %02X\n", context.currentOpCode);
             exit(-7);
@@ -78,7 +77,7 @@ bool CPUStep()
 
         DebugUpdate();
         DebugPrint();
-        
+
         executeInstruc(); //execute that instruction
     }
 

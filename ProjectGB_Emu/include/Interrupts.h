@@ -1,6 +1,7 @@
+
 #pragma once
 
-#include <Cpu.h>
+#include <CPU.h>
 
 typedef enum { //type definition for the different types of Interrupts
     IT_VBLANK = 1,
@@ -10,6 +11,6 @@ typedef enum { //type definition for the different types of Interrupts
     IT_JOYPAD = 16
 } InterType;
 
-void RequestCPUInterrupts(InterType type);
+void RequestCPUInterrupts(InterType t);
 
 void HandleCPUInterrupts(CPUContext *context);

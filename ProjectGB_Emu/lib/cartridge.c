@@ -1,13 +1,14 @@
 #include <Cartridge.h>
 
-typedef struct { //typedef for cartridge context, contains file name, size of the rom, the byte data for the rom, and the rom header
-    char fileName[1024];
+typedef struct //typedef for cartridge context, contains file name, size of the rom, the byte data for the rom, and the rom header
+{
+    char filename[1024];
     u32 romSize;
     u8 *romData;
-    rom_header *header;
-} cartridge_context;
+    RomHeader *header;
+} CartridgeContext;
 
-static cartridge_context context; 
+static CartridgeContext context;
 
 static const char *ROM_TYPES[] = { //map for the types of ROMs, also found from gbdev.io
     "ROM ONLY",
@@ -47,7 +48,7 @@ static const char *ROM_TYPES[] = { //map for the types of ROMs, also found from 
     "MBC7+SENSOR+RUMBLE+RAM+BATTERY",
 };
 
-static const char *LIC_CODE[0xA5] = { //map for the license codes, from gbdev.io
+static const char *licenseCode[0xA5] = { //map for the license codes, from gbdev.io
     [0x00] = "None",
     [0x01] = "Nintendo R&D1",
     [0x08] = "Capcom",
@@ -111,38 +112,38 @@ static const char *LIC_CODE[0xA5] = { //map for the license codes, from gbdev.io
     [0xA4] = "Konami (Yu-Gi-Oh!)"
 };
 
-const char *cartridgeLicenseName() { //looks up the license name for the ROM, returns UNKNOWN if not on list
-    if (context.header->newLicenseCode <= 0xA4)
-    {
-        return LIC_CODE[context.header->licenseCode];
+const char *CartridgeLicenseName() //looks up the license name for the ROM, returns UNKNOWN if not on list
+{
+    if (context.header->newLicenseCode <= 0xA4) {
+        return licenseCode[context.header->licenseCode];
     }
 
     return "UNKNOWN";
 }
 
-const char *cartridgeTypeName() { //looks up name of the cartridge, returns UNKNOWN if not on list
-    if (context.header->type <= 0x22) 
-    {
+const char *CartridgeTypeName() //looks up name of the cartridge, returns UNKNOWN if not on list
+{
+    if (context.header->type <= 0x22) {
         return ROM_TYPES[context.header->type];
     }
 
     return "UNKNOWN";
 }
 
-bool LoadCartridge(char *cartridge)
+bool LoadCartridge(char *cart) 
 {
-    snprintf(context.fileName, sizeof(context.fileName), "%s", cartridge); //snprintf accepts n as the max number of characters, in this case it is sizeof context
+    snprintf(context.filename, sizeof(context.filename), "%s", cart); //snprintf accepts n as the max number of characters, in this case it is sizeof context
     //^^ Getting name of the cartridge
 
-    FILE *fp = fopen(cartridge, "r"); //opening file
+    FILE *fp = fopen(cart, "r"); //opening file
 
     if (!fp) //file error checking
     {
-        printf("ERROR: Failed to open %s\n", cartridge);
+        printf("Failed to open: %s\n", cart);
         return false;
     }
 
-    printf("Successfully Opened %s\n", context.fileName);
+    printf("Opened: %s\n", context.filename);
 
     fseek(fp, 0, SEEK_END); //seek EOF
     context.romSize = ftell(fp); //use ftell to get position of EOF, and set that to romSize
@@ -153,36 +154,39 @@ bool LoadCartridge(char *cartridge)
     fread(context.romData, context.romSize, 1, fp); //read in the entire file
     fclose(fp); //close the file
 
-    context.header = (rom_header *)(context.romData + 0x100);
+    context.header = (RomHeader *)(context.romData + 0x100);
     context.header->title[15] = 0; //null terminate the end of the title just in case it is not terminated already
 
-    printf("Loaded Cartridge INFO:\n"); //printing out the info for the rom
-    printf("\t TITLE        : %s\n", context.header->title);
-    printf("\t TYPE         : %2.2X (%s)\n", context.header->type, cartridgeTypeName());
-    printf("\t ROM SIZE     : %d KB\n", 32 << context.header->romSize);
-    printf("\t RAM SIZE     : %2.2X\n", context.header->ramSize);
-    printf("\t LICENSE CODE : %2.2X (%s)\n", context.header->licenseCode, cartridgeLicenseName());
-    printf("\t ROM VERSION  : %2.2X\n", context.header->version);
+    printf("Cartridge Loaded:\n"); //printing out the info for the rom
+    printf("\t Title    : %s\n", context.header->title);
+    printf("\t Type     : %2.2X (%s)\n", context.header->type, CartridgeTypeName());
+    printf("\t ROM Size : %d KB\n", 32 << context.header->romSize);
+    printf("\t RAM Size : %2.2X\n", context.header->ramSize);
+    printf("\t LIC Code : %2.2X (%s)\n", context.header->licenseCode, CartridgeLicenseName());
+    printf("\t ROM Vers : %2.2X\n", context.header->version);
 
-    u16 checksum = 0; //checksum loop found on "Cartridge Header" gbdev.io
-    for (u16 address = 0x0134; address <= 0x014C; address++) 
+    u16 x = 0; //checksum loop found on "Cartridge Header" gbdev.io
+    for (u16 i=0x0134; i<=0x014C; i++) 
     {
-        checksum = checksum - context.romData[address] - 1;
+        x = x - context.romData[i] - 1;
     }
 
-    printf("\t Checksum : %2.2X (%s)\n", context.header->checksum, (checksum & 0xFF) ? "PASSED" : "FAILED");
+    printf("\t Checksum : %2.2X (%s)\n", context.header->checksum, (x & 0xFF) ? "PASSED" : "FAILED");
     //if the checksum = checksum && 0xFF, it passed the verification. otherwise it failed
 
-    return true; 
+    return true;
 }
 
-u8 ReadCartridge(u16 address)
+u8 ReadCartridge(u16 address) 
 {
     //Because all rom data is loaded into memory, we can access those memory arrays easily
+
     return context.romData[address];
 }
 
-void WriteCartridge(u16 address, u8 value)
+void WriteCartridge(u16 address, u8 value) 
 {
-    //Nothing for now
+
+    printf("WriteCartridge(%04X)\n", address);
 }
+

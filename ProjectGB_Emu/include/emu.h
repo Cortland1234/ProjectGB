@@ -9,7 +9,7 @@ typedef struct { //emu_context typedef is a struct that contains data about the 
     u64 ticks; //number of processor timer ticks
 } EMUContext;
 
-int runEmu(int argc, char **argv);
+int RunEMU(int argc, char **argv);
 
 EMUContext *GetEMUContext(); //get current emulator context
 

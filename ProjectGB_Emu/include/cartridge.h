@@ -6,7 +6,7 @@
 
 typedef struct {
     u8 entryPoint[4]; //entry point after cartridge boots
-    u8 logo[0x30]; //nintendo logo
+    u8 logo[0x30];
 
     char title[16]; //title of game
     u16 newLicenseCode; //license of the publisher
@@ -19,10 +19,10 @@ typedef struct {
     u8 version; //version of the ROM
     u8 checksum; //byte containing an 8-bit checksum for the ROM to verify
     u16 globalChecksum; //sum of all bytes of the cartridge ROM
-} rom_header;
+} RomHeader;
 
 bool LoadCartridge(char *cart);
 
-u8 ReadCartridge(u16 address); //8 bit data bus, and a 16 bit address bus. a 16 bit address is passed in and an 8 bit value is returned
-
+u8 ReadCartridge(u16 address);
 void WriteCartridge(u16 address, u8 value);
+

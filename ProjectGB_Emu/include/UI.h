@@ -7,5 +7,4 @@ static const int SCREEN_HEIGHT = 768;
 
 void InitializeUI();
 void HandleUIEvents();
-
 void UpdateUI();

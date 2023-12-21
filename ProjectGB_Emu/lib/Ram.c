@@ -1,6 +1,6 @@
-#include <Ram.h>
+#include <RAM.h>
 
-typedef struct { // two types of ram
+typedef struct {
     u8 wram[0x2000];
     u8 hram[0x80];
 } RamContext;
@@ -11,9 +11,9 @@ u8 ReadWRAM(u16 address) //subtracts address by 0xC000, Checks if address is val
 {
     address -= 0xC000; //WRAM starts at 0xC000, so we subtract it from the address
 
-    if (address >= 0x2000)
+    if (address >= 0x2000) 
     {
-        printf("Address Out of Bounds for WRAM");
+        printf("INVALID WRAM ADDR %08X\n", address + 0xC000);
         exit(-1);
     }
 
@@ -40,4 +40,3 @@ void WriteHRAM(u16 address, u8 value) //same as WriteWRAM()
 
     context.hram[address] = value;
 }
-

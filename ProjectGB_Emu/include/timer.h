@@ -10,7 +10,6 @@ typedef struct {
 } TimerContext;
 
 void InitializeTimer();
-
 void TimerTick();
 
 void WriteTimer(u16 address, u8 value);

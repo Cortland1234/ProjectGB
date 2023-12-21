@@ -3,12 +3,12 @@
 
 static TimerContext context = {0};
 
-TimerContext *GetTimerContext()
+TimerContext *GetTimerContext() 
 {
     return &context;
 }
 
-void InitializeTimer()
+void InitializeTimer() 
 {
     context.div = 0xAC00;
 }
@@ -21,7 +21,7 @@ void TimerTick()
 
     bool timerUpdate = false;
 
-    switch(context.tac & (0b11))
+    switch(context.tac & (0b11)) 
     {
         case 0b00:
             timerUpdate = (prevDiv & (1 << 9)) && (!(context.div & (1 << 9)));
@@ -34,50 +34,57 @@ void TimerTick()
             break;
         case 0b11:
             timerUpdate = (prevDiv & (1 << 7)) && (!(context.div & (1 << 7)));
-            break; 
+            break;
     }
 
-    if (timerUpdate && context.tac & (1 << 2)) {
+    if (timerUpdate && context.tac & (1 << 2)) 
+    {
         context.tima++;
 
-        if (context.tima == 0xFF) {
+        if (context.tima == 0xFF) 
+        {
             context.tima = context.tma;
 
             RequestCPUInterrupts(IT_TIMER);
-        }    
+        }
     }
 }
 
-void WriteTimer(u16 address, u8 value)
+void WriteTimer(u16 address, u8 value) 
 {
-    switch (address)
-    {
-    case 0xFF04:
-        context.div = 0; //if address is 0xFF04, div is reset to 0
-        break;
-    case 0xFF05:
-        context.tima = value; 
-        break; 
-    case 0xFF06:
-        context.tima = value; 
-        break;
-    case 0xFF07:
-        context.tima = value; 
-        break;   
+    switch(address) {
+        case 0xFF04:
+            //DIV
+            context.div = 0; //if address is 0xFF04, div is reset to 0
+            break;
+
+        case 0xFF05:
+            //TIMA
+            context.tima = value;
+            break;
+
+        case 0xFF06:
+            //TMA
+            context.tma = value;
+            break;
+
+        case 0xFF07:
+            //TAC
+            context.tac = value;
+            break;
     }
 }
 
-u8 ReadTimer(u16 address)
+u8 ReadTimer(u16 address) 
 {
-    switch (address)
-    {
-    case 0xFF04:
-        return context.div >> 8;
-    case 0xFF05:
-        return context.tima; 
-    case 0xFF06:
-        return context.tma;
-    case 0xFF07:
-        return context.tac;
-    }    
+    switch(address) {
+        case 0xFF04:
+            return context.div >> 8;
+        case 0xFF05:
+            return context.tima;
+        case 0xFF06:
+            return context.tma;
+        case 0xFF07:
+            return context.tac;
+    }
 }

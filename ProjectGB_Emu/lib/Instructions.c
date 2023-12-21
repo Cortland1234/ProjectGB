@@ -4,18 +4,16 @@
 
 
 instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at meganesu.github.io/generate-gb-opcodes
-    //0x0X
     [0x00] = {IN_NOP, AM_IMP}, //NoOp code, implied address
     [0x01] = {IN_LD, AM_R_D16, RT_BC}, //Load from BC Register, D16 to Register addressing mode, register BC
     [0x02] = {IN_LD, AM_MR_R, RT_BC, RT_A}, //Load, Register to Memory addressing, Register types BC and A
     [0x03] = {IN_INC, AM_R, RT_BC}, //Increment, simple register addressing, register type BC
     [0x04] = {IN_INC, AM_R, RT_B},
-    [0x05] = {IN_DEC, AM_R, RT_B}, //Decrement
     [0x05] = {IN_DEC, AM_R, RT_B}, //Decrement B, simple Register addressing mode, Register type B
-    [0x06] = {IN_LD, AM_R_D8, RT_C}, //Load from C Register, D8 to register, register type C
+    [0x06] = {IN_LD, AM_R_D8, RT_B}, //Load from C Register, D8 to register, register type C
     [0x07] = {IN_RLCA},
     [0x08] = {IN_LD, AM_A16_R, RT_NONE, RT_SP}, //load, Register to A16 mode, register types NONE and SP
-    [0x09] = {IN_ADD, AM_R_R, RT_HL, RT_BC}, //Add code, register to register address mode, 
+    [0x09] = {IN_ADD, AM_R_R, RT_HL, RT_BC}, //Add code, register to register address mode
     [0x0A] = {IN_LD, AM_R_MR, RT_A, RT_BC},
     [0x0B] = {IN_DEC, AM_R, RT_BC},
     [0x0C] = {IN_INC, AM_R, RT_C},
@@ -29,7 +27,6 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0x12] = {IN_LD, AM_MR_R, RT_DE, RT_A},
     [0x13] = {IN_INC, AM_R, RT_DE},
     [0x14] = {IN_INC, AM_R, RT_D},
-    [0x15] = {IN_DEC, AM_R, RT_D},
     [0x15] = {IN_DEC, AM_R, RT_D},
     [0x16] = {IN_LD, AM_R_D8, RT_D},
     [0x17] = {IN_RLA},
@@ -184,7 +181,8 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0x9C] = {IN_SBC, AM_R_R, RT_A, RT_H},
     [0x9D] = {IN_SBC, AM_R_R, RT_A, RT_L},
     [0x9E] = {IN_SBC, AM_R_MR, RT_A, RT_HL},
-    [0x9F] = {IN_SBC, AM_R_R, RT_A, RT_A},   
+    [0x9F] = {IN_SBC, AM_R_R, RT_A, RT_A},
+
 
     //0xAX
     [0xA0] = {IN_AND, AM_R_R, RT_A, RT_B},
@@ -220,16 +218,15 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xBC] = {IN_CP, AM_R_R, RT_A, RT_H},
     [0xBD] = {IN_CP, AM_R_R, RT_A, RT_L},
     [0xBE] = {IN_CP, AM_R_MR, RT_A, RT_HL},
-    [0xBF] = {IN_CP, AM_R_R, RT_A, RT_A},     
+    [0xBF] = {IN_CP, AM_R_R, RT_A, RT_A},
 
-    //0xCX
     [0xC0] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_NZ}, //Return code, implied addressing mode, nonetype reg, check type non zero
-    [0xC1] = {IN_POP, AM_IMP, RT_BC}, //Pop code, addressing mode is Implied, register is BC
+    [0xC1] = {IN_POP, AM_R, RT_BC}, //Pop code, addressing mode is Implied, register is BC
     [0xC2] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_NZ},
     [0xC3] = {IN_JP, AM_D16}, //Jump code, D16 to register addressing mode
     [0xC4] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_NZ}, //call code, D16 addressing mode, Register type None, and check type is Not Zero
     [0xC5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
-    [0xC6] = {IN_ADD, AM_R_A8, RT_A},
+    [0xC6] = {IN_ADD, AM_R_D8, RT_A},
     [0xC7] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x00},
     [0xC8] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_Z},
     [0xC9] = {IN_RET},
@@ -240,18 +237,17 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xCE] = {IN_ADC, AM_R_D8, RT_A},
     [0xCF] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x08},
 
-    //0xDX
     [0xD0] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_NC},
     [0xD1] = {IN_POP, AM_R, RT_DE}, //Pop code, simple register, register DE
     [0xD2] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_NC},
     [0xD4] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_NC},
-    [0xD5] = {IN_PUSH, AM_R, RT_BC}, //Push code, simple register, register BC
+    [0xD5] = {IN_PUSH, AM_R, RT_DE}, //Push code, simple register, register BC
     [0xD6] = {IN_SUB, AM_R_D8, RT_A},
     [0xD7] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x10},
     [0xD8] = {IN_RET, AM_IMP, RT_NONE, RT_NONE, CT_C},
     [0xD9] = {IN_RETI},
     [0xDA] = {IN_JP, AM_D16, RT_NONE, RT_NONE, CT_C},
-    [0xDC] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_Z},
+    [0xDC] = {IN_CALL, AM_D16, RT_NONE, RT_NONE, CT_C},
     [0xDE] = {IN_SBC, AM_R_D8, RT_A},
     [0xDF] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x18},
 
@@ -267,6 +263,7 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
     [0xEA] = {IN_LD, AM_A16_R, RT_NONE, RT_A},
     [0xEE] = {IN_XOR, AM_R_D8, RT_A},
     [0xEF] = {IN_RST, AM_IMP, RT_NONE, RT_NONE, CT_NONE, 0x28},
+
 
     //0xFX
     [0xF0] = {IN_LDH, AM_R_A8, RT_A},
@@ -285,12 +282,12 @@ instruction instructions[0x100] = { //Assembly instructions for GB CPU, found at
 };
 
 
-instruction *InstructionByOpcode(u8 opcode)
-{
-   return &instructions[opcode]; //returning the address of the instructions at "opcode"
+
+instruction *InstructionByOpcode(u8 opcode) {
+    return &instructions[opcode]; //returning the address of the instructions at "opcode"
 }
 
-char *instrucLookup[] = { //table of instruction types
+char *instLookup[] = { //table of instruction types
     "<NONE>",
     "NOP",
     "LD",
@@ -341,11 +338,12 @@ char *instrucLookup[] = { //table of instruction types
     "IN_SET"
 };
 
-char *InstrucName(instrucType t) { //returns the instruction type as a string
-    return instrucLookup[t];
+char *InstrucName(instrucType t)  //returns the instruction type as a string
+{
+    return instLookup[t];
 }
 
-static char *regTypeLookup[] = { //array of register types
+static char *registerLookup[] = { //array of register types
     "<NONE>",
     "A",
     "F",
@@ -363,7 +361,8 @@ static char *regTypeLookup[] = { //array of register types
     "PC"
 };
 
-void InstructionToString(CPUContext *context, char *str) { //converts intruction to a string and prints it out
+void InstructionToString(CPUContext *context, char *str) //converts intruction to a string and prints it out
+{
     instruction *inst = context->curInstruction;
     sprintf(str, "%s ", InstrucName(inst->type));
 
@@ -374,69 +373,69 @@ void InstructionToString(CPUContext *context, char *str) { //converts intruction
         case AM_R_D16:
         case AM_R_A16:
             sprintf(str, "%s %s,$%04X", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], context->fetchData);
+                registerLookup[inst->reg1], context->fetchData);
             return;
 
         case AM_R:
             sprintf(str, "%s %s", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1]);
+                registerLookup[inst->reg1]);
             return;
 
         case AM_R_R: 
             sprintf(str, "%s %s,%s", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+                registerLookup[inst->reg1], registerLookup[inst->reg2]);
             return;
 
         case AM_MR_R:
             sprintf(str, "%s (%s),%s", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+                registerLookup[inst->reg1], registerLookup[inst->reg2]);
             return;
 
         case AM_MR:
             sprintf(str, "%s (%s)", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1]);
+                registerLookup[inst->reg1]);
             return;
 
         case AM_R_MR:
             sprintf(str, "%s %s,(%s)", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+                registerLookup[inst->reg1], registerLookup[inst->reg2]);
             return;
 
         case AM_R_D8:
         case AM_R_A8:
             sprintf(str, "%s %s,$%02X", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], context->fetchData & 0xFF);
+                registerLookup[inst->reg1], context->fetchData & 0xFF);
             return;
 
         case AM_R_HLI:
             sprintf(str, "%s %s,(%s+)", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+                registerLookup[inst->reg1], registerLookup[inst->reg2]);
             return;
 
         case AM_R_HLD:
             sprintf(str, "%s %s,(%s-)", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+                registerLookup[inst->reg1], registerLookup[inst->reg2]);
             return;
 
         case AM_HLI_R:
             sprintf(str, "%s (%s+),%s", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+                registerLookup[inst->reg1], registerLookup[inst->reg2]);
             return;
 
         case AM_HLD_R:
             sprintf(str, "%s (%s-),%s", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], regTypeLookup[inst->reg2]);
+                registerLookup[inst->reg1], registerLookup[inst->reg2]);
             return;
 
         case AM_A8_R:
             sprintf(str, "%s $%02X,%s", InstrucName(inst->type), 
-                ReadBus(context->regs.progCounter - 1), regTypeLookup[inst->reg2]);
+                ReadBus(context->regs.pc - 1), registerLookup[inst->reg2]);
 
             return;
 
         case AM_HL_SPR:
             sprintf(str, "%s (%s),SP+%d", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], context->fetchData & 0xFF);
+                registerLookup[inst->reg1], context->fetchData & 0xFF);
             return;
 
         case AM_D8:
@@ -451,12 +450,12 @@ void InstructionToString(CPUContext *context, char *str) { //converts intruction
 
         case AM_MR_D8:
             sprintf(str, "%s (%s),$%02X", InstrucName(inst->type), 
-                regTypeLookup[inst->reg1], context->fetchData & 0xFF);
+                registerLookup[inst->reg1], context->fetchData & 0xFF);
             return;
 
         case AM_A16_R:
             sprintf(str, "%s ($%04X),%s", InstrucName(inst->type), 
-                context->fetchData, regTypeLookup[inst->reg2]);
+                context->fetchData, registerLookup[inst->reg2]);
             return;
 
         default:

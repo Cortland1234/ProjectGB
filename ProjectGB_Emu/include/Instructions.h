@@ -31,7 +31,7 @@ typedef enum { //defines how data is loaded into a register
 typedef enum { //Type of register
     RT_NONE, //No register needed
     //8 bit registers
-    RT_A, 
+    RT_A,
     RT_F,
     RT_B,
     RT_C,
@@ -74,7 +74,7 @@ typedef enum { //instruction types for the CPU in Assembly. For example, if inst
     IN_OR,
     IN_CP,
     IN_POP,
-    IN_JP, //Jump code
+    IN_JP,
     IN_PUSH,
     IN_RET,
     IN_CB,

@@ -8,5 +8,6 @@ u8 ReadBus(u16 address); //8 bit data bus, and a 16 bit address bus. a 16 bit ad
 void WriteBus(u16 address, u8 value);
 
 
-u16 ReadBus16Bit(u16 address); 
-void WriteBus16Bit(u16 address, u16 value);
+u16 ReadBus16(u16 address);
+void WriteBus16(u16 address, u16 value);
+   

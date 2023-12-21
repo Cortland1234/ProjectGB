@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Common.h>
-#include <Cpu.h>
+#include <CPU.h>
 
 void DebugUpdate();
 void DebugPrint();

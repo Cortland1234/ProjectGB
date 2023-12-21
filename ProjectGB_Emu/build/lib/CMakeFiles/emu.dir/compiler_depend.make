@@ -63,77 +63,16 @@ lib/CMakeFiles/emu.dir/Bus.c.o: ../lib/Bus.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../include/Cartridge.h \
-  ../include/Ram.h \
-  ../include/Cpu.h \
+  ../include/RAM.h \
+  ../include/CPU.h \
   ../include/Instructions.h \
   ../include/IO.h \
-  ../include/Ppu.h
+  ../include/PPU.h \
+  ../include/dma.h
 
-lib/CMakeFiles/emu.dir/Cartridge.c.o: ../lib/Cartridge.c \
+lib/CMakeFiles/emu.dir/CPU.c.o: ../lib/CPU.c \
   /usr/include/stdc-predef.h \
-  ../include/Cartridge.h \
-  ../include/Common.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
-  /usr/include/stdint.h \
-  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
-  /usr/include/features.h \
-  /usr/include/features-time64.h \
-  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
-  /usr/include/x86_64-linux-gnu/bits/timesize.h \
-  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
-  /usr/include/x86_64-linux-gnu/bits/long-double.h \
-  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
-  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
-  /usr/include/x86_64-linux-gnu/bits/types.h \
-  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /usr/include/x86_64-linux-gnu/bits/time64.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
-  /usr/include/stdio.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/floatn.h \
-  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
-  /usr/include/stdlib.h \
-  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
-  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
-  /usr/include/x86_64-linux-gnu/sys/types.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
-  /usr/include/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/endianness.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
-  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
-  /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
-
-lib/CMakeFiles/emu.dir/Cpu.c.o: ../lib/Cpu.c \
-  /usr/include/stdc-predef.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -199,9 +138,9 @@ lib/CMakeFiles/emu.dir/Cpu.c.o: ../lib/Cpu.c \
   ../include/Debug.h \
   ../include/Timer.h
 
-lib/CMakeFiles/emu.dir/Cpu_Fetch.c.o: ../lib/Cpu_Fetch.c \
+lib/CMakeFiles/emu.dir/CPU_Fetch.c.o: ../lib/CPU_Fetch.c \
   /usr/include/stdc-predef.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -264,9 +203,9 @@ lib/CMakeFiles/emu.dir/Cpu_Fetch.c.o: ../lib/Cpu_Fetch.c \
   ../include/Bus.h \
   ../include/Emu.h
 
-lib/CMakeFiles/emu.dir/Cpu_Process.c.o: ../lib/Cpu_Process.c \
+lib/CMakeFiles/emu.dir/CPU_Proc.c.o: ../lib/CPU_Proc.c \
   /usr/include/stdc-predef.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -330,9 +269,9 @@ lib/CMakeFiles/emu.dir/Cpu_Process.c.o: ../lib/Cpu_Process.c \
   ../include/Bus.h \
   ../include/Stack.h
 
-lib/CMakeFiles/emu.dir/Cpu_utilities.c.o: ../lib/Cpu_utilities.c \
+lib/CMakeFiles/emu.dir/CPU_Util.c.o: ../lib/CPU_Util.c \
   /usr/include/stdc-predef.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -393,6 +332,68 @@ lib/CMakeFiles/emu.dir/Cpu_utilities.c.o: ../lib/Cpu_utilities.c \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../include/Instructions.h \
   ../include/Bus.h
+
+lib/CMakeFiles/emu.dir/Cartridge.c.o: ../lib/Cartridge.c \
+  /usr/include/stdc-predef.h \
+  ../include/Cartridge.h \
+  ../include/Common.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/timesize.h \
+  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
+  /usr/include/stdio.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/include/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endianness.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
 
 lib/CMakeFiles/emu.dir/Debug.c.o: ../lib/Debug.c \
   /usr/include/stdc-predef.h \
@@ -455,7 +456,7 @@ lib/CMakeFiles/emu.dir/Debug.c.o: ../lib/Debug.c \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Instructions.h \
   ../include/Bus.h
 
@@ -521,9 +522,11 @@ lib/CMakeFiles/emu.dir/Emu.c.o: ../lib/Emu.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../include/Cartridge.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Instructions.h \
   ../include/UI.h \
+  ../include/Timer.h \
+  ../include/dma.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
@@ -545,8 +548,7 @@ lib/CMakeFiles/emu.dir/Emu.c.o: ../lib/Emu.c \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  ../include/Timer.h
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h
 
 lib/CMakeFiles/emu.dir/IO.c.o: ../lib/IO.c \
   /usr/include/stdc-predef.h \
@@ -609,9 +611,7 @@ lib/CMakeFiles/emu.dir/IO.c.o: ../lib/IO.c \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  ../include/Timer.h \
-  ../include/Cpu.h \
-  ../include/Instructions.h
+  ../include/dma.h
 
 lib/CMakeFiles/emu.dir/Instructions.c.o: ../lib/Instructions.c \
   /usr/include/stdc-predef.h \
@@ -679,7 +679,7 @@ lib/CMakeFiles/emu.dir/Instructions.c.o: ../lib/Instructions.c \
 
 lib/CMakeFiles/emu.dir/Interrupts.c.o: ../lib/Interrupts.c \
   /usr/include/stdc-predef.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -739,12 +739,12 @@ lib/CMakeFiles/emu.dir/Interrupts.c.o: ../lib/Interrupts.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../include/Instructions.h \
-  ../include/Interrupts.h \
-  ../include/Stack.h
+  ../include/Stack.h \
+  ../include/Interrupts.h
 
-lib/CMakeFiles/emu.dir/Ppu.c.o: ../lib/Ppu.c \
+lib/CMakeFiles/emu.dir/PPU.c.o: ../lib/PPU.c \
   /usr/include/stdc-predef.h \
-  ../include/Ppu.h \
+  ../include/PPU.h \
   ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -804,9 +804,9 @@ lib/CMakeFiles/emu.dir/Ppu.c.o: ../lib/Ppu.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
 
-lib/CMakeFiles/emu.dir/Ram.c.o: ../lib/Ram.c \
+lib/CMakeFiles/emu.dir/RAM.c.o: ../lib/RAM.c \
   /usr/include/stdc-predef.h \
-  ../include/Ram.h \
+  ../include/RAM.h \
   ../include/Common.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -927,7 +927,7 @@ lib/CMakeFiles/emu.dir/Stack.c.o: ../lib/Stack.c \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Instructions.h \
   ../include/Bus.h
 
@@ -993,7 +993,7 @@ lib/CMakeFiles/emu.dir/Timer.c.o: ../lib/Timer.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../include/Interrupts.h \
-  ../include/Cpu.h \
+  ../include/CPU.h \
   ../include/Instructions.h
 
 lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
@@ -1215,6 +1215,70 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
   /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL.h
 
+lib/CMakeFiles/emu.dir/dma.c.o: ../lib/dma.c \
+  /usr/include/stdc-predef.h \
+  ../include/dma.h \
+  ../include/Common.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/timesize.h \
+  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
+  /usr/include/stdio.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/include/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/endianness.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/alloca.h \
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  ../include/PPU.h \
+  ../include/Bus.h
+
 
 /usr/include/SDL2/SDL_misc.h:
 
@@ -1234,12 +1298,6 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/include/SDL2/close_code.h:
 
-../include/Instructions.h:
-
-../lib/Cpu.c:
-
-../include/CPU.h:
-
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
 /usr/include/SDL2/SDL_filesystem.h:
@@ -1254,13 +1312,15 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h:
+/usr/include/SDL2/SDL.h:
 
-../lib/Cpu_Fetch.c:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
 ../lib/Timer.c:
+
+../lib/PPU.c:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
@@ -1268,7 +1328,13 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h:
 
-../lib/Ram.c:
+../include/UI.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h:
+
+../lib/CPU.c:
 
 /usr/include/SDL2/SDL_keycode.h:
 
@@ -1278,33 +1344,31 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h:
 
-/usr/include/SDL2/SDL.h:
-
-../lib/Cpu_utilities.c:
-
-/usr/include/SDL2/SDL_haptic.h:
-
 /usr/include/SDL2/SDL_config.h:
 
 ../include/Stack.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h:
-
 ../include/Debug.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
 /usr/include/unistd.h:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
-../include/UI.h:
+../include/Instructions.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h:
+/usr/include/x86_64-linux-gnu/bits/confname.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h:
 
-../include/Cpu.h:
+../include/CPU.h:
+
+../include/RAM.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
@@ -1315,10 +1379,6 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 /usr/include/SDL2/SDL_rect.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
-
-../include/Ram.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
@@ -1356,10 +1416,6 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types.h:
-
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
 /usr/include/SDL2/SDL_version.h:
@@ -1392,21 +1448,17 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
+../lib/CPU_Fetch.c:
+
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h:
 
 ../include/Common.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
 /usr/include/math.h:
 
@@ -1420,9 +1472,11 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/include/stdc-predef.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
+/usr/include/SDL2/SDL_haptic.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
@@ -1472,7 +1526,13 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h:
 
+../lib/RAM.c:
+
 /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h:
 
 /usr/include/SDL2/SDL_stdinc.h:
 
@@ -1486,13 +1546,19 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 ../lib/Cartridge.c:
 
-../lib/Ppu.c:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h:
+
+../lib/CPU_Proc.c:
 
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/include/x86_64-linux-gnu/bits/environments.h:
+
+../include/PPU.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h:
+
+../lib/dma.c:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
@@ -1658,8 +1724,6 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:
 
-../lib/Cpu_Process.c:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h:
@@ -1678,8 +1742,6 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h:
 
 /usr/include/alloca.h:
@@ -1687,6 +1749,8 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h:
 
@@ -1698,13 +1762,11 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h:
 
-../include/Ppu.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/confname.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h:
 
@@ -1713,6 +1775,8 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h:
 
 /usr/include/SDL2/SDL_keyboard.h:
+
+../include/dma.h:
 
 /usr/include/SDL2/SDL_scancode.h:
 
@@ -1733,6 +1797,8 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 /usr/include/SDL2/SDL_loadso.h:
 
 /usr/include/SDL2/SDL_metal.h:
+
+../lib/CPU_Util.c:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h:
 

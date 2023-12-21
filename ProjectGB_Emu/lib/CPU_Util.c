@@ -1,4 +1,4 @@
-#include <Cpu.h>
+#include <CPU.h>
 #include <Bus.h>
 
 extern CPUContext context;
@@ -25,39 +25,40 @@ u16 CPUReadReg(registerType rt) //reads CPU register
         case RT_DE: return Reverse(*((u16 *)&context.regs.d));
         case RT_HL: return Reverse(*((u16 *)&context.regs.h));
 
-        case RT_PC: return context.regs.progCounter;
-        case RT_SP: return context.regs.stackPtr;
+        case RT_PC: return context.regs.pc;
+        case RT_SP: return context.regs.sp;
         default: return 0;
     }
 }
 
-void CPUSetReg(registerType rt, u16 value) //sets a CPU register
+void CPUSetReg(registerType rt, u16 val) //sets a CPU register
 {
     switch(rt) {
-        case RT_A: context.regs.a = value & 0xFF; break; //for 8 bit values, we end with 0xFF
-        case RT_F: context.regs.f = value & 0xFF; break;
-        case RT_B: context.regs.b = value & 0xFF; break;
+        case RT_A: context.regs.a = val & 0xFF; break; //for 8 bit values, we end with 0xFF
+        case RT_F: context.regs.f = val & 0xFF; break;
+        case RT_B: context.regs.b = val & 0xFF; break;
         case RT_C: {
-             context.regs.c = value & 0xFF;
+             context.regs.c = val & 0xFF;
         } break;
-        case RT_D: context.regs.d = value & 0xFF; break;
-        case RT_E: context.regs.e = value & 0xFF; break;
-        case RT_H: context.regs.h = value & 0xFF; break;
-        case RT_L: context.regs.l = value & 0xFF; break;
+        case RT_D: context.regs.d = val & 0xFF; break;
+        case RT_E: context.regs.e = val & 0xFF; break;
+        case RT_H: context.regs.h = val & 0xFF; break;
+        case RT_L: context.regs.l = val & 0xFF; break;
 
-        case RT_AF: *((u16 *)&context.regs.a) = Reverse(value); break; //for 16 bit values, we Reverse
-        case RT_BC: *((u16 *)&context.regs.b) = Reverse(value); break;
-        case RT_DE: *((u16 *)&context.regs.d) = Reverse(value); break;
+        case RT_AF: *((u16 *)&context.regs.a) = Reverse(val); break; //for 16 bit values, we Reverse
+        case RT_BC: *((u16 *)&context.regs.b) = Reverse(val); break;
+        case RT_DE: *((u16 *)&context.regs.d) = Reverse(val); break;
         case RT_HL: {
-         *((u16 *)&context.regs.h) = Reverse(value); 
+         *((u16 *)&context.regs.h) = Reverse(val); 
          break;
         }
 
-        case RT_PC: context.regs.progCounter = value; break;
-        case RT_SP: context.regs.stackPtr = value; break;
+        case RT_PC: context.regs.pc = val; break;
+        case RT_SP: context.regs.sp = val; break;
         case RT_NONE: break;
     }
 }
+
 
 u8 CPUReadReg8(registerType rt) //CPUReadReg8 and CPUSetReg8 function the register operations for the bitwise functions
 {
@@ -79,25 +80,25 @@ u8 CPUReadReg8(registerType rt) //CPUReadReg8 and CPUSetReg8 function the regist
     }
 }
 
-void CPUSetReg8(registerType rt, u8 value) 
+void CPUSetReg8(registerType rt, u8 val) 
 {
     switch(rt) {
-        case RT_A: context.regs.a = value & 0xFF; break;
-        case RT_F: context.regs.f = value & 0xFF; break;
-        case RT_B: context.regs.b = value & 0xFF; break;
-        case RT_C: context.regs.c = value & 0xFF; break;
-        case RT_D: context.regs.d = value & 0xFF; break;
-        case RT_E: context.regs.e = value & 0xFF; break;
-        case RT_H: context.regs.h = value & 0xFF; break;
-        case RT_L: context.regs.l = value & 0xFF; break;
-        case RT_HL: WriteBus(CPUReadReg(RT_HL), value); break;
+        case RT_A: context.regs.a = val & 0xFF; break;
+        case RT_F: context.regs.f = val & 0xFF; break;
+        case RT_B: context.regs.b = val & 0xFF; break;
+        case RT_C: context.regs.c = val & 0xFF; break;
+        case RT_D: context.regs.d = val & 0xFF; break;
+        case RT_E: context.regs.e = val & 0xFF; break;
+        case RT_H: context.regs.h = val & 0xFF; break;
+        case RT_L: context.regs.l = val & 0xFF; break;
+        case RT_HL: WriteBus(CPUReadReg(RT_HL), val); break;
         default:
             printf("**ERR INVALID REG8: %d\n", rt);
             NO_IMPL
     }
 }
 
-CPURegisters *GetCPURegs()
+CPURegisters *GetCPURegs() 
 {
     return &context.regs;
 }
