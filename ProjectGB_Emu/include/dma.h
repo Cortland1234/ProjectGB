@@ -2,7 +2,9 @@
 
 #include <Common.h>
 
-void StartDMA(u8 start);
+//Direct Memory Access
+
+void StartDMA(u8 start); 
 void DMATick();
 
-bool TransferringDMA();
+bool TransferringDMA(); 

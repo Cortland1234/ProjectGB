@@ -4,7 +4,7 @@
 #include <CPU.h>
 #include <IO.h>
 #include <PPU.h>
-#include <dma.h>
+#include <Dma.h>
 
 //Pasted below are the Memory Maps
 //For each section of the memory that you want to access, it will go to different peripherals listed below
@@ -47,6 +47,11 @@ u8 ReadBus(u16 address)
     } 
     else if (address < 0xFEA0)  // Object Attribute Memory
     {
+        if (TransferringDMA())
+        {
+            return 0xFF;
+        }
+
         return ReadPpuOam(address);
     } 
     else if (address < 0xFF00) // Another unusable reserved RAM section, returns 0.
@@ -94,6 +99,11 @@ void WriteBus(u16 address, u8 value)
     else if (address < 0xFEA0) 
     {
         //Object Attribute Memory
+
+        if (TransferringDMA())
+        {
+            return;
+        }
         
         WritePpuOam(address, value);
     } 

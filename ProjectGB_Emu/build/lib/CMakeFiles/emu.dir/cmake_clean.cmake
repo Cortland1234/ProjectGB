@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/emu.dir/Cartridge.c.o.d"
   "CMakeFiles/emu.dir/Debug.c.o"
   "CMakeFiles/emu.dir/Debug.c.o.d"
+  "CMakeFiles/emu.dir/Dma.c.o"
+  "CMakeFiles/emu.dir/Dma.c.o.d"
   "CMakeFiles/emu.dir/Emu.c.o"
   "CMakeFiles/emu.dir/Emu.c.o.d"
   "CMakeFiles/emu.dir/IO.c.o"
@@ -31,8 +33,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/emu.dir/Timer.c.o.d"
   "CMakeFiles/emu.dir/UI.c.o"
   "CMakeFiles/emu.dir/UI.c.o.d"
-  "CMakeFiles/emu.dir/dma.c.o"
-  "CMakeFiles/emu.dir/dma.c.o.d"
   "libemu.a"
   "libemu.pdb"
 )

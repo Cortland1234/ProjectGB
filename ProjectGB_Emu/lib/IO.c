@@ -1,5 +1,5 @@
 #include <IO.h>
-#include <dma.h>
+#include <Dma.h>
 
 static char serialData[2];
 

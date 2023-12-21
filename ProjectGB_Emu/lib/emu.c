@@ -4,7 +4,7 @@
 #include <CPU.h>
 #include <UI.h>
 #include <Timer.h>
-#include <dma.h>
+#include <Dma.h>
 #include <pthread.h>
 #include <unistd.h>
 
@@ -93,9 +93,9 @@ int RunEMU(int argc, char **argv) //function for running the emulator with error
 void EMUCycles(int cycles) 
 {
     
-    for (int i=0; i<cycles; i++) 
+    for (int i = 0; i < cycles; i++) 
     {
-        for (int n=0; n<4; n++) 
+        for (int n = 0; n < 4; n++) 
         {
             context.ticks++;
             TimerTick();

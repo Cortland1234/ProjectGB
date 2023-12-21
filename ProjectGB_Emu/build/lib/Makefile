@@ -354,6 +354,30 @@ Debug.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Debug.c.s
 .PHONY : Debug.c.s
 
+Dma.o: Dma.c.o
+.PHONY : Dma.o
+
+# target to build an object file
+Dma.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Dma.c.o
+.PHONY : Dma.c.o
+
+Dma.i: Dma.c.i
+.PHONY : Dma.i
+
+# target to preprocess a source file
+Dma.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Dma.c.i
+.PHONY : Dma.c.i
+
+Dma.s: Dma.c.s
+.PHONY : Dma.s
+
+# target to generate assembly for a file
+Dma.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Dma.c.s
+.PHONY : Dma.c.s
+
 Emu.o: Emu.c.o
 .PHONY : Emu.o
 
@@ -570,30 +594,6 @@ UI.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/UI.c.s
 .PHONY : UI.c.s
 
-dma.o: dma.c.o
-.PHONY : dma.o
-
-# target to build an object file
-dma.c.o:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/dma.c.o
-.PHONY : dma.c.o
-
-dma.i: dma.c.i
-.PHONY : dma.i
-
-# target to preprocess a source file
-dma.c.i:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/dma.c.i
-.PHONY : dma.c.i
-
-dma.s: dma.c.s
-.PHONY : dma.s
-
-# target to generate assembly for a file
-dma.c.s:
-	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/dma.c.s
-.PHONY : dma.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -629,6 +629,9 @@ help:
 	@echo "... Debug.o"
 	@echo "... Debug.i"
 	@echo "... Debug.s"
+	@echo "... Dma.o"
+	@echo "... Dma.i"
+	@echo "... Dma.s"
 	@echo "... Emu.o"
 	@echo "... Emu.i"
 	@echo "... Emu.s"
@@ -656,9 +659,6 @@ help:
 	@echo "... UI.o"
 	@echo "... UI.i"
 	@echo "... UI.s"
-	@echo "... dma.o"
-	@echo "... dma.i"
-	@echo "... dma.s"
 .PHONY : help
 
 
