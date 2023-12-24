@@ -7,6 +7,8 @@
 
 CPUContext context = {0};
 
+#define CPU_DEBUG 0
+
 void InitializeCPU() 
 {
     context.regs.pc = 0x100;
@@ -53,6 +55,9 @@ bool CPUStep()
         EMUCycles(1);
         FetchData(); //fetch the data for that instruction
 
+
+#if CPU_DEBUG == 1 //with this constant we can switch debug mode on or off by changing this value to 0
+
         char flags[16];
         sprintf(flags, "%c%c%c%c", //getting flags set for debugging
             context.regs.f & (1 << 7) ? 'Z' : '-',
@@ -68,7 +73,7 @@ bool CPUStep()
             pc, inst, context.currentOpCode,
             ReadBus(pc + 1), ReadBus(pc + 2), context.regs.a, flags, context.regs.b, context.regs.c,
             context.regs.d, context.regs.e, context.regs.h, context.regs.l);
-
+#endif
         if (context.curInstruction == NULL)
         {
             printf("Unknown Instruction! %02X\n", context.currentOpCode);

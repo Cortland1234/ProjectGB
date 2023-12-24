@@ -28,7 +28,7 @@ typedef struct
 
 typedef enum {
    MODE_HBLANK,
-   MODE_VBLAN,
+   MODE_VBLANK,
    MODE_OAM,
    MODE_XFER
 } LCDMode;
@@ -44,7 +44,7 @@ LCDContext *GetLCDContext();
 #define LCDC_WIN_MAP_AREA (BIT(GetLCDContext()->lcdc, 6) ? 0x9C00 : 0x9800)
 #define LCDC_LCD_ENABLE (BIT(GetLCDContext()->lcdc, 7))
 
-#define LCDS_MODE ((lcd_mode)(GetLCDContext()->lcds & 0b11)) //flag for telling us what mode the LCD is currently in
+#define LCDS_MODE ((LCDMode)(GetLCDContext()->lcds & 0b11)) //flag for telling us what mode the LCD is currently in
 #define LCDS_MODE_SET(mode) { GetLCDContext()->lcds &= ~0b11; GetLCDContext()->lcds |= mode; } // sets the mode for the LCD
 
 #define LCDS_LYC (BIT(GetLCDContext()->lcds, 2)) //LYC flag, set if ly and lyCompare are equal
@@ -57,7 +57,7 @@ typedef enum {
    SS_LYC = (1 << 6),
 } statSrc;
 
-#define LCDS_STAT_INT(src) (lcd_get_context()->lcds & src)
+#define LCDS_STAT_INT(src) (GetLCDContext()->lcds & src)
 
 void InitializeLCD();
 

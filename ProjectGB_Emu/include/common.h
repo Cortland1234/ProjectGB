@@ -17,5 +17,6 @@ typedef uint64_t u64; //64 bit data type
 #define BETWEEN(a, b, c) ((a >= b) && (a <= c)) //checks if a number is in between two values
 
 void delay(u32 ms);
+u32 getTicks();
 
 #define NO_IMPL { fprintf(stderr, "NOT YET IMPLEMENTED\n"); exit(-5); } //For features not yet implemented, it will print this

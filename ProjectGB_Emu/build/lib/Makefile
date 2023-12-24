@@ -522,6 +522,30 @@ PPU.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/PPU.c.s
 .PHONY : PPU.c.s
 
+PPUsm.o: PPUsm.c.o
+.PHONY : PPUsm.o
+
+# target to build an object file
+PPUsm.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/PPUsm.c.o
+.PHONY : PPUsm.c.o
+
+PPUsm.i: PPUsm.c.i
+.PHONY : PPUsm.i
+
+# target to preprocess a source file
+PPUsm.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/PPUsm.c.i
+.PHONY : PPUsm.c.i
+
+PPUsm.s: PPUsm.c.s
+.PHONY : PPUsm.s
+
+# target to generate assembly for a file
+PPUsm.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/PPUsm.c.s
+.PHONY : PPUsm.c.s
+
 RAM.o: RAM.c.o
 .PHONY : RAM.o
 
@@ -674,6 +698,9 @@ help:
 	@echo "... PPU.o"
 	@echo "... PPU.i"
 	@echo "... PPU.s"
+	@echo "... PPUsm.o"
+	@echo "... PPUsm.i"
+	@echo "... PPUsm.s"
 	@echo "... RAM.o"
 	@echo "... RAM.i"
 	@echo "... RAM.s"

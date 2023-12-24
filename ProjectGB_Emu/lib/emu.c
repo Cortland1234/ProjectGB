@@ -7,6 +7,7 @@
 #include <Dma.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <PPU.h>
 
 /* 
   Emu components:
@@ -30,6 +31,7 @@ void *RunCPU(void *p) //this will be the main thread running for the CPU
 {
     InitializeTimer();
     InitializeCPU(); //initializing CPU
+    InitializePPU();
 
     context.running = true; //setting context variables
     context.paused = false;
@@ -79,12 +81,20 @@ int RunEMU(int argc, char **argv) //function for running the emulator with error
         return -1;
     }
 
+    u32 prevFrame = 0;
+
     while(!context.die) //while emu window is not dead (closed)
     {
         usleep(1000); //sleep for 1000 ms
         HandleUIEvents(); //call event handler for UI
 
-        UpdateUI();
+        if(prevFrame != GetPPUContext()->currentFrame) //if the frame is not synced to the PPU, call UpdateUI
+        {
+            UpdateUI();
+        }
+
+        prevFrame = GetPPUContext()->currentFrame;
+        
     }
 
     return 0;
@@ -99,6 +109,7 @@ void EMUCycles(int cycles)
         {
             context.ticks++;
             TimerTick();
+            PPUTick();
         }
 
         DMATick();

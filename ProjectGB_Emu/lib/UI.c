@@ -51,6 +51,11 @@ void delay(u32 ms) {
     SDL_Delay(ms);
 }
 
+u32 getTicks() //getting the number of ticks since program started
+{
+    return SDL_GetTicks();
+}
+
 static unsigned long tileColors[4] = {0xFFFFFFFF, 0xFFAAAAAA, 0xFF555555, 0xFF000000}; //all color codes for the original GameBoy
 
 void DisplayTile(SDL_Surface *surface, u16 startLoc, u16 tileNum, int x, int y) {

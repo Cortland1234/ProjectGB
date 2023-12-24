@@ -38,12 +38,6 @@ void DMATick() //everytime this is called
     context.byte++;
 
     context.active = context.byte < 0xA0; //considered active when byte reaches 0xA0
-
-    if (!context.active) 
-    {
-        printf("DMA DONE!\n");
-        sleep(2);
-    }
 }
 
 bool TransferringDMA() 

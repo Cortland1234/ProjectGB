@@ -2,6 +2,11 @@
 
 #include <Common.h>
 
+static const int LINES_PER_FRAME = 154; //154 lines in a single frame
+static const int TICKS_PER_LINE = 456; //456 ticks per line
+static const int YRES = 144; //Y Resolution
+static const int XRES = 160; //X Resolution
+
 typedef struct {
     u8 y; //y position for object on the screen
     u8 x; //x position for object on the screen
@@ -26,10 +31,16 @@ typedef struct {
 typedef struct {
     OAMEntry oamRam[40];
     u8 vram[0x2000]; //video ram, defines the data for 386 tiles (16 bytes per tile)
+
+    u32 currentFrame;
+    u32 lineTicks;
+    u32 *vidBuffer; // buffer where we draw the pixels
 } PPUContext;
 
 void InitializePPU();
 void PPUTick();
+
+PPUContext *GetPPUContext();
 
 void WritePpuOam(u16 address, u8 value);
 u8 ReadPpuOam(u16 address);

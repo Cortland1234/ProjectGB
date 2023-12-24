@@ -1,15 +1,47 @@
 #include <PPU.h>
+#include <LCD.h>
+#include <string.h>
+#include <PPUsm.h>
 
 static PPUContext context;
 
+PPUContext *GetPPUContext()
+{
+    return &context;
+}
+
 void InitializePPU() 
 {
+    context.currentFrame = 0;
+    context.lineTicks = 0;
+    context.vidBuffer = malloc(YRES * XRES * sizeof(32)); //allocating memory for the video buffer
 
+    InitializeLCD();
+    LCDS_MODE_SET(MODE_OAM);
+
+    memset(context.oamRam, 0, sizeof(context.oamRam)); //zeroing out the OAM RAM
+    memset(context.vidBuffer, 0, YRES * XRES * sizeof(u32)); //zeroing out the video buffer
 }
 
 void PPUTick() 
 {
+    context.lineTicks++; //for every PPU tick, we increment the line ticks
 
+    switch(LCDS_MODE)
+    {
+        case MODE_OAM:
+            PPUModeOAM();
+            break;
+        case MODE_XFER:
+            PPUModeXFER();
+            break;
+        case MODE_VBLANK:
+            PPUModeVBLANK();
+            break;
+        case MODE_HBLANK:
+            PPUModeHBLANK();
+            break;
+    }        
 }
 
 

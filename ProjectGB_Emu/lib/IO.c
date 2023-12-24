@@ -1,9 +1,10 @@
 #include <IO.h>
 #include <Dma.h>
+#include <LCD.h>
+#include <Timer.h>
+#include <CPU.h>
 
 static char serialData[2];
-
-u8 ly = 0;
 
 u8 ReadIO(u16 address) 
 {
@@ -27,9 +28,9 @@ u8 ReadIO(u16 address)
         return GetCPUIntFlags();
     }
 
-    if (address == 0xFF44) 
+    if (BETWEEN(address, 0xFF40, 0xFF4B)) 
     {
-        return ly++;
+        return ReadLCD(address);
     }
 
     printf("UNSUPPORTED ReadBus(%04X)\n", address);
@@ -62,10 +63,10 @@ void WriteIO(u16 address, u8 value)
         return;
     }
 
-    if (address == 0xFF46) 
+    if (BETWEEN(address, 0xFF40, 0xFF4B)) 
     {
-        StartDMA(value);
-        printf("DMA START!\n");
+        WriteLCD(address, value);
+        return;
     }
 
     printf("UNSUPPORTED WriteBus(%04X)\n", address);
