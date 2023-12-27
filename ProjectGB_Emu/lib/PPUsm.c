@@ -2,6 +2,10 @@
 #include <LCD.h>
 #include <CPU.h>
 #include <Interrupts.h>
+#include <string.h>
+
+void PipelineFIFOReset(); //declaring functions for PPUPipeline.c
+void PipelineProcess();
 
 //PPU State Machine
 
@@ -24,6 +28,67 @@ void  IncrementLY()
     }
 }
 
+void LoadLineSprites()
+{
+    int curY = GetLCDContext()->ly;
+
+    u8 spriteHeight = LCDC_OBJ_HEIGHT;
+    memset(GetPPUContext()->lineEntryArray, 0, sizeof(GetPPUContext()->lineEntryArray));
+
+    for (int i = 0; i < 40; i++)
+    {
+        OAMEntry e = GetPPUContext()->oamRam[i];
+
+        if (!e.x) //if x = 0, it means the sprite is not visible
+        {
+            continue;
+        }
+
+        if (GetPPUContext()->lineSpriteCount >= 10) //max 10 sprites per line
+        {
+            break;
+        }
+
+        if (e.y <= curY + 16 && e.y + spriteHeight + curY + 16) //if the sprite is on the current line
+        {
+            OAMLineEntry *entry = &GetPPUContext()->lineEntryArray[GetPPUContext()->lineSpriteCount++];
+
+            entry->entry = e;
+            entry->next = NULL;
+
+            if (!GetPPUContext()->lineSprites || GetPPUContext()->lineSprites->entry.x > e.x)
+            {
+                entry->next = GetPPUContext()->lineSprites;
+                GetPPUContext()->lineSprites = entry;
+                continue;
+            }
+
+            //sorting sprites..
+            OAMLineEntry *le = GetPPUContext()->lineSprites;
+            OAMLineEntry *prev = le;
+
+            while(le)
+            {
+                if (le->entry.x > e.x)
+                {
+                    prev->next = entry;
+                    entry->next = le;
+                    break;
+                }
+
+                if (!le->next)
+                {
+                    le->next = entry;
+                    break;
+                }
+
+                prev = le;
+                le = le->next;
+            }
+        }
+    }
+}
+
 void PPUModeOAM()
 {
     if (GetPPUContext()->lineTicks >= 80) //when line ticks are greater than 80, we switch to the next mode (XFER)
@@ -40,7 +105,10 @@ void PPUModeOAM()
 
     if (GetPPUContext()->lineTicks == 1) //if linetick = 1, we will read all OAM on that first tick
     {
+        GetPPUContext()->lineSprites = 0;
+        GetPPUContext()->lineSpriteCount = 0;
 
+        LoadLineSprites();
     }
 }
 

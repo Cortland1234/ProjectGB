@@ -1071,7 +1071,11 @@ lib/CMakeFiles/emu.dir/PPUsm.c.o: ../lib/PPUsm.c \
   ../include/LCD.h \
   ../include/CPU.h \
   ../include/Instructions.h \
-  ../include/Interrupts.h
+  ../include/Interrupts.h \
+  /usr/include/string.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/strings.h
 
 lib/CMakeFiles/emu.dir/RAM.c.o: ../lib/RAM.c \
   /usr/include/stdc-predef.h \

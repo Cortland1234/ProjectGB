@@ -84,6 +84,6 @@ void WriteLCD(u16 address, u8 value)
     }
     else if (address == 0xFF49)
     {
-        UpdatePalette(value & 0b11111100, 1);
+        UpdatePalette(value & 0b11111100, 2);
     }
 }

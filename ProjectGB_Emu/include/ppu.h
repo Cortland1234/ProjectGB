@@ -15,7 +15,7 @@ typedef enum {
     FS_PUSH
 } FetchState; //enum for the different states of the pixel FIFO
 
-typedef struct {
+typedef struct _fifoEntry {
     struct _fifoEntry *next;
     u32 value; //color of the pixel
 } fifoEntry;
@@ -61,9 +61,9 @@ typedef struct {
  Bit2-0 Palette number  **CGB Mode Only**     (OBP0-7)
  */
 
-typedef struct {
+typedef struct _OAMLineEntry {
     OAMEntry entry;
-    struct OAMLineEntry *next;
+    struct _OAMLineEntry *next;
 
 } OAMLineEntry;
 
@@ -71,14 +71,14 @@ typedef struct {
     OAMEntry oamRam[40];
     u8 vram[0x2000]; //video ram, defines the data for 386 tiles (16 bytes per tile)
 
+        PixelFIFOContext pfc;
+
     u8 lineSpriteCount; //0 to 10 sprites on a line
     OAMLineEntry *lineSprites; //linked list of current sprites on the line
     OAMLineEntry lineEntryArray[10]; //pointers for the memory of the linked list so malloc is not needed every time
 
     u8 fetchEntryCount;
     OAMEntry fetchEntries[3]; //entries fetched during pipeline
-
-    PixelFIFOContext pfc;
 
     u32 currentFrame;
     u32 lineTicks;

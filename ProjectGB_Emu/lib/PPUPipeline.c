@@ -34,6 +34,52 @@ u32 PixelFIFOPop() {
     return val;
 }
 
+u32 FetchSpritePixels(int bit, u32 color, u8 bg_color) {
+    for (int i=0; i<GetPPUContext()->fetchEntryCount; i++) {
+        int sp_x = (GetPPUContext()->fetchEntries[i].x - 8) + 
+            ((GetLCDContext()->scrollX % 8));
+        
+        if (sp_x + 8 < GetPPUContext()->pfc.fifoX) {
+            //past pixel point already...
+            continue;
+        }
+
+        int offset = GetPPUContext()->pfc.fifoX - sp_x;
+
+        if (offset < 0 || offset > 7) {
+            //out of bounds..
+            continue;
+        }
+
+        bit = (7 - offset);
+
+        if (GetPPUContext()->fetchEntries[i].xFlipFlag) {
+            bit = offset;
+        }
+
+        u8 hi = !!(GetPPUContext()->pfc.fetchEntryData[i * 2] & (1 << bit));
+        u8 lo = !!(GetPPUContext()->pfc.fetchEntryData[(i * 2) + 1] & (1 << bit)) << 1;
+
+        bool bg_priority = GetPPUContext()->fetchEntries[i].bgPriorityFlag;
+
+        if (!(hi|lo)) {
+            //transparent
+            continue;
+        }
+
+        if (!bg_priority || bg_color == 0) {
+            color = (GetPPUContext()->fetchEntries[i].paletteNumFlag) ? 
+                GetLCDContext()->spriteColors2[hi|lo] : GetLCDContext()->spriteColors1[hi|lo];
+
+            if (hi|lo) {
+                break;
+            }
+        }
+    }
+
+    return color;
+}
+
 bool PipelineFIFOAdd() {
     if (GetPPUContext()->pfc.pixelFIFO.size > 8) {
         //fifo is full!
@@ -48,6 +94,14 @@ bool PipelineFIFOAdd() {
         u8 lo = !!(GetPPUContext()->pfc.backgroundFetchData[2] & (1 << bit)) << 1;
         u32 color = GetLCDContext()->bgColors[hi | lo];
 
+        if (!LCDC_BGW_ENABLE) {
+            color = GetLCDContext()->bgColors[0];
+        }
+
+        if (LCDC_OBJ_ENABLE) {
+            color = FetchSpritePixels(bit, color, hi | lo);
+        }
+
         if (x >= 0) {
             PixelFIFOPush(color);
             GetPPUContext()->pfc.fifoX++;
@@ -57,9 +111,55 @@ bool PipelineFIFOAdd() {
     return true;
 }
 
+void PipelineLoadSpriteTile() {
+    OAMLineEntry *le = GetPPUContext()->lineSprites;
+
+    while(le) {
+        int sp_x = (le->entry.x - 8) + (GetLCDContext()->scrollX % 8);
+
+        if ((sp_x >= GetPPUContext()->pfc.fetchX && sp_x < GetPPUContext()->pfc.fetchX + 8) ||
+            ((sp_x + 8) >= GetPPUContext()->pfc.fetchX && (sp_x + 8) < GetPPUContext()->pfc.fetchX + 8)) {
+            //need to add entry
+            GetPPUContext()->fetchEntries[GetPPUContext()->fetchEntryCount++] = le->entry;
+        }
+
+        le = le->next;
+
+        if (!le || GetPPUContext()->fetchEntryCount >= 3) {
+            //max checking 3 sprites on pixels
+            break;
+        }
+    }
+}
+
+void PipelineLoadPixelData(u8 offset) {
+    int cur_y = GetLCDContext()->ly;
+    u8 sprite_height = LCDC_OBJ_HEIGHT;
+
+    for (int i=0; i<GetPPUContext()->fetchEntryCount; i++) {
+        u8 ty = ((cur_y + 16) - GetPPUContext()->fetchEntries[i].y) * 2;
+
+        if (GetPPUContext()->fetchEntries[i].yFlipFlag) {
+            //flipped upside down...
+            ty = ((sprite_height * 2) - 2) - ty;
+        }
+
+        u8 tile_index = GetPPUContext()->fetchEntries[i].tile;
+
+        if (sprite_height == 16) {
+            tile_index &= ~(1); //remove last bit...
+        }
+
+        GetPPUContext()->pfc.fetchEntryData[(i * 2) + offset] = 
+            ReadBus(0x8000 + (tile_index * 16) + ty + offset);
+    }
+}
+
 void PipelineFetch() {
     switch(GetPPUContext()->pfc.currentState) {
         case FS_TILE: {
+            GetPPUContext()->fetchEntryCount = 0;
+
             if (LCDC_BGW_ENABLE) {
                 GetPPUContext()->pfc.backgroundFetchData[0] = ReadBus(LCDC_BG_MAP_AREA + 
                     (GetPPUContext()->pfc.mapX / 8) + 
@@ -68,6 +168,10 @@ void PipelineFetch() {
                 if (LCDC_BGW_DATA_AREA == 0x8800) {
                     GetPPUContext()->pfc.backgroundFetchData[0] += 128;
                 }
+            }
+
+            if (LCDC_OBJ_ENABLE && GetPPUContext()->lineSprites) {
+                PipelineLoadSpriteTile();
             }
 
             GetPPUContext()->pfc.currentState = FS_DATA0;
@@ -79,6 +183,8 @@ void PipelineFetch() {
                 (GetPPUContext()->pfc.backgroundFetchData[0] * 16) + 
                 GetPPUContext()->pfc.tileY);
 
+            PipelineLoadPixelData(0);
+
             GetPPUContext()->pfc.currentState = FS_DATA1;
         } break;
 
@@ -86,6 +192,8 @@ void PipelineFetch() {
             GetPPUContext()->pfc.backgroundFetchData[2] = ReadBus(LCDC_BGW_DATA_AREA +
                 (GetPPUContext()->pfc.backgroundFetchData[0] * 16) + 
                 GetPPUContext()->pfc.tileY + 1);
+
+            PipelineLoadPixelData(1);
 
             GetPPUContext()->pfc.currentState = FS_IDLE;
 
