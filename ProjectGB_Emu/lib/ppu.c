@@ -3,6 +3,9 @@
 #include <string.h>
 #include <PPUsm.h>
 
+void PipelineFIFOReset(); //declaring functions for PPUPipeline.c
+void PipelineProcess();
+
 static PPUContext context;
 
 PPUContext *GetPPUContext()
@@ -15,6 +18,16 @@ void InitializePPU()
     context.currentFrame = 0;
     context.lineTicks = 0;
     context.vidBuffer = malloc(YRES * XRES * sizeof(32)); //allocating memory for the video buffer
+
+    context.pfc.lineX = 0; //setting pixel FIFO values
+    context.pfc.pushedX = 0;
+    context.pfc.fetchX = 0;
+    context.pfc.pixelFIFO.size = 0;
+    context.pfc.pixelFIFO.head = context.pfc.pixelFIFO.tail = NULL;
+    context.pfc.currentState = FS_TILE;
+
+    context.lineSprites = 0;
+    context.fetchEntryCount = 0;
 
     InitializeLCD();
     LCDS_MODE_SET(MODE_OAM);

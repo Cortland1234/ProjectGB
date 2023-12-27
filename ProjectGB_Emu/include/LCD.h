@@ -35,7 +35,7 @@ typedef enum {
 
 LCDContext *GetLCDContext();
 
-#define LDCD_BGW_ENABLE (BIT(GetLCDContext()->lcdc, 0)) //lcd background enable
+#define LCDC_BGW_ENABLE (BIT(GetLCDContext()->lcdc, 0)) //lcd background enable
 #define LCDC_OBJ_ENABLE (BIT(GetLCDContext()->lcdc, 1)) //sprites enable
 #define LCDC_OBJ_HEIGHT (BIT(GetLCDContext()->lcdc, 2) ? 16 : 8) //sprite height
 #define LCDC_BG_MAP_AREA (BIT(GetLCDContext()->lcdc, 3) ? 0x9C00 : 0x9800) 

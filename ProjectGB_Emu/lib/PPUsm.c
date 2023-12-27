@@ -3,7 +3,9 @@
 #include <CPU.h>
 #include <Interrupts.h>
 
-void IncrementLY()
+//PPU State Machine
+
+void  IncrementLY()
 {
     GetLCDContext()->ly++;
 
@@ -27,14 +29,34 @@ void PPUModeOAM()
     if (GetPPUContext()->lineTicks >= 80) //when line ticks are greater than 80, we switch to the next mode (XFER)
     {
         LCDS_MODE_SET(MODE_XFER);
+
+        GetPPUContext()->pfc.currentState = FS_TILE;
+        GetPPUContext()->pfc.lineX = 0; 
+        GetPPUContext()->pfc.fetchX = 0;
+        GetPPUContext()->pfc.pushedX = 0;
+        GetPPUContext()->pfc.fifoX = 0;
+
+    }
+
+    if (GetPPUContext()->lineTicks == 1) //if linetick = 1, we will read all OAM on that first tick
+    {
+
     }
 }
 
 void PPUModeXFER()
 {
-    if (GetPPUContext()->lineTicks >= 80 + 172) //switch to HBLANK mode when these conditions are met
+    PipelineProcess();
+
+    if (GetPPUContext()->pfc.pushedX >= XRES) //switch to HBLANK mode when these conditions are met
     {
+        PipelineFIFOReset();
         LCDS_MODE_SET(MODE_HBLANK);
+
+        if (LCDS_STAT_INT(SS_HBLANK))
+        {
+            RequestCPUInterrupts(IT_LCD_STAT);
+        }
     }    
 }
 
@@ -42,6 +64,22 @@ static u32 targetFrameTime = 1000 / 60; //this will set the target FPS to 60
 static long prevFrameTime = 0;
 static long startTimer = 0;
 static long frameCount = 0;
+
+void PPUModeVBLANK()
+{
+   if (GetPPUContext()->lineTicks >= TICKS_PER_LINE)
+   {
+        IncrementLY();
+
+        if (GetLCDContext()->ly >= LINES_PER_FRAME)
+        {
+            LCDS_MODE_SET(MODE_OAM);
+            GetLCDContext()->ly = 0;
+        }
+
+        GetPPUContext()->lineTicks = 0;
+   } 
+}
 
 void PPUModeHBLANK()
 {
@@ -92,21 +130,5 @@ void PPUModeHBLANK()
 
         GetPPUContext()->lineTicks = 0;
     }
-}
-
-void PPUModeVBLANK()
-{
-   if (GetPPUContext()->lineTicks >= TICKS_PER_LINE)
-   {
-        IncrementLY();
-
-        if (GetLCDContext()->ly >= LINES_PER_FRAME)
-        {
-            LCDS_MODE_SET(MODE_OAM);
-            GetLCDContext()->ly = 0;
-        }
-
-        GetPPUContext()->lineTicks = 0;
-   } 
 }
 

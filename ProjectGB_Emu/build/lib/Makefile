@@ -522,6 +522,30 @@ PPU.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/PPU.c.s
 .PHONY : PPU.c.s
 
+PPUPipeline.o: PPUPipeline.c.o
+.PHONY : PPUPipeline.o
+
+# target to build an object file
+PPUPipeline.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/PPUPipeline.c.o
+.PHONY : PPUPipeline.c.o
+
+PPUPipeline.i: PPUPipeline.c.i
+.PHONY : PPUPipeline.i
+
+# target to preprocess a source file
+PPUPipeline.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/PPUPipeline.c.i
+.PHONY : PPUPipeline.c.i
+
+PPUPipeline.s: PPUPipeline.c.s
+.PHONY : PPUPipeline.s
+
+# target to generate assembly for a file
+PPUPipeline.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/PPUPipeline.c.s
+.PHONY : PPUPipeline.c.s
+
 PPUsm.o: PPUsm.c.o
 .PHONY : PPUsm.o
 
@@ -698,6 +722,9 @@ help:
 	@echo "... PPU.o"
 	@echo "... PPU.i"
 	@echo "... PPU.s"
+	@echo "... PPUPipeline.o"
+	@echo "... PPUPipeline.i"
+	@echo "... PPUPipeline.s"
 	@echo "... PPUsm.o"
 	@echo "... PPUsm.i"
 	@echo "... PPUsm.s"

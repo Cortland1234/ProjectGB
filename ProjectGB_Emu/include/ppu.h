@@ -7,6 +7,39 @@ static const int TICKS_PER_LINE = 456; //456 ticks per line
 static const int YRES = 144; //Y Resolution
 static const int XRES = 160; //X Resolution
 
+typedef enum {
+    FS_TILE,
+    FS_DATA0,
+    FS_DATA1,
+    FS_IDLE,
+    FS_PUSH
+} FetchState; //enum for the different states of the pixel FIFO
+
+typedef struct {
+    struct _fifoEntry *next;
+    u32 value; //color of the pixel
+} fifoEntry;
+
+typedef struct {
+    fifoEntry *head;
+    fifoEntry *tail;
+    u32 size;
+} FIFO;
+
+typedef struct {
+    FetchState currentState;
+    FIFO pixelFIFO;
+    u8 lineX; // x value of current line
+    u8 pushedX; // x value that was pushed
+    u8 fetchX; //x value that is currently being fetched
+    u8 backgroundFetchData[3]; // pixel tiles that are being fetched temporarily
+    u8 fetchEntryData[6]; // temp OAM data for sprites
+    u8 mapY;
+    u8 mapX;
+    u8 tileY;
+    u8 fifoX;
+} PixelFIFOContext;
+
 typedef struct {
     u8 y; //y position for object on the screen
     u8 x; //x position for object on the screen
@@ -29,8 +62,23 @@ typedef struct {
  */
 
 typedef struct {
+    OAMEntry entry;
+    struct OAMLineEntry *next;
+
+} OAMLineEntry;
+
+typedef struct {
     OAMEntry oamRam[40];
     u8 vram[0x2000]; //video ram, defines the data for 386 tiles (16 bytes per tile)
+
+    u8 lineSpriteCount; //0 to 10 sprites on a line
+    OAMLineEntry *lineSprites; //linked list of current sprites on the line
+    OAMLineEntry lineEntryArray[10]; //pointers for the memory of the linked list so malloc is not needed every time
+
+    u8 fetchEntryCount;
+    OAMEntry fetchEntries[3]; //entries fetched during pipeline
+
+    PixelFIFOContext pfc;
 
     u32 currentFrame;
     u32 lineTicks;
