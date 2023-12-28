@@ -1,4 +1,5 @@
 #include <Cartridge.h>
+#include <string.h>
 
 typedef struct //typedef for cartridge context, contains file name, size of the rom, the byte data for the rom, and the rom header
 {
@@ -6,9 +7,41 @@ typedef struct //typedef for cartridge context, contains file name, size of the 
     u32 romSize;
     u8 *romData;
     RomHeader *header;
+
+    ///MBC1 data
+    bool ramEnabled;
+    bool ramBanking;
+
+    u8 *romBankX;
+    u8 bankingMode;
+
+    u8 romBankValue;
+    u8 ramBankValue;
+
+    u8 *ramBank; //current selected RAM bank
+    u8 *ramBanks[16];
+
+    //for battery data
+    bool battery; //whether has battery
+    bool needSave; //whether needs to save battery data
 } CartridgeContext;
 
 static CartridgeContext context;
+
+bool CartridgeNeedSave()
+{
+    return context.needSave;
+}
+
+bool CartridgeMBC1()//whether rom type is MBC1
+{
+    return BETWEEN(context.header->type, 1, 3);
+}
+
+bool CartridgeBattery() //whether cartridge has a battery
+{
+    return context.header->type == 3; //MBC1 only
+}
 
 static const char *ROM_TYPES[] = { //map for the types of ROMs, also found from gbdev.io
     "ROM ONLY",
@@ -130,6 +163,26 @@ const char *CartridgeTypeName() //looks up name of the cartridge, returns UNKNOW
     return "UNKNOWN";
 }
 
+void CartridgeSetupBanking()
+{
+    for (int i = 0; i < 16; i++)
+    {
+        context.ramBanks[i] = 0;
+
+        if ((context.header->ramSize == 2 && i == 0) || 
+        (context.header->ramSize == 3 && i < 4) ||
+        (context.header->ramSize == 4 && i < 16) ||
+        (context.header->ramSize == 5 && i < 8)) //valid ram bank
+        {
+            context.ramBanks[i] = malloc(0x2000);
+            memset(context.ramBanks[i], 0, 0x2000);
+        }
+    }
+
+    context.ramBank = context.ramBanks[0];
+    context.romBankX = context.romData + 0x4000; //ROM bank 1
+}
+
 bool LoadCartridge(char *cart) 
 {
     snprintf(context.filename, sizeof(context.filename), "%s", cart); //snprintf accepts n as the max number of characters, in this case it is sizeof context
@@ -156,6 +209,8 @@ bool LoadCartridge(char *cart)
 
     context.header = (RomHeader *)(context.romData + 0x100);
     context.header->title[15] = 0; //null terminate the end of the title just in case it is not terminated already
+    context.battery = CartridgeBattery();
+    context.needSave = false;
 
     printf("Cartridge Loaded:\n"); //printing out the info for the rom
     printf("\t Title    : %s\n", context.header->title);
@@ -164,6 +219,8 @@ bool LoadCartridge(char *cart)
     printf("\t RAM Size : %2.2X\n", context.header->ramSize);
     printf("\t LIC Code : %2.2X (%s)\n", context.header->licenseCode, CartridgeLicenseName());
     printf("\t ROM Vers : %2.2X\n", context.header->version);
+
+    CartridgeSetupBanking();
 
     u16 x = 0; //checksum loop found on "Cartridge Header" gbdev.io
     for (u16 i=0x0134; i<=0x014C; i++) 
@@ -174,19 +231,147 @@ bool LoadCartridge(char *cart)
     printf("\t Checksum : %2.2X (%s)\n", context.header->checksum, (x & 0xFF) ? "PASSED" : "FAILED");
     //if the checksum = checksum && 0xFF, it passed the verification. otherwise it failed
 
+    if (context.battery)
+    {
+        CartridgeBatteryLoad();
+    }
+
     return true;
+}
+
+void CartridgeBatteryLoad() //loading save
+{
+    char file[1048];
+    sprintf(file, "%s.battery", context.filename);
+    FILE *fp = fopen(file, "rb");
+
+    if (!fp)
+    {
+        fprintf(stderr, "FAILED TO OPEN: %s\n", file);
+        return;
+    }
+
+    fread(context.ramBank, 0x2000, 1, fp);
+
+    fclose(fp);
+}
+
+void CartridgeBatterySave() //saving game
+{
+    char file[1048];
+    sprintf(file, "%s.battery", context.filename);
+    FILE *fp = fopen(file, "wb");
+
+    if (!fp)
+    {
+        fprintf(stderr, "FAILED TO OPEN: %s\n", file);
+        return;
+    }
+
+    fwrite(context.ramBank, 0x2000, 1, fp);
+
+    fclose(fp);
+
 }
 
 u8 ReadCartridge(u16 address) 
 {
     //Because all rom data is loaded into memory, we can access those memory arrays easily
 
-    return context.romData[address];
+    if (!CartridgeMBC1() || address < 0x4000)
+    {
+        return context.romData[address];
+    }
+
+    if ((address & 0xE000) == 0xA000)
+    {
+        if (!context.ramEnabled)
+        {
+            return 0xFF;
+        }
+
+
+        if (!context.ramBank)
+        {
+            return 0xFF;
+        }
+
+        return context.ramBank[address - 0xA000];
+    }
+   
+   return context.romBankX[address - 0x4000];
 }
 
 void WriteCartridge(u16 address, u8 value) 
 {
+    if (!CartridgeMBC1())
+    {
+        return;
+    }
 
-    printf("WriteCartridge(%04X)\n", address);
+    if (address < 0x2000)
+    {
+        context.ramEnabled = ((value & 0xF) == 0xA);
+    }
+
+    if ((address & 0xE000) == 0x2000) //rom bank number
+    {
+        if (value == 0)
+        {
+            value = 1;
+        }
+
+        value &= 0b11111;
+
+        context.romBankValue = value;
+        context.romBankX = context.romData + (0x4000 * context.romBankValue);
+    }
+
+    if ((address & 0xE000) == 0x4000)
+    {
+        context.ramBankValue = value & 0b11;
+
+        if (context.ramBanking)
+        {
+            if (CartridgeNeedSave()) 
+            {
+                CartridgeBatterySave();
+            }
+
+            context.ramBank = context.ramBanks[context.ramBankValue];
+        }
+    }
+
+    if ((address & 0xE000) == 0x6000) {
+        //banking mode select
+        context.bankingMode = value & 1;
+
+        context.ramBanking = context.bankingMode;
+
+        if (context.ramBanking) {
+            if (CartridgeNeedSave()) 
+            {
+                CartridgeBatterySave();
+            }
+            
+            context.ramBank = context.ramBanks[context.ramBankValue];
+        }
+    }
+
+    if ((address & 0xE000) == 0xA000) {
+        if (!context.ramEnabled) {
+            return;
+        }
+
+        if (!context.ramBank) {
+            return;
+        }
+
+        context.ramBank[address - 0xA000] = value;
+
+        if (context.battery) {
+            context.needSave = true;
+        }
+    }    
 }
 

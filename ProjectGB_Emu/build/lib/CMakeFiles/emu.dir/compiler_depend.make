@@ -393,7 +393,11 @@ lib/CMakeFiles/emu.dir/Cartridge.c.o: ../lib/Cartridge.c \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
+  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/string.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/strings.h
 
 lib/CMakeFiles/emu.dir/Debug.c.o: ../lib/Debug.c \
   /usr/include/stdc-predef.h \
@@ -1142,7 +1146,8 @@ lib/CMakeFiles/emu.dir/PPUsm.c.o: ../lib/PPUsm.c \
   /usr/include/string.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/strings.h
+  /usr/include/strings.h \
+  ../include/Cartridge.h
 
 lib/CMakeFiles/emu.dir/RAM.c.o: ../lib/RAM.c \
   /usr/include/stdc-predef.h \
@@ -1576,10 +1581,6 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 /usr/include/SDL2/SDL_mouse.h:
 
-/usr/include/strings.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
 ../include/Gamepad.h:
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
@@ -1622,13 +1623,17 @@ lib/CMakeFiles/emu.dir/UI.c.o: ../lib/UI.c \
 
 ../lib/Emu.c:
 
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
-
-../lib/Dma.c:
-
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h:
+
+/usr/include/strings.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
+
+../lib/Dma.c:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
 /usr/include/SDL2/SDL_config.h:
 

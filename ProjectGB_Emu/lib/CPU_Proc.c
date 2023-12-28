@@ -213,7 +213,6 @@ static void ProcRLA(CPUContext *context)
 static void ProcStop(CPUContext *context) 
 {
     fprintf(stderr, "STOPPING!\n");
-    NO_IMPL
 }
 
 static void ProcDAA(CPUContext *context) 

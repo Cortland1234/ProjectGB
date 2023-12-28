@@ -4,6 +4,7 @@
 #include <Interrupts.h>
 #include <LCD.h>
 #include <string.h>
+#include <Cartridge.h>
 
 void PipelineFIFOReset(); //declaring functions for PPUPipeline.c
 void PipelineProcess();
@@ -178,7 +179,7 @@ void PPUModeHBLANK()
 
             GetPPUContext()->currentFrame++;
 
-            //calulate FPS...todo
+            //calulate FPS...
             u32 end = getTicks();
             u32 frameTime = end - prevFrameTime; //amount of time taken between frames
 
@@ -195,6 +196,11 @@ void PPUModeHBLANK()
                 frameCount = 0;
 
                 printf("FPS: %d\n", FPS); //print out the FPS
+
+                if (CartridgeNeedSave())
+                {
+                    CartridgeBatterySave();
+                }
             }
 
             frameCount++;

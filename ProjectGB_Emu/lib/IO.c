@@ -33,6 +33,12 @@ u8 ReadIO(u16 address)
         return GetCPUIntFlags();
     }
 
+    if (BETWEEN(address, 0xFF10, 0xFF3F)) 
+    {
+        //ignoring sound for now
+        return 0;
+    }
+
     if (BETWEEN(address, 0xFF40, 0xFF4B)) 
     {
         return ReadLCD(address);
@@ -70,6 +76,12 @@ void WriteIO(u16 address, u8 value)
     if (address == 0xFF0F) 
     {
         SetCPUIntFlags(value);
+        return;
+    }
+
+    if (BETWEEN(address, 0xFF10, 0xFF3F)) 
+    {
+        //ignoring sound for now
         return;
     }
 

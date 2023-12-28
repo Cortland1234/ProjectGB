@@ -26,3 +26,8 @@ bool LoadCartridge(char *cart);
 u8 ReadCartridge(u16 address);
 void WriteCartridge(u16 address, u8 value);
 
+bool CartridgeNeedSave();
+void CartridgeBatteryLoad();
+void CartridgeBatterySave();
+
+
