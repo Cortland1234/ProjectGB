@@ -71,7 +71,7 @@ typedef struct {
     OAMEntry oamRam[40];
     u8 vram[0x2000]; //video ram, defines the data for 386 tiles (16 bytes per tile)
 
-        PixelFIFOContext pfc;
+    PixelFIFOContext pfc;
 
     u8 lineSpriteCount; //0 to 10 sprites on a line
     OAMLineEntry *lineSprites; //linked list of current sprites on the line
@@ -79,6 +79,7 @@ typedef struct {
 
     u8 fetchEntryCount;
     OAMEntry fetchEntries[3]; //entries fetched during pipeline
+    u8 windowLine; //current window line
 
     u32 currentFrame;
     u32 lineTicks;

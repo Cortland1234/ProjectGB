@@ -28,6 +28,7 @@ void InitializePPU()
 
     context.lineSprites = 0;
     context.fetchEntryCount = 0;
+    context.windowLine = 0;
 
     InitializeLCD();
     LCDS_MODE_SET(MODE_OAM);

@@ -2,15 +2,23 @@
 #include <LCD.h>
 #include <CPU.h>
 #include <Interrupts.h>
+#include <LCD.h>
 #include <string.h>
 
 void PipelineFIFOReset(); //declaring functions for PPUPipeline.c
 void PipelineProcess();
+bool WindowVisible();
 
 //PPU State Machine
 
 void  IncrementLY()
 {
+    if (WindowVisible() && GetLCDContext()->ly >= GetLCDContext()->winY &&
+        GetLCDContext()->ly < GetLCDContext()->winY + YRES)
+        {
+            GetPPUContext()->windowLine++;
+        }
+
     GetLCDContext()->ly++;
 
     if (GetLCDContext()->ly == GetLCDContext()->lyCompare) //if the ly and lyCompare value are the same
@@ -49,7 +57,7 @@ void LoadLineSprites()
             break;
         }
 
-        if (e.y <= curY + 16 && e.y + spriteHeight + curY + 16) //if the sprite is on the current line
+        if (e.y <= curY + 16 && e.y + spriteHeight > curY + 16) //if the sprite is on the current line
         {
             OAMLineEntry *entry = &GetPPUContext()->lineEntryArray[GetPPUContext()->lineSpriteCount++];
 
@@ -128,11 +136,6 @@ void PPUModeXFER()
     }    
 }
 
-static u32 targetFrameTime = 1000 / 60; //this will set the target FPS to 60
-static long prevFrameTime = 0;
-static long startTimer = 0;
-static long frameCount = 0;
-
 void PPUModeVBLANK()
 {
    if (GetPPUContext()->lineTicks >= TICKS_PER_LINE)
@@ -143,11 +146,17 @@ void PPUModeVBLANK()
         {
             LCDS_MODE_SET(MODE_OAM);
             GetLCDContext()->ly = 0;
+            GetPPUContext()->windowLine = 0;
         }
 
         GetPPUContext()->lineTicks = 0;
    } 
 }
+
+static u32 targetFrameTime = 1000 / 60; //this will set the target FPS to 60
+static long prevFrameTime = 0;
+static long startTimer = 0;
+static long frameCount = 0;
 
 void PPUModeHBLANK()
 {

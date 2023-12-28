@@ -15,7 +15,7 @@ void InitializeLCD()
     context.lyCompare = 0;
     context.bgPalette = 0xFC;
     context.objPalette[0] = 0xFF;
-    context.objPalette[0] = 0xFF;
+    context.objPalette[1] = 0xFF;
     context.winX = 0;
     context.winY = 0;
 
@@ -71,8 +71,6 @@ void WriteLCD(u16 address, u8 value)
     {
         StartDMA(value); //start the DMA
     }
-
-
 
     if (address == 0xFF47) //if the address are in the ranges of the palettes, we need to execute special instructions
     {

@@ -2,12 +2,19 @@
 #include <LCD.h>
 #include <Bus.h>
 
-void PixelFIFOPush(u32 value) {
-    fifoEntry *next = malloc(sizeof(fifoEntry));
+bool WindowVisible() //checking to see if the window is enabled and visible
+{
+    return LCDC_WIN_ENABLE && GetLCDContext()->winX >= 0 && GetLCDContext()->winX <= 166 &&
+    GetLCDContext()->winY >= 0 && GetLCDContext()->winY < YRES;
+}
+
+void PixelFIFOPush(u32 value) //pushes a pixel to the FIFO
+{
+    fifoEntry *next = malloc(sizeof(fifoEntry)); //allocating memory for the fifoentry pointer
     next->next = NULL;
     next->value = value;
 
-    if (!GetPPUContext()->pfc.pixelFIFO.head) {
+    if (!GetPPUContext()->pfc.pixelFIFO.head) { //if the pixelFIFO head is not set
         //first entry...
         GetPPUContext()->pfc.pixelFIFO.head = GetPPUContext()->pfc.pixelFIFO.tail = next;
     } else {
@@ -18,23 +25,25 @@ void PixelFIFOPush(u32 value) {
     GetPPUContext()->pfc.pixelFIFO.size++;
 }
 
-u32 PixelFIFOPop() {
-    if (GetPPUContext()->pfc.pixelFIFO.size <= 0) {
+u32 PixelFIFOPop() 
+{
+    if (GetPPUContext()->pfc.pixelFIFO.size <= 0) { //if the size of the FIFO is empty at time of pop call
         fprintf(stderr, "ERR IN PIXEL FIFO!\n");
         exit(-8);
     }
 
-    fifoEntry *popped = GetPPUContext()->pfc.pixelFIFO.head;
-    GetPPUContext()->pfc.pixelFIFO.head = popped->next;
-    GetPPUContext()->pfc.pixelFIFO.size--;
+    fifoEntry *popped = GetPPUContext()->pfc.pixelFIFO.head; //value to be popped is the head of the FIFO
+    GetPPUContext()->pfc.pixelFIFO.head = popped->next; //popping value from FIFO
+    GetPPUContext()->pfc.pixelFIFO.size--; //decrementing size of linked list
 
-    u32 val = popped->value;
-    free(popped);
+    u32 val = popped->value; //grabbing value of popped so function can return it
+    free(popped); //freeing the memory popped took up again
 
     return val;
 }
 
-u32 FetchSpritePixels(int bit, u32 color, u8 bg_color) {
+u32 FetchSpritePixels(int bit, u32 color, u8 bg_color) 
+{
     for (int i=0; i<GetPPUContext()->fetchEntryCount; i++) {
         int sp_x = (GetPPUContext()->fetchEntries[i].x - 8) + 
             ((GetLCDContext()->scrollX % 8));
@@ -80,8 +89,9 @@ u32 FetchSpritePixels(int bit, u32 color, u8 bg_color) {
     return color;
 }
 
-bool PipelineFIFOAdd() {
-    if (GetPPUContext()->pfc.pixelFIFO.size > 8) {
+bool PipelineFIFOAdd() 
+{
+    if (GetPPUContext()->pfc.pixelFIFO.size > 8) { //if FIFO is full
         //fifo is full!
         return false;
     }
@@ -111,7 +121,8 @@ bool PipelineFIFOAdd() {
     return true;
 }
 
-void PipelineLoadSpriteTile() {
+void PipelineLoadSpriteTile() 
+{
     OAMLineEntry *le = GetPPUContext()->lineSprites;
 
     while(le) {
@@ -132,7 +143,8 @@ void PipelineLoadSpriteTile() {
     }
 }
 
-void PipelineLoadPixelData(u8 offset) {
+void PipelineLoadPixelData(u8 offset) 
+{
     int cur_y = GetLCDContext()->ly;
     u8 sprite_height = LCDC_OBJ_HEIGHT;
 
@@ -155,7 +167,35 @@ void PipelineLoadPixelData(u8 offset) {
     }
 }
 
-void PipelineFetch() {
+
+void PipelineLoadWindowTile()
+{
+    if (!WindowVisible())
+    {
+        return;
+    }
+    u8 windowY = GetLCDContext()->winY;
+    
+    if (GetPPUContext()->pfc.fetchX + 7 >= GetLCDContext()->winX &&
+        GetPPUContext()->pfc.fetchX + 7 < GetLCDContext()->winX + YRES + 14)
+        {
+            if (GetLCDContext()->ly >= windowY && GetLCDContext()->ly < windowY + XRES)
+            {
+                u8 winTileY = GetPPUContext()->windowLine / 8;
+
+                GetPPUContext()->pfc.backgroundFetchData[0] = ReadBus(LCDC_WIN_MAP_AREA +
+                ((GetPPUContext()->pfc.fetchX + 7 - GetLCDContext()->winX) / 8) + (winTileY * 32));
+
+                if (LCDC_BGW_DATA_AREA == 0x8800)
+                {
+                    GetPPUContext()->pfc.backgroundFetchData[0] += 128;
+                }
+            }
+        }
+}
+
+void PipelineFetch() 
+{
     switch(GetPPUContext()->pfc.currentState) {
         case FS_TILE: {
             GetPPUContext()->fetchEntryCount = 0;
@@ -168,6 +208,8 @@ void PipelineFetch() {
                 if (LCDC_BGW_DATA_AREA == 0x8800) {
                     GetPPUContext()->pfc.backgroundFetchData[0] += 128;
                 }
+
+                PipelineLoadWindowTile();
             }
 
             if (LCDC_OBJ_ENABLE && GetPPUContext()->lineSprites) {
@@ -213,9 +255,10 @@ void PipelineFetch() {
     }
 }
 
-void PipelinePushPixel() {
-    if (GetPPUContext()->pfc.pixelFIFO.size > 8) {
-        u32 pixel_data = PixelFIFOPop();
+void PipelinePushPixel() //pushes pixels onto the pipeline
+{
+    if (GetPPUContext()->pfc.pixelFIFO.size > 8) { //if the FIFO is full
+        u32 pixel_data = PixelFIFOPop(); //pop a pixel value to make room in FIFO
 
         if (GetPPUContext()->pfc.lineX >= (GetLCDContext()->scrollX % 8)) {
             GetPPUContext()->vidBuffer[GetPPUContext()->pfc.pushedX + 
@@ -228,19 +271,21 @@ void PipelinePushPixel() {
     }
 }
 
-void PipelineProcess() {
+void PipelineProcess() 
+{
     GetPPUContext()->pfc.mapY = (GetLCDContext()->ly + GetLCDContext()->scrollY);
     GetPPUContext()->pfc.mapX = (GetPPUContext()->pfc.fetchX + GetLCDContext()->scrollX);
     GetPPUContext()->pfc.tileY = ((GetLCDContext()->ly + GetLCDContext()->scrollY) % 8) * 2;
 
-    if (!(GetPPUContext()->lineTicks & 1)) {
-        PipelineFetch();
+    if (!(GetPPUContext()->lineTicks & 1)) { //if the first bit of lineticks is not set, the line is even
+        PipelineFetch(); //fetched every other line
     }
 
-    PipelinePushPixel();
+    PipelinePushPixel();//called every line
 }
 
-void PipelineFIFOReset() {
+void PipelineFIFOReset()
+{
     while(GetPPUContext()->pfc.pixelFIFO.size) {
         PixelFIFOPop();
     }
