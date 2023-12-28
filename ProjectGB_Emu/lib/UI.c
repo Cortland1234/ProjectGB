@@ -2,6 +2,7 @@
 #include <Emu.h>
 #include <Bus.h>
 #include <PPU.h>
+#include <Gamepad.h>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -160,11 +161,36 @@ void UpdateUI()
     UpdateDebugWindow();
 }
 
+void UIOnKey(bool down, u32 keyCode)
+{
+    switch(keyCode) //switch statement for handling button presses
+    {
+        case SDLK_z: GetGamepadState()->b = down; break;
+        case SDLK_x: GetGamepadState()->a = down; break;
+        case SDLK_RETURN: GetGamepadState()->start = down; break;
+        case SDLK_TAB: GetGamepadState()->select = down; break;
+        case SDLK_UP: GetGamepadState()->up = down; break;
+        case SDLK_DOWN: GetGamepadState()->down = down; break;
+        case SDLK_LEFT: GetGamepadState()->left = down; break;
+        case SDLK_RIGHT: GetGamepadState()->right = down; break;               
+    }
+}
+
 void HandleUIEvents() 
 {
     SDL_Event e;
     while (SDL_PollEvent(&e) > 0) //when there is an event
     {
+        if (e.type == SDL_KEYDOWN) //wiring buttons up to the keypresses
+        {
+            UIOnKey(true, e.key.keysym.sym);
+        }
+
+        if (e.type == SDL_KEYUP)
+        {
+            UIOnKey(false, e.key.keysym.sym);
+        }
+
         if (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_CLOSE) //if the SDL event type is Window and the event == close
         {
 

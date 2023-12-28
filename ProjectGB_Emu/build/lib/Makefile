@@ -402,6 +402,30 @@ Emu.c.s:
 	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Emu.c.s
 .PHONY : Emu.c.s
 
+Gamepad.o: Gamepad.c.o
+.PHONY : Gamepad.o
+
+# target to build an object file
+Gamepad.c.o:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Gamepad.c.o
+.PHONY : Gamepad.c.o
+
+Gamepad.i: Gamepad.c.i
+.PHONY : Gamepad.i
+
+# target to preprocess a source file
+Gamepad.c.i:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Gamepad.c.i
+.PHONY : Gamepad.c.i
+
+Gamepad.s: Gamepad.c.s
+.PHONY : Gamepad.s
+
+# target to generate assembly for a file
+Gamepad.c.s:
+	cd /mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/emu.dir/build.make lib/CMakeFiles/emu.dir/Gamepad.c.s
+.PHONY : Gamepad.c.s
+
 IO.o: IO.c.o
 .PHONY : IO.o
 
@@ -707,6 +731,9 @@ help:
 	@echo "... Emu.o"
 	@echo "... Emu.i"
 	@echo "... Emu.s"
+	@echo "... Gamepad.o"
+	@echo "... Gamepad.i"
+	@echo "... Gamepad.s"
 	@echo "... IO.o"
 	@echo "... IO.i"
 	@echo "... IO.s"

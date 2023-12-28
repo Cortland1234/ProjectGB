@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Debug.c" "lib/CMakeFiles/emu.dir/Debug.c.o" "gcc" "lib/CMakeFiles/emu.dir/Debug.c.o.d"
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Dma.c" "lib/CMakeFiles/emu.dir/Dma.c.o" "gcc" "lib/CMakeFiles/emu.dir/Dma.c.o.d"
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Emu.c" "lib/CMakeFiles/emu.dir/Emu.c.o" "gcc" "lib/CMakeFiles/emu.dir/Emu.c.o.d"
+  "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Gamepad.c" "lib/CMakeFiles/emu.dir/Gamepad.c.o" "gcc" "lib/CMakeFiles/emu.dir/Gamepad.c.o.d"
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/IO.c" "lib/CMakeFiles/emu.dir/IO.c.o" "gcc" "lib/CMakeFiles/emu.dir/IO.c.o.d"
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Instructions.c" "lib/CMakeFiles/emu.dir/Instructions.c.o" "gcc" "lib/CMakeFiles/emu.dir/Instructions.c.o.d"
   "/mnt/c/Users/cortl/OneDrive/Documents/GitHub/ProjectGB/ProjectGB_Emu/lib/Interrupts.c" "lib/CMakeFiles/emu.dir/Interrupts.c.o" "gcc" "lib/CMakeFiles/emu.dir/Interrupts.c.o.d"
